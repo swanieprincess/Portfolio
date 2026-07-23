@@ -255,10 +255,10 @@ hr {
   margin: 15px;
   display: inline-block;
   width: auto;
-  border: 4px solid var(--ns-pink);
+  border: 4px solid #D3D3D3;
   border-radius: 999px;
   box-shadow: 0 0 3px var(--ns-deep);
-  padding: 15px 25px;
+  padding: 8px 16px;
   text-align: left;
   outline: none;
   transition: 0.4s;
