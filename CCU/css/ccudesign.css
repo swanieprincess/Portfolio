@@ -2,8 +2,8 @@
    NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette (CCU variant — electric blue, purple & pink over charcoal)
-     Charcoal         #36454F  (background)
+   Palette (CCU variant — electric blue, purple & pink over black)
+     Black            #000000  (background)
      Blue             #11B4F5  (primary — headers, accent borders, glow)
      Purple           #8705E4  (primary — pull-quotes, deep glow)
      Off-White        #EBEAE4  (secondary — body text)
@@ -59,7 +59,7 @@
 
 :root {
   --ns-black: #000000;      /* page surround & icon circles */
-  --ns-bg: #36454F;         /* charcoal canvas */
+  --ns-bg: #000000;         /* black canvas */
   --ns-primary: #11B4F5;    /* headers & bright accent — blue */
   --ns-deep: #8705E4;       /* pull-quotes & deep glow — purple */
   --ns-light: #EBEAE4;      /* secondary — body text & hover highlight */

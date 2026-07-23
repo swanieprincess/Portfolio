@@ -3,12 +3,12 @@
 A reusable design theme for the Swan Moon portfolio's CCU project — neon glows,
 script headers, and tiny highlight accents. The CCU Edition pairs **electric
 blue & purple** primaries with a **hot pink** accent and **off-white** text
-over a **charcoal** canvas, distinct from the portfolio's
+over a **black** canvas, distinct from the portfolio's
 aquamarine/purple-on-black look while keeping the same Neon Swan style.
 
 ## Files
 
-- `css/neon-swan.css` — the theme stylesheet (drop-in; all colors and effects
+- `css/ccudesign.css` — the theme stylesheet (drop-in; all colors and effects
   exposed as role-based CSS custom properties on `:root`)
 - `fonts/` — self-hosted Sacramento 400 and Poppins 300 (woff2, latin +
   latin-ext) — no Google Fonts CDN dependency
@@ -19,7 +19,7 @@ aquamarine/purple-on-black look while keeping the same Neon Swan style.
 
 | Role | Color | Hex | Token |
 | --- | --- | --- | --- |
-| Background | Charcoal | `#36454F` | `--ns-bg` |
+| Background | Black | `#000000` | `--ns-bg` |
 | Primary — headers / bright accent | Blue | `#11B4F5` | `--ns-primary` |
 | Primary — pull-quotes / deep glow | Purple | `#8705E4` | `--ns-deep` |
 | Secondary — body text / hover | Off-White | `#EBEAE4` | `--ns-light` |
@@ -53,7 +53,7 @@ stylesheet, so pages work offline and without third-party requests.
 ## Usage
 
 ```html
-<link rel="stylesheet" href="css/neon-swan.css">
+<link rel="stylesheet" href="css/ccudesign.css">
 ```
 
 Re-theming is a one-block edit: override the role tokens in `:root`
