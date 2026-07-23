@@ -10,7 +10,8 @@
      Pale Goldenrod   #EEE8AA  (secondary — highlights)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
      White            #FFFFFF  (list bullets, unvisited links)
-     Pale Goldenrod   #EEE8AA  (em-dashes, separators, visited links)
+     Pale Goldenrod   #EEE8AA  (em-dashes, visited links)
+     Spring Green     #00FF7F  (separators, nested markers, link hover)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -65,6 +66,7 @@
   --ns-gray: #D3D3D3;       /* secondary — body text */
   --ns-pale: #EEE8AA;       /* secondary & highlight — pale goldenrod */
   --ns-white: #FFFFFF;      /* highlight accent */
+  --ns-spring: #00FF7F;     /* highlight accent — spring green */
 
   /* Signature effects */
   --ns-dual-glow: 3px 3px 20px var(--ns-deep), 5px 5px 20px var(--ns-primary);
@@ -168,7 +170,7 @@ a:visited {
 
 a:hover,
 a:focus {
-  color: var(--ns-primary);
+  color: var(--ns-spring);
   text-decoration: underline;
   text-shadow: var(--ns-soft-glow);
 }
@@ -193,18 +195,21 @@ ul > li::before {
   font-size: 0.9em;
 }
 
-/* Nested items take a pale goldenrod em-dash marker */
+/* Nested items take a spring green em-dash marker */
 ul ul > li::before {
   content: '\2014';
-  color: var(--ns-pale);
+  color: var(--ns-spring);
   width: 1.5em;
   margin-left: -1.5em;
 }
 
-/* Inline separators & dashes render in pale goldenrod */
-.dash,
-.sep {
+/* Inline em-dashes render in pale goldenrod, separators in spring green */
+.dash {
   color: var(--ns-pale);
+}
+
+.sep {
+  color: var(--ns-spring);
 }
 
 /* --------------------------------------------------------------------------
