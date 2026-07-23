@@ -25,13 +25,13 @@ style.
 | Secondary — body text | Light Gray | `#D3D3D3` | `--ns-gray` |
 | Secondary / highlight | Pale Goldenrod | `#EEE8AA` | `--ns-pale` |
 | Highlight accent | White | `#FFFFFF` | `--ns-white` |
-| Highlight accent | Spring Green | `#00FF7F` | `--ns-spring` |
+| Highlight accent | Lime | `#00FF00` | `--ns-lime` |
 | Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
 
-White, pale goldenrod, and spring green are **highlight accents**: bullets,
+White, pale goldenrod, and lime are **highlight accents**: bullets,
 dashes, links, and other tiny elements only — never fills, text blocks, or
 buttons. White marks bullets and unvisited links; pale goldenrod marks
-em-dashes and visited links; spring green marks separators, nested list
+em-dashes and visited links; lime marks separators, nested list
 markers, and link hover.
 
 ## Signature effects
