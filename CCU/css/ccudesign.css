@@ -6,11 +6,11 @@
      Black            #000000  (background)
      Blue             #11B4F5  (primary — headers, accent borders, glow)
      Purple           #8705E4  (primary — pull-quotes, deep glow)
-     Off-White        #EBEAE4  (secondary — body text)
+     White            #FFFFFF  (secondary — body text)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
      Hot Pink         #FF06C1  (list bullets, visited links)
      Blue             #11B4F5  (unvisited links, dashes, separators, nested markers)
-     Off-White        #EBEAE4  (link hover)
+     White            #FFFFFF  (link hover)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -62,7 +62,7 @@
   --ns-bg: #000000;         /* black canvas */
   --ns-primary: #11B4F5;    /* headers & bright accent — blue */
   --ns-deep: #8705E4;       /* pull-quotes & deep glow — purple */
-  --ns-light: #EBEAE4;      /* secondary — body text & hover highlight */
+  --ns-light: #FFFFFF;      /* secondary — body text & hover highlight */
   --ns-pink: #FF06C1;       /* highlight accent — hot pink */
 
   /* Signature effects */

@@ -2,7 +2,7 @@
 
 A reusable design theme for the Swan Moon portfolio's CCU project — neon glows,
 script headers, and tiny highlight accents. The CCU Edition pairs **electric
-blue & purple** primaries with a **hot pink** accent and **off-white** text
+blue & purple** primaries with a **hot pink** accent and **white** text
 over a **black** canvas, distinct from the portfolio's
 aquamarine/purple-on-black look while keeping the same Neon Swan style.
 
@@ -22,15 +22,15 @@ aquamarine/purple-on-black look while keeping the same Neon Swan style.
 | Background | Black | `#000000` | `--ns-bg` |
 | Primary — headers / bright accent | Blue | `#11B4F5` | `--ns-primary` |
 | Primary — pull-quotes / deep glow | Purple | `#8705E4` | `--ns-deep` |
-| Secondary — body text / hover | Off-White | `#EBEAE4` | `--ns-light` |
+| Secondary — body text / hover | White | `#FFFFFF` | `--ns-light` |
 | Highlight accent | Hot Pink | `#FF06C1` | `--ns-pink` |
 | Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
 
-Hot pink, blue, and off-white serve as **highlight accents**: bullets,
+Hot pink, blue, and white serve as **highlight accents**: bullets,
 dashes, links, and other tiny elements only — never fills, text blocks, or
 buttons. Hot pink marks bullets and visited links; blue marks unvisited
 links, em-dashes, separators, and nested list markers (doubling as a
-primary); off-white marks link hover (doubling as body text).
+primary); white marks link hover (doubling as body text).
 
 ## Signature effects
 
@@ -45,7 +45,7 @@ primary); off-white marks link hover (doubling as body text).
 
 - **Headers** — Sacramento script, blue
 - **Subheadings** — Poppins / Century Gothic with soft purple glow
-- **Body** — Poppins 300 / Century Gothic fallback, off-white
+- **Body** — Poppins 300 / Century Gothic fallback, white
 
 Fonts are self-hosted in `fonts/` and declared via `@font-face` in the
 stylesheet, so pages work offline and without third-party requests.
