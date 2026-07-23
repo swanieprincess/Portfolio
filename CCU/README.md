@@ -38,9 +38,9 @@ primary).
 
 ## Signature effects
 
-- **Dual neon glow** — `box-shadow: 3px 3px 20px #FFFFFF, 5px 5px 20px #00FFFF`
-- **Heading glow** — `text-shadow: 3px 3px 5px #FFFFFF, 3.5px 3.5px 5px #00FFFF`
-- **Soft link glow** — `text-shadow: 2px 2px 2px #FFFFFF`
+- **Dual neon glow** — `box-shadow: 1.5px 1.5px 20px #FFFFFF, 2.5px 2.5px 20px #00FFFF`
+- **Heading glow** — `text-shadow: 1.5px 1.5px 5px #FFFFFF, 1.75px 1.75px 5px #00FFFF`
+- **Soft link glow** — `text-shadow: 1.5px 1.5px 2px #FFFFFF`
 - **Two-tone panels** — hairline borders, white top/left, aqua bottom/right
 - **Circular imagery** — `border-radius: 50%` on avatars and photos
 - **Icon glow** — black circle, aqua stroke, `box-shadow: 0 0 14px #FFFFFF`
