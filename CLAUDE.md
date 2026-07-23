@@ -14,8 +14,8 @@ Quick reference:
 
 - Background pure black `#000000`; body text light gray `#D3D3D3`
 - Primary accents: aquamarine `#7FFFD4` and rebeccapurple `#663399`;
-  light sea green `#20B2AA` for hovers and soft glows; twilight slate
-  `#494762` for active/hover surface fills
+  light sea green `#20B2AA` for hovers and soft glows; hover/active
+  surfaces stay black — states read through the neon glows
 - Micro-accents (tiny elements only — never fills, headings, or buttons):
   magenta `#FF00FF` for list bullets, tick dots, eyebrow-line middot
   separators, and visited links; dodger blue `#1E90FF` for dashes,
@@ -25,7 +25,9 @@ Quick reference:
 - Signature effects: dual neon box-shadow
   `3px 3px 20px #663399, 5px 5px 20px #7FFFD4`, two-tone hairline borders
   (purple top/left, aquamarine bottom/right), circular imagery
-  (`border-radius: 50%`), italic rebeccapurple pull-quotes
+  (`border-radius: 50%`), circular icons with aquamarine stroke and
+  rebeccapurple glow (`box-shadow: 0 0 14px #663399`), italic
+  rebeccapurple pull-quotes
 
 ## Repo layout
 

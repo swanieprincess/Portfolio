@@ -22,10 +22,10 @@
     --aquamarine: #7FFFD4;
     --rebecca-purple: #663399;
     --light-sea-green: #20B2AA;
-    --twilight-slate: #494762;
     --light-gray: #D3D3D3;
     --white: #FFFFFF;
     --magenta: #FF00FF;
+    --glow-icon: 0 0 14px var(--rebecca-purple);
     --dodger-blue: #1E90FF;
     --glow-box: 3px 3px 20px var(--rebecca-purple), 5px 5px 20px var(--aquamarine);
     --glow-heading: 3px 3px 5px var(--rebecca-purple), 3.5px 3.5px 5px var(--aquamarine);
@@ -105,15 +105,15 @@
     border: none; padding: 13px 26px; cursor: pointer; font-size: .95em; transition: .4s;
   }
   button.neon:hover, button.neon.active {
-    background: var(--twilight-slate);
+    background: var(--black);
     text-shadow: .5px .5px var(--rebecca-purple);
     box-shadow: var(--glow-box);
   }
   .avatar {
     width: 84px; height: 84px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, var(--twilight-slate), var(--black) 75%);
+    background: var(--black);
     border: 2px solid var(--aquamarine);
-    box-shadow: var(--glow-box);
+    box-shadow: var(--glow-icon);
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-script); font-size: 2em; color: var(--aquamarine);
     text-shadow: var(--glow-heading);
@@ -152,7 +152,6 @@
       <div class="swatch"><div class="chip" style="background:#7FFFD4"></div>Aquamarine<br><span class="code">#7FFFD4</span></div>
       <div class="swatch"><div class="chip" style="background:#663399"></div>Rebecca Purple<br><span class="code">#663399</span></div>
       <div class="swatch"><div class="chip" style="background:#20B2AA"></div>Light Sea Green<br><span class="code">#20B2AA</span></div>
-      <div class="swatch"><div class="chip" style="background:#494762"></div>Twilight Slate<br><span class="code">#494762</span></div>
       <div class="swatch"><div class="chip" style="background:#D3D3D3"></div>Light Gray<br><span class="code">#D3D3D3</span></div>
     </div>
 
@@ -182,6 +181,7 @@
 
     <div class="row">
       <div class="avatar">S</div>
+      <div class="avatar" style="font-family: var(--font-body); font-size: 1.6em; text-shadow: none;">in</div>
       <button class="neon">Accordion Button</button>
       <button class="neon active">Active / Hover State</button>
     </div>
@@ -201,6 +201,7 @@
       <tr><td class="k">Soft link glow</td><td><span class="code">text-shadow: 2px 2px 2px #20B2AA</span></td></tr>
       <tr><td class="k">Micro-accents</td><td>magenta <span class="code">#FF00FF</span> bullets &middot; dodger blue <span class="code">#1E90FF</span> dashes &mdash; tiny elements only</td></tr>
       <tr><td class="k">Circular imagery</td><td><span class="code">border-radius: 50%</span> on avatars and photos</td></tr>
+      <tr><td class="k">Icon glow</td><td>black circle, aquamarine stroke, <span class="code">box-shadow: 0 0 14px #663399</span></td></tr>
       <tr><td class="k">Headers</td><td>Sacramento script, aquamarine</td></tr>
       <tr><td class="k">Body</td><td>Poppins 300 / Century Gothic, light gray</td></tr>
     </table>
