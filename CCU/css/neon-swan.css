@@ -2,17 +2,17 @@
    NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette (CCU variant — aqua & white over charcoal)
+   Palette (CCU variant — vaporwave neons over charcoal)
      Charcoal         #36454F  (background)
-     Aqua             #00FFFF  (primary — headers, accent borders, glow)
-     White            #FFFFFF  (primary — pull-quotes, accent borders, glow)
+     Cyan             #01CDFE  (primary — headers, accent borders, glow)
+     Purple           #B967FF  (primary — pull-quotes, accent borders, glow)
      Light Gray       #D3D3D3  (secondary — body text)
-     Pale Goldenrod   #EEE8AA  (secondary — highlights)
+     Pale Yellow      #FFFB96  (secondary — highlights)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
-     Dodger Blue      #1E90FF  (list bullets, unvisited links)
-     Pale Goldenrod   #EEE8AA  (em-dashes)
-     Magenta          #FF00FF  (visited links)
-     White             #FFFFFF  (separators, nested markers, link hover)
+     Hot Pink         #FF71CE  (list bullets, visited links)
+     Cyan             #01CDFE  (unvisited links)
+     Pale Yellow      #FFFB96  (em-dashes)
+     Mint             #05FFA1  (separators, nested markers, link hover)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -62,13 +62,12 @@
 :root {
   --ns-black: #000000;      /* page surround & icon circles */
   --ns-bg: #36454F;         /* charcoal canvas */
-  --ns-primary: #00FFFF;    /* headers & bright accent — aqua */
-  --ns-deep: #FFFFFF;       /* pull-quotes & deep glow — white */
-  --ns-blue: #1E90FF;       /* highlight accent — dodger blue */
+  --ns-primary: #01CDFE;    /* headers & bright accent — cyan */
+  --ns-deep: #B967FF;       /* pull-quotes & deep glow — purple */
   --ns-gray: #D3D3D3;       /* secondary — body text */
-  --ns-pale: #EEE8AA;       /* secondary & highlight — pale goldenrod */
-  --ns-magenta: #FF00FF;    /* highlight accent — magenta */
-  --ns-white: #FFFFFF;       /* highlight accent — white */
+  --ns-pale: #FFFB96;       /* secondary & highlight — pale yellow */
+  --ns-pink: #FF71CE;       /* highlight accent — hot pink */
+  --ns-mint: #05FFA1;       /* highlight accent — mint */
 
   /* Signature effects */
   --ns-dual-glow: 1.5px 1.5px 20px var(--ns-deep), 2.5px 2.5px 20px var(--ns-primary);
@@ -145,7 +144,7 @@ p {
   margin: 15px;
 }
 
-/* Pull-quotes — italic white with a whisper of pale goldenrod */
+/* Pull-quotes — italic purple with a whisper of pale yellow */
 blockquote,
 p.indent {
   margin: 15px 30px;
@@ -156,23 +155,23 @@ p.indent {
 }
 
 /* --------------------------------------------------------------------------
-   Links — dodger blue unvisited, magenta visited, soft white glow
+   Links — cyan unvisited, hot pink visited, soft purple glow
    -------------------------------------------------------------------------- */
 
 a:link {
-  color: var(--ns-blue);
+  color: var(--ns-primary);
   text-decoration: none;
   text-shadow: var(--ns-soft-glow);
 }
 
 a:visited {
-  color: var(--ns-magenta);
+  color: var(--ns-pink);
   text-shadow: var(--ns-soft-glow);
 }
 
 a:hover,
 a:focus {
-  color: var(--ns-white);
+  color: var(--ns-mint);
   text-decoration: underline;
   text-shadow: var(--ns-soft-glow);
 }
@@ -187,31 +186,31 @@ ul {
   margin: 15px;
 }
 
-/* Tiny dodger blue dot bullet */
+/* Tiny hot pink dot bullet */
 ul > li::before {
   content: '\2022';
-  color: var(--ns-blue);
+  color: var(--ns-pink);
   display: inline-block;
   width: 1em;
   margin-left: -1em;
   font-size: 0.9em;
 }
 
-/* Nested items take a white em-dash marker */
+/* Nested items take a mint em-dash marker */
 ul ul > li::before {
   content: '\2014';
-  color: var(--ns-white);
+  color: var(--ns-mint);
   width: 1.5em;
   margin-left: -1.5em;
 }
 
-/* Inline em-dashes render in pale goldenrod, separators in white */
+/* Inline em-dashes render in pale yellow, separators in mint */
 .dash {
   color: var(--ns-pale);
 }
 
 .sep {
-  color: var(--ns-white);
+  color: var(--ns-mint);
 }
 
 /* --------------------------------------------------------------------------
@@ -233,7 +232,7 @@ hr {
   box-shadow: var(--ns-dual-glow);
 }
 
-/* Two-tone panel — white top/left hairlines, aqua bottom/right */
+/* Two-tone panel — purple top/left hairlines, cyan bottom/right */
 .panel {
   padding: 10px 15px;
   margin: 10px 5px;
@@ -270,7 +269,7 @@ hr {
 
 .accordion.active,
 .accordion:hover {
-  background-color: #4A4A4A;
+  background-color: #4A3B66;
   color: white;
   text-shadow: 0.5px 0.5px var(--ns-deep);
   box-shadow: var(--ns-dual-glow);
@@ -297,7 +296,7 @@ img,
   max-width: 100%;
 }
 
-/* Icon glow — black circle, aqua stroke, white halo */
+/* Icon glow — black circle, cyan stroke, purple halo */
 .icon {
   display: inline-block;
   background-color: var(--ns-black);

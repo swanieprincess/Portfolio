@@ -1,10 +1,10 @@
 # CCU · Neon Swan Design Theme (CCU Edition)
 
 A reusable design theme for the Swan Moon portfolio's CCU project — neon glows,
-script headers, and tiny highlight accents. The CCU Edition pairs **aqua &
-white** primaries over a **charcoal** canvas, distinct from the
-portfolio's aquamarine/purple-on-black look while keeping the same Neon Swan
-style.
+script headers, and tiny highlight accents. The CCU Edition pairs the classic
+**vaporwave palette** (cyan, purple, hot pink, mint, pale yellow) over a
+**charcoal** canvas, distinct from the portfolio's aquamarine/purple-on-black
+look while keeping the same Neon Swan style.
 
 ## Files
 
@@ -20,35 +20,33 @@ style.
 | Role | Color | Hex | Token |
 | --- | --- | --- | --- |
 | Background | Charcoal | `#36454F` | `--ns-bg` |
-| Primary — headers / bright accent | Aqua | `#00FFFF` | `--ns-primary` |
-| Primary — pull-quotes / deep glow | White | `#FFFFFF` | `--ns-deep` |
+| Primary — headers / bright accent | Cyan | `#01CDFE` | `--ns-primary` |
+| Primary — pull-quotes / deep glow | Purple | `#B967FF` | `--ns-deep` |
 | Secondary — body text | Light Gray | `#D3D3D3` | `--ns-gray` |
-| Secondary / highlight | Pale Goldenrod | `#EEE8AA` | `--ns-pale` |
-| Highlight accent | Dodger Blue | `#1E90FF` | `--ns-blue` |
-| Highlight accent | Magenta | `#FF00FF` | `--ns-magenta` |
-| Highlight accent | White | `#FFFFFF` | `--ns-white` |
+| Secondary / highlight | Pale Yellow | `#FFFB96` | `--ns-pale` |
+| Highlight accent | Hot Pink | `#FF71CE` | `--ns-pink` |
+| Highlight accent | Mint | `#05FFA1` | `--ns-mint` |
 | Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
 
-Dodger blue, pale goldenrod, magenta, and white serve as **highlight
-accents**: bullets, dashes, links, and other tiny elements only — never
-fills, text blocks, or buttons. Dodger blue marks bullets and unvisited
-links; pale goldenrod marks em-dashes; magenta marks visited links; white
-marks separators, nested list markers, and link hover (doubling as a
-primary).
+Hot pink, pale yellow, and mint serve as **highlight accents**: bullets,
+dashes, links, and other tiny elements only — never fills, text blocks, or
+buttons. Hot pink marks bullets and visited links; cyan marks unvisited
+links (doubling as a primary); pale yellow marks em-dashes; mint marks
+separators, nested list markers, and link hover.
 
 ## Signature effects
 
-- **Dual neon glow** — `box-shadow: 1.5px 1.5px 20px #FFFFFF, 2.5px 2.5px 20px #00FFFF`
-- **Heading glow** — `text-shadow: 1.5px 1.5px 5px #FFFFFF, 1.75px 1.75px 5px #00FFFF`
-- **Soft link glow** — `text-shadow: 1.5px 1.5px 2px #FFFFFF`
-- **Two-tone panels** — hairline borders, white top/left, aqua bottom/right
+- **Dual neon glow** — `box-shadow: 1.5px 1.5px 20px #B967FF, 2.5px 2.5px 20px #01CDFE`
+- **Heading glow** — `text-shadow: 1.5px 1.5px 5px #B967FF, 1.75px 1.75px 5px #01CDFE`
+- **Soft link glow** — `text-shadow: 1.5px 1.5px 2px #B967FF`
+- **Two-tone panels** — hairline borders, purple top/left, cyan bottom/right
 - **Circular imagery** — `border-radius: 50%` on avatars and photos
-- **Icon glow** — black circle, aqua stroke, `box-shadow: 0 0 14px #FFFFFF`
+- **Icon glow** — black circle, cyan stroke, `box-shadow: 0 0 14px #B967FF`
 
 ## Typography
 
-- **Headers** — Sacramento script, aqua
-- **Subheadings** — Poppins / Century Gothic with soft white glow
+- **Headers** — Sacramento script, cyan
+- **Subheadings** — Poppins / Century Gothic with soft purple glow
 - **Body** — Poppins 300 / Century Gothic fallback, light gray
 
 Fonts are self-hosted in `fonts/` and declared via `@font-face` in the
