@@ -36,6 +36,7 @@ primary); white marks link hover (doubling as body text).
 
 - **Dual neon glow** — `box-shadow: 1.5px 1.5px 20px #8705E4, 2.5px 2.5px 20px #11B4F5`
 - **Heading glow** — `text-shadow: 1.5px 1.5px 5px #8705E4, 1.75px 1.75px 5px #11B4F5`
+- **Title glow** — the page title adds a centered `text-shadow: 0 0 6px #8705E4` halo
 - **Soft link glow** — `text-shadow: 0.5px 0.5px 2px #8705E4`
 - **Two-tone panels** — hairline borders, purple top/left, blue bottom/right
 - **Accordion button** — pill-shaped (`border-radius: 999px`), `border: 4px solid #FF06C1` with `box-shadow: 0 0 3px #8705E4`
