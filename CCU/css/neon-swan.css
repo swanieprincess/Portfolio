@@ -2,15 +2,15 @@
    NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette (CCU variant — aquamarine & blue over navy)
-     Navy Blue        #000080  (background)
-     Aquamarine       #7FFFD4  (primary — headers, accent borders, glow)
-     Royal Blue       #4169E1  (primary — pull-quotes, accent borders, glow)
+   Palette (CCU variant — aqua & dodger blue over dark navy)
+     Dark Navy        #001F3F  (background)
+     Aqua             #00FFFF  (primary — headers, accent borders, glow)
+     Dodger Blue      #1E90FF  (primary — pull-quotes, accent borders, glow)
      Light Gray       #D3D3D3  (secondary — body text)
-     Pale Yellow      #FFFFE0  (secondary — soft glow, highlights)
+     Pale Goldenrod   #EEE8AA  (secondary — highlights)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
      White            #FFFFFF  (list bullets, unvisited links)
-     Pale Yellow      #FFFFE0  (em-dashes, separators, visited links)
+     Pale Goldenrod   #EEE8AA  (em-dashes, separators, visited links)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -59,11 +59,11 @@
 
 :root {
   --ns-black: #000000;      /* page surround & icon circles */
-  --ns-bg: #000080;         /* navy blue canvas */
-  --ns-primary: #7FFFD4;    /* headers & bright accent — aquamarine */
-  --ns-deep: #4169E1;       /* pull-quotes & deep glow — royal blue */
+  --ns-bg: #001F3F;         /* dark navy canvas */
+  --ns-primary: #00FFFF;    /* headers & bright accent — aqua */
+  --ns-deep: #1E90FF;       /* pull-quotes & deep glow — dodger blue */
   --ns-gray: #D3D3D3;       /* secondary — body text */
-  --ns-pale: #FFFFE0;       /* secondary & highlight — pale yellow */
+  --ns-pale: #EEE8AA;       /* secondary & highlight — pale goldenrod */
   --ns-white: #FFFFFF;      /* highlight accent */
 
   /* Signature effects */
@@ -141,7 +141,7 @@ p {
   margin: 15px;
 }
 
-/* Pull-quotes — italic royal blue with a whisper of pale yellow */
+/* Pull-quotes — italic dodger blue with a whisper of pale goldenrod */
 blockquote,
 p.indent {
   margin: 15px 30px;
@@ -152,7 +152,7 @@ p.indent {
 }
 
 /* --------------------------------------------------------------------------
-   Links — white unvisited, pale yellow visited, soft blue glow
+   Links — white unvisited, pale goldenrod visited, soft blue glow
    -------------------------------------------------------------------------- */
 
 a:link {
@@ -193,7 +193,7 @@ ul > li::before {
   font-size: 0.9em;
 }
 
-/* Nested items take a pale yellow em-dash marker */
+/* Nested items take a pale goldenrod em-dash marker */
 ul ul > li::before {
   content: '\2014';
   color: var(--ns-pale);
@@ -201,7 +201,7 @@ ul ul > li::before {
   margin-left: -1.5em;
 }
 
-/* Inline separators & dashes render in pale yellow */
+/* Inline separators & dashes render in pale goldenrod */
 .dash,
 .sep {
   color: var(--ns-pale);
@@ -226,7 +226,7 @@ hr {
   box-shadow: var(--ns-dual-glow);
 }
 
-/* Two-tone panel — royal blue top/left hairlines, aquamarine bottom/right */
+/* Two-tone panel — dodger blue top/left hairlines, aqua bottom/right */
 .panel {
   padding: 10px 15px;
   margin: 10px 5px;
@@ -263,7 +263,7 @@ hr {
 
 .accordion.active,
 .accordion:hover {
-  background-color: #27408B;
+  background-color: #104E8B;
   color: white;
   text-shadow: 0.5px 0.5px var(--ns-deep);
   box-shadow: var(--ns-dual-glow);
@@ -290,7 +290,7 @@ img,
   max-width: 100%;
 }
 
-/* Icon glow — black circle, aquamarine stroke, royal blue halo */
+/* Icon glow — black circle, aqua stroke, dodger blue halo */
 .icon {
   display: inline-block;
   background-color: var(--ns-black);
