@@ -2,7 +2,7 @@
 
 A reusable design theme for the Swan Moon portfolio's CCU project — neon glows,
 script headers, and tiny highlight accents. The CCU Edition pairs **aqua &
-dodger blue** primaries over a **dark navy** canvas, distinct from the
+dodger blue** primaries over a **dark gray** canvas, distinct from the
 portfolio's aquamarine/purple-on-black look while keeping the same Neon Swan
 style.
 
@@ -19,7 +19,7 @@ style.
 
 | Role | Color | Hex | Token |
 | --- | --- | --- | --- |
-| Background | Dark Navy | `#001F3F` | `--ns-bg` |
+| Background | Dark Gray | `#333333` | `--ns-bg` |
 | Primary — headers / bright accent | Aqua | `#00FFFF` | `--ns-primary` |
 | Primary — pull-quotes / deep glow | Dodger Blue | `#1E90FF` | `--ns-deep` |
 | Secondary — body text | Light Gray | `#D3D3D3` | `--ns-gray` |

@@ -2,8 +2,8 @@
    NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette (CCU variant — aqua & dodger blue over dark navy)
-     Dark Navy        #001F3F  (background)
+   Palette (CCU variant — aqua & dodger blue over dark gray)
+     Dark Gray        #333333  (background)
      Aqua             #00FFFF  (primary — headers, accent borders, glow)
      Dodger Blue      #1E90FF  (primary — pull-quotes, accent borders, glow)
      Light Gray       #D3D3D3  (secondary — body text)
@@ -60,7 +60,7 @@
 
 :root {
   --ns-black: #000000;      /* page surround & icon circles */
-  --ns-bg: #001F3F;         /* dark navy canvas */
+  --ns-bg: #333333;         /* dark gray canvas */
   --ns-primary: #00FFFF;    /* headers & bright accent — aqua */
   --ns-deep: #1E90FF;       /* pull-quotes & deep glow — dodger blue */
   --ns-gray: #D3D3D3;       /* secondary — body text */
