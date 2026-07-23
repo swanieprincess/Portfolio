@@ -2,15 +2,15 @@
    NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette (CCU variant — gold & royal violet over pure black)
-     Pure Black       #000000  (background)
-     Gold             #FFD700  (headers, accent borders, glow)
-     Royal Violet     #6A0DAD  (pull-quotes, accent borders, glow)
-     Goldenrod        #DAA520  (soft link/subheading glow)
-     Light Gray       #D3D3D3  (body text)
-   Micro-accents — tiny elements ONLY (bullets, dashes, separators):
-     Magenta          #FF00FF  (list bullets, visited links)
-     Dodger Blue      #1E90FF  (unvisited links, em-dashes, separators)
+   Palette (CCU variant — aquamarine & blue over navy)
+     Navy Blue        #000080  (background)
+     Aquamarine       #7FFFD4  (primary — headers, accent borders, glow)
+     Royal Blue       #4169E1  (primary — pull-quotes, accent borders, glow)
+     Light Gray       #D3D3D3  (secondary — body text)
+     Pale Yellow      #FFFFE0  (secondary — soft glow, highlights)
+   Highlight accents — tiny elements ONLY (bullets, dashes, links):
+     White            #FFFFFF  (list bullets, unvisited links)
+     Pale Yellow      #FFFFE0  (em-dashes, separators, visited links)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -58,18 +58,18 @@
    -------------------------------------------------------------------------- */
 
 :root {
-  --ns-black: #000000;
-  --ns-primary: #FFD700;   /* headers & bright accent — gold */
-  --ns-deep: #6A0DAD;      /* pull-quotes & deep glow — royal violet */
-  --ns-soft: #DAA520;      /* soft glow — goldenrod */
-  --ns-gray: #D3D3D3;
-  --ns-magenta: #FF00FF;   /* micro-accent only */
-  --ns-blue: #1E90FF;      /* micro-accent only */
+  --ns-black: #000000;      /* page surround & icon circles */
+  --ns-bg: #000080;         /* navy blue canvas */
+  --ns-primary: #7FFFD4;    /* headers & bright accent — aquamarine */
+  --ns-deep: #4169E1;       /* pull-quotes & deep glow — royal blue */
+  --ns-gray: #D3D3D3;       /* secondary — body text */
+  --ns-pale: #FFFFE0;       /* secondary & highlight — pale yellow */
+  --ns-white: #FFFFFF;      /* highlight accent */
 
   /* Signature effects */
   --ns-dual-glow: 3px 3px 20px var(--ns-deep), 5px 5px 20px var(--ns-primary);
   --ns-heading-glow: 3px 3px 5px var(--ns-deep), 3.5px 3.5px 5px var(--ns-primary);
-  --ns-soft-glow: 2px 2px 2px var(--ns-soft);
+  --ns-soft-glow: 2px 2px 2px var(--ns-deep);
   --ns-icon-glow: 0 0 14px var(--ns-deep);
 
   --ns-font-script: 'Sacramento', cursive;
@@ -86,8 +86,12 @@
   box-sizing: border-box;
 }
 
-body {
+html {
   background-color: var(--ns-black);
+}
+
+body {
+  background-color: var(--ns-bg);
   color: var(--ns-gray);
   font-family: var(--ns-font-body);
   font-weight: 300;
@@ -137,40 +141,40 @@ p {
   margin: 15px;
 }
 
-/* Pull-quotes — italic violet with a whisper of gold */
+/* Pull-quotes — italic royal blue with a whisper of pale yellow */
 blockquote,
 p.indent {
   margin: 15px 30px;
   color: var(--ns-deep);
   font-style: italic;
-  text-shadow: 1px 1px var(--ns-primary);
+  text-shadow: 1px 1px var(--ns-pale);
   white-space: pre-wrap;
 }
 
 /* --------------------------------------------------------------------------
-   Links — blue unvisited, pink visited, soft goldenrod glow
+   Links — white unvisited, pale yellow visited, soft blue glow
    -------------------------------------------------------------------------- */
 
 a:link {
-  color: var(--ns-blue);
+  color: var(--ns-white);
   text-decoration: none;
   text-shadow: var(--ns-soft-glow);
 }
 
 a:visited {
-  color: var(--ns-magenta);
+  color: var(--ns-pale);
   text-shadow: var(--ns-soft-glow);
 }
 
 a:hover,
 a:focus {
-  color: var(--ns-soft);
+  color: var(--ns-primary);
   text-decoration: underline;
   text-shadow: var(--ns-soft-glow);
 }
 
 /* --------------------------------------------------------------------------
-   Micro-accents — fleck scale only: bullets, dashes, separators
+   Highlight accents — fleck scale only: bullets, dashes, separators
    -------------------------------------------------------------------------- */
 
 ul {
@@ -179,28 +183,28 @@ ul {
   margin: 15px;
 }
 
-/* Tiny magenta dot bullet */
+/* Tiny white dot bullet */
 ul > li::before {
   content: '\2022';
-  color: var(--ns-magenta);
+  color: var(--ns-white);
   display: inline-block;
   width: 1em;
   margin-left: -1em;
   font-size: 0.9em;
 }
 
-/* Nested items take a blue em-dash marker */
+/* Nested items take a pale yellow em-dash marker */
 ul ul > li::before {
   content: '\2014';
-  color: var(--ns-blue);
+  color: var(--ns-pale);
   width: 1.5em;
   margin-left: -1.5em;
 }
 
-/* Inline separators & dashes render in dodger blue */
+/* Inline separators & dashes render in pale yellow */
 .dash,
 .sep {
-  color: var(--ns-blue);
+  color: var(--ns-pale);
 }
 
 /* --------------------------------------------------------------------------
@@ -216,13 +220,13 @@ hr {
 
 .glow-box,
 .card {
-  background-color: var(--ns-black);
+  background-color: var(--ns-bg);
   padding: 15px;
   margin: 15px;
   box-shadow: var(--ns-dual-glow);
 }
 
-/* Two-tone panel — violet top/left hairlines, gold bottom/right */
+/* Two-tone panel — royal blue top/left hairlines, aquamarine bottom/right */
 .panel {
   padding: 10px 15px;
   margin: 10px 5px;
@@ -241,7 +245,7 @@ hr {
    -------------------------------------------------------------------------- */
 
 .accordion {
-  background-color: var(--ns-black);
+  background-color: var(--ns-bg);
   font-family: var(--ns-font-body);
   font-weight: 300;
   font-size: 1em;
@@ -259,7 +263,7 @@ hr {
 
 .accordion.active,
 .accordion:hover {
-  background-color: #4A3B66;
+  background-color: #27408B;
   color: white;
   text-shadow: 0.5px 0.5px var(--ns-deep);
   box-shadow: var(--ns-dual-glow);
@@ -286,7 +290,7 @@ img,
   max-width: 100%;
 }
 
-/* Icon glow — black circle, gold stroke, violet halo */
+/* Icon glow — black circle, aquamarine stroke, royal blue halo */
 .icon {
   display: inline-block;
   background-color: var(--ns-black);

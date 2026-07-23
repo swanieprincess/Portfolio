@@ -1,9 +1,9 @@
 # CCU · Neon Swan Design Theme (CCU Edition)
 
-A reusable design theme for the Swan Moon portfolio's CCU project — neon glows
-over pure black, script headers, and tiny jewel-tone accents. The CCU Edition
-takes a **gold & royal violet** palette, distinct from the portfolio's
-aquamarine/purple look while keeping the same Neon Swan style.
+A reusable design theme for the Swan Moon portfolio's CCU project — neon glows,
+script headers, and tiny highlight accents. The CCU Edition pairs **aquamarine
+& royal blue** primaries over a **navy** canvas, distinct from the portfolio's
+aquamarine/purple-on-black look while keeping the same Neon Swan style.
 
 ## Files
 
@@ -18,30 +18,32 @@ aquamarine/purple look while keeping the same Neon Swan style.
 
 | Role | Color | Hex | Token |
 | --- | --- | --- | --- |
-| Background | Pure Black | `#000000` | `--ns-black` |
-| Headers / bright accent | Gold | `#FFD700` | `--ns-primary` |
-| Pull-quotes / deep glow | Royal Violet | `#6A0DAD` | `--ns-deep` |
-| Soft glow | Goldenrod | `#DAA520` | `--ns-soft` |
-| Body text | Light Gray | `#D3D3D3` | `--ns-gray` |
-| Micro-accent (bullets, visited links) | Magenta | `#FF00FF` | `--ns-magenta` |
-| Micro-accent (dashes, unvisited links) | Dodger Blue | `#1E90FF` | `--ns-blue` |
+| Background | Navy Blue | `#000080` | `--ns-bg` |
+| Primary — headers / bright accent | Aquamarine | `#7FFFD4` | `--ns-primary` |
+| Primary — pull-quotes / deep glow | Royal Blue | `#4169E1` | `--ns-deep` |
+| Secondary — body text | Light Gray | `#D3D3D3` | `--ns-gray` |
+| Secondary / highlight | Pale Yellow | `#FFFFE0` | `--ns-pale` |
+| Highlight accent | White | `#FFFFFF` | `--ns-white` |
+| Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
 
-Magenta and dodger blue are **micro-accents**: bullets, dashes, and other
-tiny elements only — never fills, text blocks, or buttons.
+White and pale yellow are **highlight accents**: bullets, dashes, links, and
+other tiny elements only — never fills, text blocks, or buttons. White marks
+bullets and unvisited links; pale yellow marks dashes, separators, and
+visited links.
 
 ## Signature effects
 
-- **Dual neon glow** — `box-shadow: 3px 3px 20px #6A0DAD, 5px 5px 20px #FFD700`
-- **Heading glow** — `text-shadow: 3px 3px 5px #6A0DAD, 3.5px 3.5px 5px #FFD700`
-- **Soft link glow** — `text-shadow: 2px 2px 2px #DAA520`
-- **Two-tone panels** — hairline borders, violet top/left, gold bottom/right
+- **Dual neon glow** — `box-shadow: 3px 3px 20px #4169E1, 5px 5px 20px #7FFFD4`
+- **Heading glow** — `text-shadow: 3px 3px 5px #4169E1, 3.5px 3.5px 5px #7FFFD4`
+- **Soft link glow** — `text-shadow: 2px 2px 2px #4169E1`
+- **Two-tone panels** — hairline borders, royal blue top/left, aquamarine bottom/right
 - **Circular imagery** — `border-radius: 50%` on avatars and photos
-- **Icon glow** — black circle, gold stroke, `box-shadow: 0 0 14px #6A0DAD`
+- **Icon glow** — black circle, aquamarine stroke, `box-shadow: 0 0 14px #4169E1`
 
 ## Typography
 
-- **Headers** — Sacramento script, gold
-- **Subheadings** — Poppins / Century Gothic with soft goldenrod glow
+- **Headers** — Sacramento script, aquamarine
+- **Subheadings** — Poppins / Century Gothic with soft royal blue glow
 - **Body** — Poppins 300 / Century Gothic fallback, light gray
 
 Fonts are self-hosted in `fonts/` and declared via `@font-face` in the
@@ -54,6 +56,6 @@ stylesheet, so pages work offline and without third-party requests.
 ```
 
 Re-theming is a one-block edit: override the role tokens in `:root`
-(`--ns-primary`, `--ns-deep`, `--ns-soft`, …). For example, the original
-portfolio palette is `--ns-primary: #7FFFD4; --ns-deep: #663399;
---ns-soft: #20B2AA;`.
+(`--ns-primary`, `--ns-deep`, `--ns-bg`, `--ns-pale`, …). For example, the
+original portfolio palette is `--ns-bg: #000000; --ns-primary: #7FFFD4;
+--ns-deep: #663399;`.
