@@ -2,10 +2,10 @@
    NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette (CCU variant — aqua & dodger blue over dark gray)
+   Palette (CCU variant — aqua & lime over dark gray)
      Dark Gray        #333333  (background)
      Aqua             #00FFFF  (primary — headers, accent borders, glow)
-     Dodger Blue      #1E90FF  (primary — pull-quotes, accent borders, glow)
+     Lime             #00FF00  (primary — pull-quotes, accent borders, glow)
      Light Gray       #D3D3D3  (secondary — body text)
      Pale Goldenrod   #EEE8AA  (secondary — highlights)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
@@ -63,7 +63,8 @@
   --ns-black: #000000;      /* page surround & icon circles */
   --ns-bg: #333333;         /* dark gray canvas */
   --ns-primary: #00FFFF;    /* headers & bright accent — aqua */
-  --ns-deep: #1E90FF;       /* pull-quotes & deep glow — dodger blue */
+  --ns-deep: #00FF00;       /* pull-quotes & deep glow — lime */
+  --ns-blue: #1E90FF;       /* highlight accent — dodger blue */
   --ns-gray: #D3D3D3;       /* secondary — body text */
   --ns-pale: #EEE8AA;       /* secondary & highlight — pale goldenrod */
   --ns-magenta: #FF00FF;    /* highlight accent — magenta */
@@ -144,7 +145,7 @@ p {
   margin: 15px;
 }
 
-/* Pull-quotes — italic dodger blue with a whisper of pale goldenrod */
+/* Pull-quotes — italic lime with a whisper of pale goldenrod */
 blockquote,
 p.indent {
   margin: 15px 30px;
@@ -155,11 +156,11 @@ p.indent {
 }
 
 /* --------------------------------------------------------------------------
-   Links — dodger blue unvisited, magenta visited, soft blue glow
+   Links — dodger blue unvisited, magenta visited, soft lime glow
    -------------------------------------------------------------------------- */
 
 a:link {
-  color: var(--ns-deep);
+  color: var(--ns-blue);
   text-decoration: none;
   text-shadow: var(--ns-soft-glow);
 }
@@ -189,7 +190,7 @@ ul {
 /* Tiny dodger blue dot bullet */
 ul > li::before {
   content: '\2022';
-  color: var(--ns-deep);
+  color: var(--ns-blue);
   display: inline-block;
   width: 1em;
   margin-left: -1em;
@@ -232,7 +233,7 @@ hr {
   box-shadow: var(--ns-dual-glow);
 }
 
-/* Two-tone panel — dodger blue top/left hairlines, aqua bottom/right */
+/* Two-tone panel — lime top/left hairlines, aqua bottom/right */
 .panel {
   padding: 10px 15px;
   margin: 10px 5px;
@@ -269,7 +270,7 @@ hr {
 
 .accordion.active,
 .accordion:hover {
-  background-color: #104E8B;
+  background-color: #1B5E20;
   color: white;
   text-shadow: 0.5px 0.5px var(--ns-deep);
   box-shadow: var(--ns-dual-glow);
@@ -296,7 +297,7 @@ img,
   max-width: 100%;
 }
 
-/* Icon glow — black circle, aqua stroke, dodger blue halo */
+/* Icon glow — black circle, aqua stroke, lime halo */
 .icon {
   display: inline-block;
   background-color: var(--ns-black);

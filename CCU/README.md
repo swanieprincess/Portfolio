@@ -2,7 +2,7 @@
 
 A reusable design theme for the Swan Moon portfolio's CCU project — neon glows,
 script headers, and tiny highlight accents. The CCU Edition pairs **aqua &
-dodger blue** primaries over a **dark gray** canvas, distinct from the
+lime** primaries over a **dark gray** canvas, distinct from the
 portfolio's aquamarine/purple-on-black look while keeping the same Neon Swan
 style.
 
@@ -21,9 +21,10 @@ style.
 | --- | --- | --- | --- |
 | Background | Dark Gray | `#333333` | `--ns-bg` |
 | Primary — headers / bright accent | Aqua | `#00FFFF` | `--ns-primary` |
-| Primary — pull-quotes / deep glow | Dodger Blue | `#1E90FF` | `--ns-deep` |
+| Primary — pull-quotes / deep glow | Lime | `#00FF00` | `--ns-deep` |
 | Secondary — body text | Light Gray | `#D3D3D3` | `--ns-gray` |
 | Secondary / highlight | Pale Goldenrod | `#EEE8AA` | `--ns-pale` |
+| Highlight accent | Dodger Blue | `#1E90FF` | `--ns-blue` |
 | Highlight accent | Magenta | `#FF00FF` | `--ns-magenta` |
 | Highlight accent | Lime | `#00FF00` | `--ns-lime` |
 | Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
@@ -31,23 +32,23 @@ style.
 Dodger blue, pale goldenrod, magenta, and lime serve as **highlight
 accents**: bullets, dashes, links, and other tiny elements only — never
 fills, text blocks, or buttons. Dodger blue marks bullets and unvisited
-links (doubling as a primary); pale goldenrod marks em-dashes; magenta
-marks visited links; lime marks separators, nested list markers, and link
-hover.
+links; pale goldenrod marks em-dashes; magenta marks visited links; lime
+marks separators, nested list markers, and link hover (doubling as a
+primary).
 
 ## Signature effects
 
-- **Dual neon glow** — `box-shadow: 3px 3px 20px #1E90FF, 5px 5px 20px #00FFFF`
-- **Heading glow** — `text-shadow: 3px 3px 5px #1E90FF, 3.5px 3.5px 5px #00FFFF`
-- **Soft link glow** — `text-shadow: 2px 2px 2px #1E90FF`
-- **Two-tone panels** — hairline borders, dodger blue top/left, aqua bottom/right
+- **Dual neon glow** — `box-shadow: 3px 3px 20px #00FF00, 5px 5px 20px #00FFFF`
+- **Heading glow** — `text-shadow: 3px 3px 5px #00FF00, 3.5px 3.5px 5px #00FFFF`
+- **Soft link glow** — `text-shadow: 2px 2px 2px #00FF00`
+- **Two-tone panels** — hairline borders, lime top/left, aqua bottom/right
 - **Circular imagery** — `border-radius: 50%` on avatars and photos
-- **Icon glow** — black circle, aqua stroke, `box-shadow: 0 0 14px #1E90FF`
+- **Icon glow** — black circle, aqua stroke, `box-shadow: 0 0 14px #00FF00`
 
 ## Typography
 
 - **Headers** — Sacramento script, aqua
-- **Subheadings** — Poppins / Century Gothic with soft dodger blue glow
+- **Subheadings** — Poppins / Century Gothic with soft lime glow
 - **Body** — Poppins 300 / Century Gothic fallback, light gray
 
 Fonts are self-hosted in `fonts/` and declared via `@font-face` in the
