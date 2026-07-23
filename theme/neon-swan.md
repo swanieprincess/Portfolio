@@ -31,6 +31,7 @@ Micro-accents must never be used for headings, body text, buttons, backgrounds, 
 - **Circular imagery**: images and avatars use `border-radius: 50%`
 - **Icons**: circular, black fill, aquamarine hairline stroke, purple glow (`box-shadow: 0 0 14px #663399`)
 - **Hover/active surfaces**: stay black — state changes read through the neon glows, never a gray surface fill
+- **Buttons**: pill-shaped (fully rounded corners) with a `1.5px` solid Rebecca Purple outline — the same stroke weight as the icon circles; never square-cornered boxes
 - **Italic purple callouts**: pull-quotes in italic Rebecca Purple with a 1px aquamarine shadow
 - **Links**: unvisited Dodger Blue `#1E90FF`, visited Magenta `#FF00FF`, hover Light Sea Green `#20B2AA` — no glow/text-shadow on links, it reduces legibility
 

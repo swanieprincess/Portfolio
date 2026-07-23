@@ -26,8 +26,9 @@ Quick reference:
   `3px 3px 20px #663399, 5px 5px 20px #7FFFD4`, two-tone hairline borders
   (purple top/left, aquamarine bottom/right), circular imagery
   (`border-radius: 50%`), circular icons with aquamarine stroke and
-  rebeccapurple glow (`box-shadow: 0 0 14px #663399`), italic
-  rebeccapurple pull-quotes
+  rebeccapurple glow (`box-shadow: 0 0 14px #663399`), pill-shaped
+  buttons with a 1.5px rebeccapurple outline (matching the icon stroke
+  weight — never square boxes), italic rebeccapurple pull-quotes
 
 ## Repo layout
 
