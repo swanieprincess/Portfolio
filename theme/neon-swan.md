@@ -27,11 +27,11 @@ Micro-accents must never be used for headings, body text, buttons, backgrounds, 
 ## Signature Effects
 
 - **Dual neon glow**: paired box-shadows `3px 3px 20px #663399, 5px 5px 20px #7FFFD4` on containers and dividers
-- **Text glow**: `3px 3px 5px #663399, 3.5px 3.5px 5px #7FFFD4` on script headings; `2px 2px 2px #20B2AA` on links and subheadings
+- **Text glow**: `3px 3px 5px #663399, 3.5px 3.5px 5px #7FFFD4` on script headings; `2px 2px 2px #20B2AA` on subheadings
 - **Two-tone borders**: hairline (`.1px`) borders — purple on top/left, aquamarine on bottom/right
 - **Circular imagery**: images and avatars use `border-radius: 50%`
 - **Italic purple callouts**: pull-quotes in italic Rebecca Purple with a 1px aquamarine shadow
-- **Links**: unvisited Dodger Blue `#1E90FF`, visited Magenta `#FF00FF`, hover Light Sea Green `#20B2AA`, all with the soft sea-green glow
+- **Links**: unvisited Dodger Blue `#1E90FF`, visited Magenta `#FF00FF`, hover Light Sea Green `#20B2AA` — no glow/text-shadow on links, it reduces legibility
 
 ## Best Used For
 
