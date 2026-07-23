@@ -2,17 +2,17 @@
    NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette (CCU variant — aqua & lime over dark gray)
+   Palette (CCU variant — aqua & white over dark gray)
      Dark Gray        #333333  (background)
      Aqua             #00FFFF  (primary — headers, accent borders, glow)
-     Lime             #00FF00  (primary — pull-quotes, accent borders, glow)
+     White             #FFFFFF  (primary — pull-quotes, accent borders, glow)
      Light Gray       #D3D3D3  (secondary — body text)
      Pale Goldenrod   #EEE8AA  (secondary — highlights)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
      Dodger Blue      #1E90FF  (list bullets, unvisited links)
      Pale Goldenrod   #EEE8AA  (em-dashes)
      Magenta          #FF00FF  (visited links)
-     Lime             #00FF00  (separators, nested markers, link hover)
+     White             #FFFFFF  (separators, nested markers, link hover)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -63,12 +63,12 @@
   --ns-black: #000000;      /* page surround & icon circles */
   --ns-bg: #333333;         /* dark gray canvas */
   --ns-primary: #00FFFF;    /* headers & bright accent — aqua */
-  --ns-deep: #00FF00;       /* pull-quotes & deep glow — lime */
+  --ns-deep: #FFFFFF;       /* pull-quotes & deep glow — white */
   --ns-blue: #1E90FF;       /* highlight accent — dodger blue */
   --ns-gray: #D3D3D3;       /* secondary — body text */
   --ns-pale: #EEE8AA;       /* secondary & highlight — pale goldenrod */
   --ns-magenta: #FF00FF;    /* highlight accent — magenta */
-  --ns-lime: #00FF00;       /* highlight accent — lime */
+  --ns-white: #FFFFFF;       /* highlight accent — white */
 
   /* Signature effects */
   --ns-dual-glow: 3px 3px 20px var(--ns-deep), 5px 5px 20px var(--ns-primary);
@@ -145,7 +145,7 @@ p {
   margin: 15px;
 }
 
-/* Pull-quotes — italic lime with a whisper of pale goldenrod */
+/* Pull-quotes — italic white with a whisper of pale goldenrod */
 blockquote,
 p.indent {
   margin: 15px 30px;
@@ -156,7 +156,7 @@ p.indent {
 }
 
 /* --------------------------------------------------------------------------
-   Links — dodger blue unvisited, magenta visited, soft lime glow
+   Links — dodger blue unvisited, magenta visited, soft white glow
    -------------------------------------------------------------------------- */
 
 a:link {
@@ -172,7 +172,7 @@ a:visited {
 
 a:hover,
 a:focus {
-  color: var(--ns-lime);
+  color: var(--ns-white);
   text-decoration: underline;
   text-shadow: var(--ns-soft-glow);
 }
@@ -197,21 +197,21 @@ ul > li::before {
   font-size: 0.9em;
 }
 
-/* Nested items take a lime em-dash marker */
+/* Nested items take a white em-dash marker */
 ul ul > li::before {
   content: '\2014';
-  color: var(--ns-lime);
+  color: var(--ns-white);
   width: 1.5em;
   margin-left: -1.5em;
 }
 
-/* Inline em-dashes render in pale goldenrod, separators in lime */
+/* Inline em-dashes render in pale goldenrod, separators in white */
 .dash {
   color: var(--ns-pale);
 }
 
 .sep {
-  color: var(--ns-lime);
+  color: var(--ns-white);
 }
 
 /* --------------------------------------------------------------------------
@@ -233,7 +233,7 @@ hr {
   box-shadow: var(--ns-dual-glow);
 }
 
-/* Two-tone panel — lime top/left hairlines, aqua bottom/right */
+/* Two-tone panel — white top/left hairlines, aqua bottom/right */
 .panel {
   padding: 10px 15px;
   margin: 10px 5px;
@@ -270,7 +270,7 @@ hr {
 
 .accordion.active,
 .accordion:hover {
-  background-color: #1B5E20;
+  background-color: #4A4A4A;
   color: white;
   text-shadow: 0.5px 0.5px var(--ns-deep);
   box-shadow: var(--ns-dual-glow);
@@ -297,7 +297,7 @@ img,
   max-width: 100%;
 }
 
-/* Icon glow — black circle, aqua stroke, lime halo */
+/* Icon glow — black circle, aqua stroke, white halo */
 .icon {
   display: inline-block;
   background-color: var(--ns-black);
