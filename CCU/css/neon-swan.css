@@ -1,32 +1,76 @@
 /* ==========================================================================
-   NEON SWAN — Design Theme
+   NEON SWAN · CCU Edition — Design Theme
    Swan Moon Portfolio · CCU Project
    --------------------------------------------------------------------------
-   Palette
+   Palette (CCU variant — gold & royal violet over pure black)
      Pure Black       #000000  (background)
-     Aquamarine       #7FFFD4  (headers, accent borders, glow)
-     Rebecca Purple   #663399  (pull-quotes, accent borders, glow)
-     Light Sea Green  #20B2AA  (soft link/subheading glow)
+     Gold             #FFD700  (headers, accent borders, glow)
+     Royal Violet     #6A0DAD  (pull-quotes, accent borders, glow)
+     Goldenrod        #DAA520  (soft link/subheading glow)
      Light Gray       #D3D3D3  (body text)
    Micro-accents — tiny elements ONLY (bullets, dashes, separators):
      Magenta          #FF00FF  (list bullets, visited links)
      Dodger Blue      #1E90FF  (unvisited links, em-dashes, separators)
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   Fonts — self-hosted (see ../fonts/), no CDN dependency
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Sacramento';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/sacramento-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Sacramento';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/sacramento-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/poppins-300-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/poppins-300-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* --------------------------------------------------------------------------
+   Theme tokens — role-based, so swapping a palette is a one-block edit
+   -------------------------------------------------------------------------- */
+
 :root {
   --ns-black: #000000;
-  --ns-aquamarine: #7FFFD4;
-  --ns-purple: #663399;
-  --ns-seagreen: #20B2AA;
+  --ns-primary: #FFD700;   /* headers & bright accent — gold */
+  --ns-deep: #6A0DAD;      /* pull-quotes & deep glow — royal violet */
+  --ns-soft: #DAA520;      /* soft glow — goldenrod */
   --ns-gray: #D3D3D3;
   --ns-magenta: #FF00FF;   /* micro-accent only */
   --ns-blue: #1E90FF;      /* micro-accent only */
 
   /* Signature effects */
-  --ns-dual-glow: 3px 3px 20px var(--ns-purple), 5px 5px 20px var(--ns-aquamarine);
-  --ns-heading-glow: 3px 3px 5px var(--ns-purple), 3.5px 3.5px 5px var(--ns-aquamarine);
-  --ns-soft-glow: 2px 2px 2px var(--ns-seagreen);
-  --ns-icon-glow: 0 0 14px var(--ns-purple);
+  --ns-dual-glow: 3px 3px 20px var(--ns-deep), 5px 5px 20px var(--ns-primary);
+  --ns-heading-glow: 3px 3px 5px var(--ns-deep), 3.5px 3.5px 5px var(--ns-primary);
+  --ns-soft-glow: 2px 2px 2px var(--ns-soft);
+  --ns-icon-glow: 0 0 14px var(--ns-deep);
 
   --ns-font-script: 'Sacramento', cursive;
   --ns-font-body: 'Poppins', 'Century Gothic', 'URW Gothic L', sans-serif;
@@ -63,7 +107,7 @@ h1,
 h2 {
   font-family: var(--ns-font-script);
   font-weight: 400;
-  color: var(--ns-aquamarine);
+  color: var(--ns-primary);
   text-shadow: var(--ns-heading-glow);
   margin: 0.5em 0;
 }
@@ -84,7 +128,7 @@ h6 {
   font-family: var(--ns-font-body);
   font-weight: 300;
   font-size: 1.25em;
-  color: var(--ns-aquamarine);
+  color: var(--ns-primary);
   text-shadow: var(--ns-soft-glow);
   margin: 0.75em 0;
 }
@@ -93,18 +137,18 @@ p {
   margin: 15px;
 }
 
-/* Pull-quotes — italic purple with a whisper of aquamarine */
+/* Pull-quotes — italic violet with a whisper of gold */
 blockquote,
 p.indent {
   margin: 15px 30px;
-  color: var(--ns-purple);
+  color: var(--ns-deep);
   font-style: italic;
-  text-shadow: 1px 1px var(--ns-aquamarine);
+  text-shadow: 1px 1px var(--ns-primary);
   white-space: pre-wrap;
 }
 
 /* --------------------------------------------------------------------------
-   Links — blue unvisited, pink visited, soft sea-green glow
+   Links — blue unvisited, pink visited, soft goldenrod glow
    -------------------------------------------------------------------------- */
 
 a:link {
@@ -120,7 +164,7 @@ a:visited {
 
 a:hover,
 a:focus {
-  color: var(--ns-seagreen);
+  color: var(--ns-soft);
   text-decoration: underline;
   text-shadow: var(--ns-soft-glow);
 }
@@ -164,7 +208,7 @@ ul ul > li::before {
    -------------------------------------------------------------------------- */
 
 hr {
-  border: solid var(--ns-purple);
+  border: solid var(--ns-deep);
   border-width: 0.1px;
   box-shadow: var(--ns-dual-glow);
   margin: 30px 15px;
@@ -178,16 +222,16 @@ hr {
   box-shadow: var(--ns-dual-glow);
 }
 
-/* Two-tone panel — purple top/left hairlines, aquamarine bottom/right */
+/* Two-tone panel — violet top/left hairlines, gold bottom/right */
 .panel {
   padding: 10px 15px;
   margin: 10px 5px;
   border: solid;
   border-width: 0.1px;
-  border-top-color: var(--ns-purple);
-  border-left-color: var(--ns-purple);
-  border-right-color: var(--ns-aquamarine);
-  border-bottom-color: var(--ns-aquamarine);
+  border-top-color: var(--ns-deep);
+  border-left-color: var(--ns-deep);
+  border-right-color: var(--ns-primary);
+  border-bottom-color: var(--ns-primary);
   background-color: transparent;
   overflow: hidden;
 }
@@ -202,7 +246,7 @@ hr {
   font-weight: 300;
   font-size: 1em;
   color: white;
-  text-shadow: 0.5px 0.5px var(--ns-aquamarine);
+  text-shadow: 0.5px 0.5px var(--ns-primary);
   cursor: pointer;
   padding: 15px;
   margin: 15px;
@@ -215,9 +259,9 @@ hr {
 
 .accordion.active,
 .accordion:hover {
-  background-color: #494762;
+  background-color: #4A3B66;
   color: white;
-  text-shadow: 0.5px 0.5px var(--ns-purple);
+  text-shadow: 0.5px 0.5px var(--ns-deep);
   box-shadow: var(--ns-dual-glow);
 }
 
@@ -242,11 +286,11 @@ img,
   max-width: 100%;
 }
 
-/* Icon glow — black circle, aquamarine stroke, purple halo */
+/* Icon glow — black circle, gold stroke, violet halo */
 .icon {
   display: inline-block;
   background-color: var(--ns-black);
-  border: 1px solid var(--ns-aquamarine);
+  border: 1px solid var(--ns-primary);
   border-radius: 50%;
   padding: 8px;
   box-shadow: var(--ns-icon-glow);
@@ -254,7 +298,7 @@ img,
 }
 
 .icon:hover {
-  box-shadow: var(--ns-icon-glow), 0 0 14px var(--ns-aquamarine);
+  box-shadow: var(--ns-icon-glow), 0 0 14px var(--ns-primary);
 }
 
 /* --------------------------------------------------------------------------
@@ -271,6 +315,6 @@ img,
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  border: 1px solid var(--ns-aquamarine);
+  border: 1px solid var(--ns-primary);
   box-shadow: var(--ns-icon-glow);
 }
