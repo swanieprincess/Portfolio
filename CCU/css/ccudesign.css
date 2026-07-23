@@ -253,7 +253,8 @@ hr {
   text-shadow: 0.5px 0.5px var(--ns-primary);
   cursor: pointer;
   margin: 15px;
-  width: calc(100% - 30px);
+  display: inline-block;
+  width: auto;
   border: 4px solid var(--ns-pink);
   border-radius: 999px;
   box-shadow: 0 0 3px var(--ns-deep);
