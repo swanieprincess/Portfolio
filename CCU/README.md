@@ -24,15 +24,16 @@ style.
 | Primary — pull-quotes / deep glow | Dodger Blue | `#1E90FF` | `--ns-deep` |
 | Secondary — body text | Light Gray | `#D3D3D3` | `--ns-gray` |
 | Secondary / highlight | Pale Goldenrod | `#EEE8AA` | `--ns-pale` |
-| Highlight accent | White | `#FFFFFF` | `--ns-white` |
+| Highlight accent | Magenta | `#FF00FF` | `--ns-magenta` |
 | Highlight accent | Lime | `#00FF00` | `--ns-lime` |
 | Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
 
-White, pale goldenrod, and lime are **highlight accents**: bullets,
-dashes, links, and other tiny elements only — never fills, text blocks, or
-buttons. White marks bullets and unvisited links; pale goldenrod marks
-em-dashes and visited links; lime marks separators, nested list
-markers, and link hover.
+Dodger blue, pale goldenrod, magenta, and lime serve as **highlight
+accents**: bullets, dashes, links, and other tiny elements only — never
+fills, text blocks, or buttons. Dodger blue marks bullets and unvisited
+links (doubling as a primary); pale goldenrod marks em-dashes; magenta
+marks visited links; lime marks separators, nested list markers, and link
+hover.
 
 ## Signature effects
 

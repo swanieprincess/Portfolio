@@ -9,8 +9,9 @@
      Light Gray       #D3D3D3  (secondary — body text)
      Pale Goldenrod   #EEE8AA  (secondary — highlights)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
-     White            #FFFFFF  (list bullets, unvisited links)
-     Pale Goldenrod   #EEE8AA  (em-dashes, visited links)
+     Dodger Blue      #1E90FF  (list bullets, unvisited links)
+     Pale Goldenrod   #EEE8AA  (em-dashes)
+     Magenta          #FF00FF  (visited links)
      Lime             #00FF00  (separators, nested markers, link hover)
    ========================================================================== */
 
@@ -65,8 +66,8 @@
   --ns-deep: #1E90FF;       /* pull-quotes & deep glow — dodger blue */
   --ns-gray: #D3D3D3;       /* secondary — body text */
   --ns-pale: #EEE8AA;       /* secondary & highlight — pale goldenrod */
-  --ns-white: #FFFFFF;      /* highlight accent */
-  --ns-lime: #00FF00;     /* highlight accent — lime */
+  --ns-magenta: #FF00FF;    /* highlight accent — magenta */
+  --ns-lime: #00FF00;       /* highlight accent — lime */
 
   /* Signature effects */
   --ns-dual-glow: 3px 3px 20px var(--ns-deep), 5px 5px 20px var(--ns-primary);
@@ -154,17 +155,17 @@ p.indent {
 }
 
 /* --------------------------------------------------------------------------
-   Links — white unvisited, pale goldenrod visited, soft blue glow
+   Links — dodger blue unvisited, magenta visited, soft blue glow
    -------------------------------------------------------------------------- */
 
 a:link {
-  color: var(--ns-white);
+  color: var(--ns-deep);
   text-decoration: none;
   text-shadow: var(--ns-soft-glow);
 }
 
 a:visited {
-  color: var(--ns-pale);
+  color: var(--ns-magenta);
   text-shadow: var(--ns-soft-glow);
 }
 
@@ -185,10 +186,10 @@ ul {
   margin: 15px;
 }
 
-/* Tiny white dot bullet */
+/* Tiny dodger blue dot bullet */
 ul > li::before {
   content: '\2022';
-  color: var(--ns-white);
+  color: var(--ns-deep);
   display: inline-block;
   width: 1em;
   margin-left: -1em;
