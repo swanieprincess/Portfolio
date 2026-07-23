@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Swan Moon">
+  <meta name="description" content="Neon Swan design theme preview — Swan Moon Portfolio, CCU project.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Neon Swan Theme · Swan Moon Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Sacramento&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/neon-swan.css">
+
+  <style>
+    /* Preview-page-only layout helpers */
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin: 15px;
+    }
+
+    .palette figure {
+      margin: 0;
+      text-align: center;
+      font-size: 0.85em;
+    }
+
+    .palette figcaption {
+      margin-top: 8px;
+    }
+
+    code {
+      color: #7FFFD4;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="text-block">
+    <h1>Neon Swan</h1>
+    <h3>Theme Preview <span class="sep">&middot;</span> Swan Moon Portfolio</h3>
+  </header>
+
+  <hr>
+
+  <section>
+    <h2>Color Palette</h2>
+    <div class="palette">
+      <figure>
+        <span class="swatch" style="background:#000000"></span>
+        <figcaption>Pure Black<br><code>#000000</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#7FFFD4"></span>
+        <figcaption>Aquamarine<br><code>#7FFFD4</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#663399"></span>
+        <figcaption>Rebecca Purple<br><code>#663399</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#20B2AA"></span>
+        <figcaption>Light Sea Green<br><code>#20B2AA</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#D3D3D3"></span>
+        <figcaption>Light Gray<br><code>#D3D3D3</code></figcaption>
+      </figure>
+    </div>
+    <p class="text-block">Micro-accents <span class="dash">&mdash;</span> minimal use: bullets, dashes &amp; other tiny
+      elements only</p>
+    <div class="palette">
+      <figure>
+        <span class="swatch" style="background:#FF00FF"></span>
+        <figcaption>Magenta<br><code>#FF00FF</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#1E90FF"></span>
+        <figcaption>Dodger Blue<br><code>#1E90FF</code></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Typography &amp; Elements</h2>
+    <h3>Subheading <span class="dash">&mdash;</span> Century Gothic / Poppins with soft sea-green glow</h3>
+    <p>Body text is Poppins Light over pure black in light gray, airy and readable. Links look like
+      <a href="preview-unvisited.html">this unvisited link</a> in blue or
+      <a href="index.html">this visited link</a> in pink, and pull-quotes take the italic purple treatment:</p>
+    <blockquote>&ldquo;Content is King.&rdquo; &mdash; Bill Gates</blockquote>
+    <ul>
+      <li>Unordered lists take a tiny magenta dot bullet <span class="dash">&mdash;</span> magenta otherwise appears
+        only on visited links</li>
+      <li>Inline separators and dashes render in dodger blue</li>
+      <li>Nested items use a blue em-dash marker
+        <ul>
+          <li>Both accents stay at fleck scale <span class="dash">&mdash;</span> never fills, text, or buttons</li>
+        </ul>
+      </li>
+    </ul>
+
+    <button class="accordion">
+      <h3>Accordion Button</h3>
+    </button>
+    <div class="panel">
+      <h3>Active / Hover State</h3>
+      <p>Two-tone panel <span class="dash">&mdash;</span> hairline borders run purple on the top/left and aquamarine on
+        the bottom/right, echoed by the dual neon box-glow on containers and dividers.</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Signature Effects</h2>
+    <ul>
+      <li>Dual neon glow <span class="dash">&mdash;</span> <code>box-shadow: 3px 3px 20px #663399, 5px 5px 20px #7FFFD4</code></li>
+      <li>Heading glow <span class="dash">&mdash;</span> <code>text-shadow: 3px 3px 5px #663399, 3.5px 3.5px 5px #7FFFD4</code></li>
+      <li>Soft link glow <span class="dash">&mdash;</span> <code>text-shadow: 2px 2px 2px #20B2AA</code></li>
+      <li>Micro-accents <span class="dash">&mdash;</span> magenta <code>#FF00FF</code> bullets <span class="sep">&middot;</span>
+        dodger blue <code>#1E90FF</code> dashes <span class="dash">&mdash;</span> tiny elements only</li>
+      <li>Circular imagery <span class="dash">&mdash;</span> <code>border-radius: 50%</code> on avatars and photos</li>
+      <li>Icon glow <span class="dash">&mdash;</span> black circle, aquamarine stroke, <code>box-shadow: 0 0 14px #663399</code></li>
+      <li>Headers <span class="dash">&mdash;</span> Sacramento script, aquamarine</li>
+      <li>Body <span class="dash">&mdash;</span> Poppins 300 / Century Gothic, light gray</li>
+    </ul>
+
+    <div class="text-block">
+      <span class="icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#7FFFD4" stroke-width="1.5"
+          stroke-linecap="round" stroke-linejoin="round" aria-label="Swan icon">
+          <path d="M4 17c0-4 3-5 5-5 0-3-2-3-2-6 0-2 2-4 4.5-4S16 4 16 6c0 1-.5 1.6-1 2l6 2-2 2c-1 1-2 1-3 1v4z" />
+          <path d="M3 20h18" />
+        </svg>
+      </span>
+    </div>
+  </section>
+
+  <script src="js/accordion.js"></script>
+</body>
+
+</html>

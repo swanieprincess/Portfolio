@@ -1,0 +1,276 @@
+/* ==========================================================================
+   NEON SWAN — Design Theme
+   Swan Moon Portfolio · CCU Project
+   --------------------------------------------------------------------------
+   Palette
+     Pure Black       #000000  (background)
+     Aquamarine       #7FFFD4  (headers, accent borders, glow)
+     Rebecca Purple   #663399  (pull-quotes, accent borders, glow)
+     Light Sea Green  #20B2AA  (soft link/subheading glow)
+     Light Gray       #D3D3D3  (body text)
+   Micro-accents — tiny elements ONLY (bullets, dashes, separators):
+     Magenta          #FF00FF  (list bullets, visited links)
+     Dodger Blue      #1E90FF  (unvisited links, em-dashes, separators)
+   ========================================================================== */
+
+:root {
+  --ns-black: #000000;
+  --ns-aquamarine: #7FFFD4;
+  --ns-purple: #663399;
+  --ns-seagreen: #20B2AA;
+  --ns-gray: #D3D3D3;
+  --ns-magenta: #FF00FF;   /* micro-accent only */
+  --ns-blue: #1E90FF;      /* micro-accent only */
+
+  /* Signature effects */
+  --ns-dual-glow: 3px 3px 20px var(--ns-purple), 5px 5px 20px var(--ns-aquamarine);
+  --ns-heading-glow: 3px 3px 5px var(--ns-purple), 3.5px 3.5px 5px var(--ns-aquamarine);
+  --ns-soft-glow: 2px 2px 2px var(--ns-seagreen);
+  --ns-icon-glow: 0 0 14px var(--ns-purple);
+
+  --ns-font-script: 'Sacramento', cursive;
+  --ns-font-body: 'Poppins', 'Century Gothic', 'URW Gothic L', sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--ns-black);
+  color: var(--ns-gray);
+  font-family: var(--ns-font-body);
+  font-weight: 300;
+  font-size: 1.05em;
+  line-height: 1.7;
+  padding: 20px 15px;
+  margin: 40px auto;
+  max-width: 60em;
+  box-shadow: var(--ns-dual-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+
+h1,
+h2 {
+  font-family: var(--ns-font-script);
+  font-weight: 400;
+  color: var(--ns-aquamarine);
+  text-shadow: var(--ns-heading-glow);
+  margin: 0.5em 0;
+}
+
+h1 {
+  font-size: 3.5em;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ns-font-body);
+  font-weight: 300;
+  font-size: 1.25em;
+  color: var(--ns-aquamarine);
+  text-shadow: var(--ns-soft-glow);
+  margin: 0.75em 0;
+}
+
+p {
+  margin: 15px;
+}
+
+/* Pull-quotes — italic purple with a whisper of aquamarine */
+blockquote,
+p.indent {
+  margin: 15px 30px;
+  color: var(--ns-purple);
+  font-style: italic;
+  text-shadow: 1px 1px var(--ns-aquamarine);
+  white-space: pre-wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Links — blue unvisited, pink visited, soft sea-green glow
+   -------------------------------------------------------------------------- */
+
+a:link {
+  color: var(--ns-blue);
+  text-decoration: none;
+  text-shadow: var(--ns-soft-glow);
+}
+
+a:visited {
+  color: var(--ns-magenta);
+  text-shadow: var(--ns-soft-glow);
+}
+
+a:hover,
+a:focus {
+  color: var(--ns-seagreen);
+  text-decoration: underline;
+  text-shadow: var(--ns-soft-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Micro-accents — fleck scale only: bullets, dashes, separators
+   -------------------------------------------------------------------------- */
+
+ul {
+  list-style: none;
+  padding-left: 1.5em;
+  margin: 15px;
+}
+
+/* Tiny magenta dot bullet */
+ul > li::before {
+  content: '\2022';
+  color: var(--ns-magenta);
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  font-size: 0.9em;
+}
+
+/* Nested items take a blue em-dash marker */
+ul ul > li::before {
+  content: '\2014';
+  color: var(--ns-blue);
+  width: 1.5em;
+  margin-left: -1.5em;
+}
+
+/* Inline separators & dashes render in dodger blue */
+.dash,
+.sep {
+  color: var(--ns-blue);
+}
+
+/* --------------------------------------------------------------------------
+   Dividers & containers — dual neon glow
+   -------------------------------------------------------------------------- */
+
+hr {
+  border: solid var(--ns-purple);
+  border-width: 0.1px;
+  box-shadow: var(--ns-dual-glow);
+  margin: 30px 15px;
+}
+
+.glow-box,
+.card {
+  background-color: var(--ns-black);
+  padding: 15px;
+  margin: 15px;
+  box-shadow: var(--ns-dual-glow);
+}
+
+/* Two-tone panel — purple top/left hairlines, aquamarine bottom/right */
+.panel {
+  padding: 10px 15px;
+  margin: 10px 5px;
+  border: solid;
+  border-width: 0.1px;
+  border-top-color: var(--ns-purple);
+  border-left-color: var(--ns-purple);
+  border-right-color: var(--ns-aquamarine);
+  border-bottom-color: var(--ns-aquamarine);
+  background-color: transparent;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Accordion
+   -------------------------------------------------------------------------- */
+
+.accordion {
+  background-color: var(--ns-black);
+  font-family: var(--ns-font-body);
+  font-weight: 300;
+  font-size: 1em;
+  color: white;
+  text-shadow: 0.5px 0.5px var(--ns-aquamarine);
+  cursor: pointer;
+  padding: 15px;
+  margin: 15px;
+  width: calc(100% - 30px);
+  border: none;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+
+.accordion.active,
+.accordion:hover {
+  background-color: #494762;
+  color: white;
+  text-shadow: 0.5px 0.5px var(--ns-purple);
+  box-shadow: var(--ns-dual-glow);
+}
+
+.accordion + .panel {
+  display: none;
+}
+
+.accordion.active + .panel {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Imagery & icons
+   -------------------------------------------------------------------------- */
+
+/* Circular imagery — avatars and photos */
+img,
+.avatar {
+  border: none;
+  border-radius: 50%;
+  padding: 2px;
+  max-width: 100%;
+}
+
+/* Icon glow — black circle, aquamarine stroke, purple halo */
+.icon {
+  display: inline-block;
+  background-color: var(--ns-black);
+  border: 1px solid var(--ns-aquamarine);
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: var(--ns-icon-glow);
+  transition: 0.4s;
+}
+
+.icon:hover {
+  box-shadow: var(--ns-icon-glow), 0 0 14px var(--ns-aquamarine);
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+
+.text-block {
+  text-align: center;
+  font-size: 1.05em;
+}
+
+.swatch {
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--ns-aquamarine);
+  box-shadow: var(--ns-icon-glow);
+}
