@@ -41,14 +41,14 @@ blue marks unvisited links, em-dashes, separators, and nested list markers
 
 ## Signature effects
 
-- **Dual neon glow** — `box-shadow: 1.5px 1.5px 20px #8705E4, 2.5px 2.5px 20px #11B4F5`
+- **Dual neon glow** — `box-shadow: 1.5px 1.5px 30px #8705E4, 2.5px 2.5px 30px #11B4F5`
 - **Heading glow** — `text-shadow: 1.5px 1.5px 5px #8705E4, 1.75px 1.75px 5px #11B4F5`
 - **Title glow** — the page title adds a centered `text-shadow: 0 0 6px #8705E4` halo
 - **Soft link glow** — `text-shadow: 0.5px 0.5px 2px #8705E4`
 - **Two-tone panels** — hairline borders, purple top/left, blue bottom/right
-- **Accordion button** — pill-shaped (`border-radius: 999px`), `border: 4px solid #D3D3D3` (light gray) with `box-shadow: 0 0 5px #8705E4`
+- **Accordion button** — pill-shaped (`border-radius: 999px`), `border: 4px solid #D3D3D3` (light gray) with `box-shadow: 0 0 8px #8705E4`
 - **Circular imagery** — `border-radius: 50%` on avatars and photos
-- **Icon glow** — black circle, blue stroke, `box-shadow: 0 0 14px #8705E4`
+- **Icon glow** — black circle, blue stroke, `box-shadow: 0 0 20px #8705E4`
 
 ## Typography
 
