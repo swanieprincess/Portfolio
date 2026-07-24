@@ -309,6 +309,18 @@ img,
   box-shadow: var(--ns-icon-glow), 0 0 14px var(--ns-primary);
 }
 
+/* Wordmark variant of the icon — pill badge for the CCU mark */
+.icon-mark {
+  border-radius: 999px;
+  padding: 6px 14px;
+}
+
+.icon-mark img {
+  border-radius: 0;
+  display: block;
+  padding: 0;
+}
+
 /* --------------------------------------------------------------------------
    Corner token marks — USDT bottom-left, USDC bottom-right, inside the
    glowing body panel

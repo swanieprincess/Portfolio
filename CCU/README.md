@@ -12,6 +12,8 @@ aquamarine/purple Neon Swan look while keeping the same style language.
   exposed as role-based CSS custom properties on `:root`)
 - `assets/ccu-logo.jpeg` — the CCU (Crypto Credit Union) logo, used in the
   preview header and as the favicon
+- `assets/ccu-mark.png` — the CCU wordmark extracted from the logo, shown in
+  the glowing icon badge at the bottom of the page
 - `assets/usdt.svg`, `assets/usdc.svg` — 30×30px token vector marks in the
   bottom corners inside the glowing content panel, USDT left and USDC right
   (`.token-corner`)
