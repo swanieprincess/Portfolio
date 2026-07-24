@@ -39,7 +39,7 @@ primary); white marks link hover (doubling as body text).
 - **Title glow** — the page title adds a centered `text-shadow: 0 0 6px #8705E4` halo
 - **Soft link glow** — `text-shadow: 0.5px 0.5px 2px #8705E4`
 - **Two-tone panels** — hairline borders, purple top/left, blue bottom/right
-- **Accordion button** — pill-shaped (`border-radius: 999px`), `border: 4px solid #D3D3D3` (light gray) with `box-shadow: 0 0 3px #8705E4`
+- **Accordion button** — pill-shaped (`border-radius: 999px`), `border: 4px solid #D3D3D3` (light gray) with `box-shadow: 0 0 5px #8705E4`
 - **Circular imagery** — `border-radius: 50%` on avatars and photos
 - **Icon glow** — black circle, blue stroke, `box-shadow: 0 0 14px #8705E4`
 
