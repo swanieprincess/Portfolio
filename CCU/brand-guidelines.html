@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Swan Moon">
+  <meta name="description" content="CCU — Crypto Credit Union brand guidelines: logo, color, typography, effects, and component standards.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CCU Brand Guidelines</title>
+
+  <link rel="stylesheet" href="css/ccudesign.css">
+  <link rel="icon" href="assets/ccu-logo.jpeg" type="image/jpeg">
+
+  <style>
+    /* Guidelines-page-only layout helpers */
+    .palette {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin: 15px;
+    }
+
+    .palette figure {
+      margin: 0;
+      text-align: center;
+      font-size: 0.85em;
+    }
+
+    .palette figcaption {
+      margin-top: 8px;
+    }
+
+    code {
+      color: #11B4F5;
+      font-size: 0.9em;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 15px auto;
+      width: calc(100% - 30px);
+    }
+
+    th,
+    td {
+      border: solid 0.1px;
+      border-top-color: var(--ns-deep);
+      border-left-color: var(--ns-deep);
+      border-right-color: var(--ns-primary);
+      border-bottom-color: var(--ns-primary);
+      padding: 8px 14px;
+      text-align: left;
+      font-size: 0.95em;
+    }
+
+    th {
+      color: var(--ns-primary);
+      font-weight: 300;
+    }
+
+    .do-dont {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin: 15px;
+    }
+
+    .do-dont .panel {
+      flex: 1 1 260px;
+      float: none;
+      width: auto;
+      display: block;
+    }
+
+    .logo-stage {
+      display: inline-block;
+      padding: 25px 40px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="text-block">
+    <img src="assets/ccu-logo.jpeg" alt="CCU — Crypto Credit Union logo" width="150">
+    <h1>CCU Brand Guidelines</h1>
+    <h3>Crypto Credit Union <span class="sep">&middot;</span> Visual Identity v1.0</h3>
+  </header>
+
+  <hr>
+
+  <section>
+    <h2>Brand Overview</h2>
+    <p>CCU — Crypto Credit Union — is a digital-first financial brand. The visual identity is
+      <strong>neon on black</strong>: an icy electric blue and cyan glow over a pure black canvas,
+      inspired by circuit boards and coin tokens. The look should always feel luminous, precise,
+      and airy — never cluttered or washed out.</p>
+    <blockquote>&ldquo;Luminous, precise, airy.&rdquo; &mdash; the three words every CCU layout should pass.</blockquote>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Logo</h2>
+    <p>The primary logo is the circular circuit-ring mark with the CCU wordmark and coin icons.
+      The extracted <strong>CCU wordmark</strong> is the secondary mark, used in the round coin
+      badge at page footers and wherever the full ring is too detailed.</p>
+    <div class="text-block">
+      <span class="logo-stage"><img src="assets/ccu-logo.jpeg" alt="Primary CCU logo" width="160"></span>
+      <span class="icon icon-mark"><img src="assets/ccu-mark.png" alt="CCU wordmark badge" width="46"></span>
+    </div>
+    <ul>
+      <li>Always place the logo on black <span class="sep">&middot;</span> its own background is part of the mark</li>
+      <li>Keep clear space around the ring equal to the height of the CCU letters</li>
+      <li>The wordmark badge is a 64px black circle, blue stroke, cyan glow <span class="dash">&mdash;</span>
+        <code>box-shadow: 0 0 20px #00FFFF</code></li>
+      <li>Use the primary logo as the favicon and header mark; the badge closes the page</li>
+    </ul>
+    <div class="do-dont">
+      <div class="panel">
+        <h3>Do</h3>
+        <ul>
+          <li>Round the logo with <code>border-radius: 50%</code></li>
+          <li>Scale proportionally, 150&ndash;180px in headers</li>
+          <li>Let it glow only with theme shadows</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Don't</h3>
+        <ul>
+          <li>Recolor, stretch, or rotate the mark</li>
+          <li>Place it on white or colored fills</li>
+          <li>Crop the ring except for the approved wordmark</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Color</h2>
+    <p class="text-block">Primary <span class="dash">&mdash;</span> electric blue &amp; cyan on a black canvas</p>
+    <div class="palette">
+      <figure>
+        <span class="swatch" style="background:#000000"></span>
+        <figcaption>Black<br><code>#000000</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#11B4F5"></span>
+        <figcaption>Blue<br><code>#11B4F5</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#00FFFF"></span>
+        <figcaption>Cyan<br><code>#00FFFF</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#FFFFFF"></span>
+        <figcaption>White<br><code>#FFFFFF</code></figcaption>
+      </figure>
+      <figure>
+        <span class="swatch" style="background:#D3D3D3"></span>
+        <figcaption>Light Gray<br><code>#D3D3D3</code></figcaption>
+      </figure>
+    </div>
+    <table>
+      <tr><th>Color</th><th>Hex</th><th>Token</th><th>Role</th></tr>
+      <tr><td>Black</td><td><code>#000000</code></td><td><code>--ns-bg</code> / <code>--ns-black</code></td>
+        <td>Canvas, page surround, icon circles</td></tr>
+      <tr><td>Blue</td><td><code>#11B4F5</code></td><td><code>--ns-primary</code></td>
+        <td>Section headers, bright glow, unvisited links, dashes, separators, nested markers, strokes</td></tr>
+      <tr><td>Cyan</td><td><code>#00FFFF</code></td><td><code>--ns-deep</code></td>
+        <td>Deep glow, pull-quotes, dividers, top/left panel borders, halos</td></tr>
+      <tr><td>White</td><td><code>#FFFFFF</code></td><td><code>--ns-light</code></td>
+        <td>Body text, link hover</td></tr>
+      <tr><td>Light Gray</td><td><code>#D3D3D3</code></td><td><code>--ns-silver</code></td>
+        <td>Page title, bullets, visited links, accordion border</td></tr>
+    </table>
+    <ul>
+      <li>Accents stay at <strong>fleck scale</strong> <span class="dash">&mdash;</span> bullets, dashes, links
+        &amp; tiny elements only; never fills, text blocks, or buttons</li>
+      <li>Black is the only background <span class="sep">&middot;</span> color arrives through glow, never fill</li>
+      <li>Token greens and blues (USDT <span class="sep">&middot;</span> USDC) appear only as the 30px corner coins</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Typography</h2>
+    <h3>Subheading style <span class="dash">&mdash;</span> Poppins / Century Gothic with soft cyan glow</h3>
+    <table>
+      <tr><th>Use</th><th>Face</th><th>Color</th><th>Treatment</th></tr>
+      <tr><td>Page title (h1)</td><td>Sacramento, 3.5em</td><td>Light Gray</td>
+        <td><code>text-shadow: 0 0 6px #00FFFF</code> + heading glow</td></tr>
+      <tr><td>Section headers (h2)</td><td>Sacramento, 2.5em</td><td>Blue</td>
+        <td>Heading glow</td></tr>
+      <tr><td>Subheadings (h3&ndash;h6)</td><td>Poppins 300, 1.25em</td><td>Blue</td>
+        <td>Soft glow</td></tr>
+      <tr><td>Body</td><td>Poppins 300 / Century Gothic, 1.05em</td><td>White</td>
+        <td>Line-height 1.7, airy spacing</td></tr>
+      <tr><td>Pull-quotes</td><td>Italic body face</td><td>Cyan</td>
+        <td>1px pale shadow, indented</td></tr>
+    </table>
+    <p>Fonts are self-hosted (Sacramento 400, Poppins 300 &mdash; woff2, latin &amp; latin-ext).
+      Never substitute display faces; Century Gothic is the only body fallback.</p>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Signature Effects</h2>
+    <ul>
+      <li>Dual neon glow <span class="dash">&mdash;</span> <code>box-shadow: 1.5px 1.5px 30px #00FFFF, 2.5px 2.5px 30px #11B4F5</code></li>
+      <li>Heading glow <span class="dash">&mdash;</span> <code>text-shadow: 1.5px 1.5px 5px #00FFFF, 1.75px 1.75px 5px #11B4F5</code></li>
+      <li>Title glow <span class="dash">&mdash;</span> <code>text-shadow: 0 0 6px #00FFFF</code></li>
+      <li>Soft link glow <span class="dash">&mdash;</span> <code>text-shadow: 0.5px 0.5px 2px #00FFFF</code></li>
+      <li>Icon glow <span class="dash">&mdash;</span> <code>box-shadow: 0 0 20px #00FFFF</code></li>
+      <li>Border glows are stronger than text glows <span class="dash">&mdash;</span> containers radiate, letters whisper</li>
+    </ul>
+  </section>
+
+  <hr>
+
+  <section>
+    <h2>Components</h2>
+    <ul>
+      <li>Buttons are pill-shaped <span class="dash">&mdash;</span> <code>border-radius: 999px</code>,
+        4px light gray border, <code>box-shadow: 0 0 8px #00FFFF</code>, content-sized with 8px/16px padding</li>
+      <li>Panels are two-tone <span class="dash">&mdash;</span> hairline borders, cyan top/left, blue bottom/right</li>
+      <li>Imagery is circular <span class="dash">&mdash;</span> <code>border-radius: 50%</code> on avatars and photos</li>
+      <li>Dividers take the dual neon glow</li>
+      <li>USDT sits bottom-left, USDC bottom-right, 30&times;30px, inside the glowing panel</li>
+    </ul>
+    <div class="text-block">
+      <button class="accordion"><h3>Sample Button</h3></button>
+    </div>
+  </section>
+
+  <hr>
+
+  <footer class="text-block">
+    <p>CCU Design Theme <span class="sep">&middot;</span> stylesheet <code>css/ccudesign.css</code>
+      <span class="sep">&middot;</span> re-theme via the <code>:root</code> tokens</p>
+    <span class="icon icon-mark">
+      <img src="assets/ccu-mark.png" alt="CCU" width="46">
+    </span>
+  </footer>
+
+  <img class="token-corner usdt" src="assets/usdt.svg" alt="USDT token">
+  <img class="token-corner usdc" src="assets/usdc.svg" alt="USDC token">
+</body>
+
+</html>

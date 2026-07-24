@@ -20,6 +20,8 @@ aquamarine/purple Neon Swan look while keeping the same style language.
 - `fonts/` — self-hosted Sacramento 400 and Poppins 300 (woff2, latin +
   latin-ext) — no Google Fonts CDN dependency
 - `index.html` — theme preview page demonstrating every element
+- `brand-guidelines.html` — CCU brand guidelines (logo, color, typography,
+  effects, components), styled with the theme itself
 - `js/accordion.js` — accordion toggle behavior
 
 ## Palette
