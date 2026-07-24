@@ -10,6 +10,8 @@ aquamarine/purple-on-black look while keeping the same Neon Swan style.
 
 - `css/ccudesign.css` — the theme stylesheet (drop-in; all colors and effects
   exposed as role-based CSS custom properties on `:root`)
+- `assets/ccu-logo.jpeg` — the CCU (Crypto Credit Union) logo, used in the
+  preview header and as the favicon
 - `fonts/` — self-hosted Sacramento 400 and Poppins 300 (woff2, latin +
   latin-ext) — no Google Fonts CDN dependency
 - `index.html` — theme preview page demonstrating every element
