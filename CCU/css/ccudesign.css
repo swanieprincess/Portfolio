@@ -1,10 +1,10 @@
 /* ==========================================================================
    CCU DESIGN THEME — Crypto Credit Union
    --------------------------------------------------------------------------
-   Palette (electric blue, purple & pink over black)
+   Palette (electric blue, cyan & pink over black)
      Black            #000000  (background)
      Blue             #11B4F5  (primary — headers, accent borders, glow)
-     Purple           #8705E4  (primary — pull-quotes, deep glow)
+     Cyan           #00FFFF  (primary — pull-quotes, deep glow)
      White            #FFFFFF  (secondary — body text)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
      Light Gray       #D3D3D3  (list bullets, visited links, accordion border)
@@ -60,7 +60,7 @@
   --ns-black: #000000;      /* page surround & icon circles */
   --ns-bg: #000000;         /* black canvas */
   --ns-primary: #11B4F5;    /* headers & bright accent — blue */
-  --ns-deep: #8705E4;       /* pull-quotes & deep glow — purple */
+  --ns-deep: #00FFFF;       /* pull-quotes & deep glow — cyan */
   --ns-light: #FFFFFF;      /* secondary — body text & hover highlight */
   --ns-silver: #D3D3D3;     /* highlight accent — light gray */
 
@@ -142,7 +142,7 @@ p {
   margin: 15px;
 }
 
-/* Pull-quotes — italic purple with a whisper of blue */
+/* Pull-quotes — italic cyan with a whisper of blue */
 blockquote,
 p.indent {
   margin: 15px 30px;
@@ -153,7 +153,7 @@ p.indent {
 }
 
 /* --------------------------------------------------------------------------
-   Links — blue unvisited, light gray visited, soft purple glow
+   Links — blue unvisited, light gray visited, soft cyan glow
    -------------------------------------------------------------------------- */
 
 a:link {
@@ -227,7 +227,7 @@ hr {
   box-shadow: var(--ns-dual-glow);
 }
 
-/* Two-tone panel — purple top/left hairlines, blue bottom/right */
+/* Two-tone panel — cyan top/left hairlines, blue bottom/right */
 .panel {
   padding: 10px 15px;
   margin: 10px 5px;
@@ -267,7 +267,7 @@ hr {
 
 .accordion.active,
 .accordion:hover {
-  background-color: #4A3B66;
+  background-color: #1B4F5E;
   color: white;
   text-shadow: 0.5px 0.5px var(--ns-deep);
   box-shadow: var(--ns-dual-glow);
@@ -294,7 +294,7 @@ img,
   max-width: 100%;
 }
 
-/* Icon glow — black circle, blue stroke, purple halo */
+/* Icon glow — black circle, blue stroke, cyan halo */
 .icon {
   display: inline-block;
   background-color: var(--ns-black);

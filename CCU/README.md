@@ -2,7 +2,7 @@
 
 The design theme for the CCU (Crypto Credit Union) project — neon glows,
 script headers, and tiny highlight accents. It pairs
-**electric blue & purple** primaries with **light gray** accents and **white**
+**electric blue & cyan** primaries with **light gray** accents and **white**
 text over a **black** canvas, distinct from the portfolio's original
 aquamarine/purple Neon Swan look while keeping the same style language.
 
@@ -28,7 +28,7 @@ aquamarine/purple Neon Swan look while keeping the same style language.
 | --- | --- | --- | --- |
 | Background | Black | `#000000` | `--ns-bg` |
 | Primary — headers / bright accent | Blue | `#11B4F5` | `--ns-primary` |
-| Primary — pull-quotes / deep glow | Purple | `#8705E4` | `--ns-deep` |
+| Primary — pull-quotes / deep glow | Cyan | `#00FFFF` | `--ns-deep` |
 | Secondary — body text / hover | White | `#FFFFFF` | `--ns-light` |
 | Highlight accent | Light Gray | `#D3D3D3` | `--ns-silver` |
 | Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
@@ -41,19 +41,19 @@ blue marks unvisited links, em-dashes, separators, and nested list markers
 
 ## Signature effects
 
-- **Dual neon glow** — `box-shadow: 1.5px 1.5px 30px #8705E4, 2.5px 2.5px 30px #11B4F5`
-- **Heading glow** — `text-shadow: 1.5px 1.5px 5px #8705E4, 1.75px 1.75px 5px #11B4F5`
-- **Title glow** — the page title adds a centered `text-shadow: 0 0 6px #8705E4` halo
-- **Soft link glow** — `text-shadow: 0.5px 0.5px 2px #8705E4`
-- **Two-tone panels** — hairline borders, purple top/left, blue bottom/right
-- **Accordion button** — pill-shaped (`border-radius: 999px`), `border: 4px solid #D3D3D3` (light gray) with `box-shadow: 0 0 8px #8705E4`
+- **Dual neon glow** — `box-shadow: 1.5px 1.5px 30px #00FFFF, 2.5px 2.5px 30px #11B4F5`
+- **Heading glow** — `text-shadow: 1.5px 1.5px 5px #00FFFF, 1.75px 1.75px 5px #11B4F5`
+- **Title glow** — the page title adds a centered `text-shadow: 0 0 6px #00FFFF` halo
+- **Soft link glow** — `text-shadow: 0.5px 0.5px 2px #00FFFF`
+- **Two-tone panels** — hairline borders, cyan top/left, blue bottom/right
+- **Accordion button** — pill-shaped (`border-radius: 999px`), `border: 4px solid #D3D3D3` (light gray) with `box-shadow: 0 0 8px #00FFFF`
 - **Circular imagery** — `border-radius: 50%` on avatars and photos
-- **Icon glow** — black circle, blue stroke, `box-shadow: 0 0 20px #8705E4`
+- **Icon glow** — black circle, blue stroke, `box-shadow: 0 0 20px #00FFFF`
 
 ## Typography
 
 - **Headers** — Sacramento script; page title light gray, section headers blue
-- **Subheadings** — Poppins / Century Gothic with soft purple glow
+- **Subheadings** — Poppins / Century Gothic with soft cyan glow
 - **Body** — Poppins 300 / Century Gothic fallback, white
 
 Fonts are self-hosted in `fonts/` and declared via `@font-face` in the
