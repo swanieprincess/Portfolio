@@ -1,0 +1,367 @@
+/* ==========================================================================
+   CCU DESIGN THEME — Crypto Credit Union
+   --------------------------------------------------------------------------
+   Palette (electric blue, cyan & pink over black)
+     Black            #000000  (background)
+     Blue             #11B4F5  (primary — headers, accent borders, glow)
+     Cyan           #00FFFF  (primary — pull-quotes, deep glow)
+     White            #FFFFFF  (secondary — body text)
+   Highlight accents — tiny elements ONLY (bullets, dashes, links):
+     Light Gray       #D3D3D3  (list bullets, visited links, accordion border)
+     Blue             #11B4F5  (unvisited links, dashes, separators, nested markers)
+     White            #FFFFFF  (link hover)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Fonts — self-hosted (see ../fonts/), no CDN dependency
+   -------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'Sacramento';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/sacramento-400-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Sacramento';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/sacramento-400-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/poppins-300-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/poppins-300-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* --------------------------------------------------------------------------
+   Theme tokens — role-based, so swapping a palette is a one-block edit
+   -------------------------------------------------------------------------- */
+
+:root {
+  --ns-black: #000000;      /* page surround & icon circles */
+  --ns-bg: #000000;         /* black canvas */
+  --ns-primary: #11B4F5;    /* headers & bright accent — blue */
+  --ns-deep: #00FFFF;       /* pull-quotes & deep glow — cyan */
+  --ns-light: #FFFFFF;      /* secondary — body text & hover highlight */
+  --ns-silver: #D3D3D3;     /* highlight accent — light gray */
+
+  /* Signature effects */
+  --ns-dual-glow: 1.5px 1.5px 30px var(--ns-deep), 2.5px 2.5px 30px var(--ns-primary);
+  --ns-heading-glow: 1.5px 1.5px 5px var(--ns-deep), 1.75px 1.75px 5px var(--ns-primary);
+  --ns-soft-glow: 0.5px 0.5px 2px var(--ns-deep);
+  --ns-icon-glow: 0 0 20px var(--ns-deep);
+
+  --ns-font-script: 'Sacramento', cursive;
+  --ns-font-body: 'Poppins', 'Century Gothic', 'URW Gothic L', sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--ns-black);
+}
+
+body {
+  position: relative;
+  background-color: var(--ns-bg);
+  color: var(--ns-light);
+  font-family: var(--ns-font-body);
+  font-weight: 300;
+  font-size: 1.05em;
+  line-height: 1.7;
+  padding: 20px 15px;
+  margin: 40px auto;
+  max-width: 60em;
+  box-shadow: var(--ns-dual-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+
+h1,
+h2 {
+  font-family: var(--ns-font-script);
+  font-weight: 400;
+  color: var(--ns-primary);
+  text-shadow: var(--ns-heading-glow);
+  margin: 0.5em 0;
+}
+
+h1 {
+  font-size: 3.5em;
+  text-align: center;
+  color: var(--ns-silver);
+  text-shadow: 0 0 6px var(--ns-deep), var(--ns-heading-glow);
+}
+
+h2 {
+  font-size: 2.5em;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ns-font-body);
+  font-weight: 300;
+  font-size: 1.25em;
+  color: var(--ns-primary);
+  text-shadow: var(--ns-soft-glow);
+  margin: 0.75em 0;
+}
+
+p {
+  margin: 15px;
+}
+
+/* Pull-quotes — italic cyan with a whisper of blue */
+blockquote,
+p.indent {
+  margin: 15px 30px;
+  color: var(--ns-deep);
+  font-style: italic;
+  text-shadow: 1px 1px var(--ns-primary);
+  white-space: pre-wrap;
+}
+
+/* --------------------------------------------------------------------------
+   Links — blue unvisited, light gray visited, soft cyan glow
+   -------------------------------------------------------------------------- */
+
+a:link {
+  color: var(--ns-primary);
+  text-decoration: none;
+  text-shadow: var(--ns-soft-glow);
+}
+
+a:visited {
+  color: var(--ns-silver);
+  text-shadow: var(--ns-soft-glow);
+}
+
+a:hover,
+a:focus {
+  color: var(--ns-light);
+  text-decoration: underline;
+  text-shadow: var(--ns-soft-glow);
+}
+
+/* --------------------------------------------------------------------------
+   Highlight accents — fleck scale only: bullets, dashes, separators
+   -------------------------------------------------------------------------- */
+
+ul {
+  list-style: none;
+  padding-left: 1.5em;
+  margin: 15px;
+}
+
+/* Tiny light gray dot bullet */
+ul > li::before {
+  content: '\2022';
+  color: var(--ns-silver);
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+  font-size: 0.9em;
+}
+
+/* Nested items take a blue em-dash marker */
+ul ul > li::before {
+  content: '\2014';
+  color: var(--ns-primary);
+  width: 1.5em;
+  margin-left: -1.5em;
+}
+
+/* Inline em-dashes & separators render in blue */
+.dash,
+.sep {
+  color: var(--ns-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Dividers & containers — dual neon glow
+   -------------------------------------------------------------------------- */
+
+hr {
+  border: solid var(--ns-deep);
+  border-width: 0.1px;
+  box-shadow: var(--ns-dual-glow);
+  margin: 30px 15px;
+}
+
+.glow-box,
+.card {
+  background-color: var(--ns-bg);
+  padding: 15px;
+  margin: 15px;
+  box-shadow: var(--ns-dual-glow);
+}
+
+/* Two-tone panel — cyan top/left hairlines, blue bottom/right */
+.panel {
+  padding: 10px 15px;
+  margin: 10px 5px;
+  border: solid;
+  border-width: 0.1px;
+  border-top-color: var(--ns-deep);
+  border-left-color: var(--ns-deep);
+  border-right-color: var(--ns-primary);
+  border-bottom-color: var(--ns-primary);
+  background-color: transparent;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Accordion
+   -------------------------------------------------------------------------- */
+
+.accordion {
+  background-color: var(--ns-bg);
+  font-family: var(--ns-font-body);
+  font-weight: 300;
+  font-size: 1em;
+  color: white;
+  text-shadow: 0.5px 0.5px var(--ns-primary);
+  cursor: pointer;
+  margin: 15px;
+  display: inline-block;
+  width: auto;
+  border: 4px solid var(--ns-silver);
+  border-radius: 999px;
+  box-shadow: 0 0 8px var(--ns-deep);
+  padding: 8px 16px;
+  text-align: left;
+  outline: none;
+  transition: 0.4s;
+}
+
+.accordion.active,
+.accordion:hover {
+  background-color: #1B4F5E;
+  color: white;
+  text-shadow: 0.5px 0.5px var(--ns-deep);
+  box-shadow: var(--ns-dual-glow);
+}
+
+.accordion + .panel {
+  display: none;
+}
+
+.accordion.active + .panel {
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Imagery & icons
+   -------------------------------------------------------------------------- */
+
+/* Circular imagery — avatars and photos */
+img,
+.avatar {
+  border: none;
+  border-radius: 50%;
+  padding: 2px;
+  max-width: 100%;
+}
+
+/* Icon glow — black circle, blue stroke, cyan halo */
+.icon {
+  display: inline-block;
+  background-color: var(--ns-black);
+  border: 1px solid var(--ns-primary);
+  border-radius: 50%;
+  padding: 8px;
+  box-shadow: var(--ns-icon-glow);
+  transition: 0.4s;
+}
+
+.icon:hover {
+  box-shadow: var(--ns-icon-glow), 0 0 20px var(--ns-primary);
+}
+
+/* Wordmark variant of the icon — small round badge for the CCU mark */
+.icon-mark {
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-mark img {
+  border-radius: 0;
+  display: block;
+  padding: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Corner token marks — USDT bottom-left, USDC bottom-right, inside the
+   glowing body panel
+   -------------------------------------------------------------------------- */
+
+.token-corner {
+  position: absolute;
+  bottom: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+.token-corner.usdt {
+  left: 8px;
+}
+
+.token-corner.usdc {
+  right: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Utilities
+   -------------------------------------------------------------------------- */
+
+.text-block {
+  text-align: center;
+  font-size: 1.05em;
+}
+
+.swatch {
+  display: inline-block;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid var(--ns-primary);
+  box-shadow: var(--ns-icon-glow);
+}
