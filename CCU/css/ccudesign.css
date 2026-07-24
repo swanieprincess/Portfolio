@@ -86,10 +86,10 @@
 
 html {
   background-color: var(--ns-black);
-  position: relative;
 }
 
 body {
+  position: relative;
   background-color: var(--ns-bg);
   color: var(--ns-light);
   font-family: var(--ns-font-body);
@@ -309,7 +309,8 @@ img,
 }
 
 /* --------------------------------------------------------------------------
-   Corner token marks — USDT bottom-left, USDC bottom-right of the page
+   Corner token marks — USDT bottom-left, USDC bottom-right, inside the
+   glowing body panel
    -------------------------------------------------------------------------- */
 
 .token-corner {
