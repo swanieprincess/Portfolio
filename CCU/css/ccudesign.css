@@ -118,7 +118,7 @@ h2 {
 h1 {
   font-size: 3.5em;
   text-align: center;
-  color: var(--ns-light);
+  color: var(--ns-silver);
   text-shadow: 0 0 6px var(--ns-deep), var(--ns-heading-glow);
 }
 
