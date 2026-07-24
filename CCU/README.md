@@ -50,7 +50,7 @@ blue marks unvisited links, em-dashes, separators, and nested list markers
 
 ## Typography
 
-- **Headers** — Sacramento script, blue
+- **Headers** — Sacramento script; page title white, section headers blue
 - **Subheadings** — Poppins / Century Gothic with soft purple glow
 - **Body** — Poppins 300 / Century Gothic fallback, white
 
