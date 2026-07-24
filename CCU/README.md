@@ -1,7 +1,7 @@
 # CCU Design Theme
 
-The design theme for the Swan Moon portfolio's CCU (Crypto Credit Union)
-project — neon glows, script headers, and tiny highlight accents. It pairs
+The design theme for the CCU (Crypto Credit Union) project — neon glows,
+script headers, and tiny highlight accents. It pairs
 **electric blue & purple** primaries with a **hot pink** accent and **white**
 text over a **black** canvas, distinct from the portfolio's original
 aquamarine/purple Neon Swan look while keeping the same style language.
