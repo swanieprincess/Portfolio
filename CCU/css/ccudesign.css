@@ -7,7 +7,7 @@
      Purple           #8705E4  (primary — pull-quotes, deep glow)
      White            #FFFFFF  (secondary — body text)
    Highlight accents — tiny elements ONLY (bullets, dashes, links):
-     Hot Pink         #FF06C1  (list bullets, visited links)
+     Light Gray       #D3D3D3  (list bullets, visited links, accordion border)
      Blue             #11B4F5  (unvisited links, dashes, separators, nested markers)
      White            #FFFFFF  (link hover)
    ========================================================================== */
@@ -62,7 +62,7 @@
   --ns-primary: #11B4F5;    /* headers & bright accent — blue */
   --ns-deep: #8705E4;       /* pull-quotes & deep glow — purple */
   --ns-light: #FFFFFF;      /* secondary — body text & hover highlight */
-  --ns-pink: #FF06C1;       /* highlight accent — hot pink */
+  --ns-silver: #D3D3D3;     /* highlight accent — light gray */
 
   /* Signature effects */
   --ns-dual-glow: 1.5px 1.5px 20px var(--ns-deep), 2.5px 2.5px 20px var(--ns-primary);
@@ -151,7 +151,7 @@ p.indent {
 }
 
 /* --------------------------------------------------------------------------
-   Links — blue unvisited, hot pink visited, soft purple glow
+   Links — blue unvisited, light gray visited, soft purple glow
    -------------------------------------------------------------------------- */
 
 a:link {
@@ -161,7 +161,7 @@ a:link {
 }
 
 a:visited {
-  color: var(--ns-pink);
+  color: var(--ns-silver);
   text-shadow: var(--ns-soft-glow);
 }
 
@@ -182,10 +182,10 @@ ul {
   margin: 15px;
 }
 
-/* Tiny hot pink dot bullet */
+/* Tiny light gray dot bullet */
 ul > li::before {
   content: '\2022';
-  color: var(--ns-pink);
+  color: var(--ns-silver);
   display: inline-block;
   width: 1em;
   margin-left: -1em;
@@ -254,7 +254,7 @@ hr {
   margin: 15px;
   display: inline-block;
   width: auto;
-  border: 4px solid #D3D3D3;
+  border: 4px solid var(--ns-silver);
   border-radius: 999px;
   box-shadow: 0 0 5px var(--ns-deep);
   padding: 8px 16px;

@@ -2,7 +2,7 @@
 
 The design theme for the CCU (Crypto Credit Union) project — neon glows,
 script headers, and tiny highlight accents. It pairs
-**electric blue & purple** primaries with a **hot pink** accent and **white**
+**electric blue & purple** primaries with **light gray** accents and **white**
 text over a **black** canvas, distinct from the portfolio's original
 aquamarine/purple Neon Swan look while keeping the same style language.
 
@@ -25,14 +25,14 @@ aquamarine/purple Neon Swan look while keeping the same style language.
 | Primary — headers / bright accent | Blue | `#11B4F5` | `--ns-primary` |
 | Primary — pull-quotes / deep glow | Purple | `#8705E4` | `--ns-deep` |
 | Secondary — body text / hover | White | `#FFFFFF` | `--ns-light` |
-| Highlight accent | Hot Pink | `#FF06C1` | `--ns-pink` |
+| Highlight accent | Light Gray | `#D3D3D3` | `--ns-silver` |
 | Page surround / icon circles | Pure Black | `#000000` | `--ns-black` |
 
-Hot pink, blue, and white serve as **highlight accents**: bullets,
+Light gray, blue, and white serve as **highlight accents**: bullets,
 dashes, links, and other tiny elements only — never fills, text blocks, or
-buttons. Hot pink marks bullets and visited links; blue marks unvisited
-links, em-dashes, separators, and nested list markers (doubling as a
-primary); white marks link hover (doubling as body text).
+buttons. Light gray marks bullets, visited links, and the accordion border;
+blue marks unvisited links, em-dashes, separators, and nested list markers
+(doubling as a primary); white marks link hover (doubling as body text).
 
 ## Signature effects
 
