@@ -281,6 +281,25 @@
 
     .cards { display: grid; gap: 22px; }
 
+    /* ---------- upcoming events pulled from Google Calendar ---------- */
+    .events { list-style: none; display: grid; gap: 8px; margin: 4px 0 16px; text-align: left; }
+    .events a {
+      display: flex; align-items: center; gap: 12px; color: var(--ink);
+      background: rgba(255, 247, 251, .85); border: 1.5px solid var(--pink-light); border-radius: 999px;
+      padding: 5px 16px 5px 5px; transition: box-shadow .25s, transform .25s;
+    }
+    .events a:hover { color: var(--ink); box-shadow: var(--shadow); transform: translateY(-1px); }
+    .events .date {
+      flex: none; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+      background: linear-gradient(180deg, #E39FC0, var(--pink-deep)); color: #fff; text-align: center;
+      font-family: var(--font-caps); font-weight: 600; font-size: .6em; line-height: 1.05; letter-spacing: .06em; text-transform: uppercase;
+      border: 1.5px solid #fff; box-shadow: 0 3px 8px rgba(199, 101, 145, .35);
+    }
+    .events .date b { display: block; font-size: 1.55em; font-weight: 700; }
+    .events .title { font-weight: 500; font-size: .92em; line-height: 1.3; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .events .time { margin-left: auto; flex: none; font-family: var(--font-caps); font-size: .7em; letter-spacing: .12em; text-transform: uppercase; color: var(--pink-deep); }
+    @media (max-width: 760px) { .events .time { display: none; } }
+
     /* ---------- footer ---------- */
     footer { text-align: center; padding: 10px 0 40px; font-size: .8em; color: var(--ink-soft); }
     footer .sep { color: var(--pink-light); margin: 0 10px; }
@@ -608,8 +627,9 @@
           <div class="eyebrow">Upcoming</div>
           <div class="script gem-text">Events</div>
           <div class="ornament"><svg><use href="#i-gem"/></svg></div>
-          <p>Don't miss out on what's<br>coming next!</p>
-          <a class="btn" href="#">View Events <svg><use href="#i-arrow"/></svg></a>
+          <ul class="events" id="events-list" hidden></ul>
+          <p id="events-copy">Don't miss out on what's<br>coming next!</p>
+          <a class="btn" id="events-link" href="#" target="_blank" rel="noopener">View Events <svg><use href="#i-arrow"/></svg></a>
         </div>
       </article>
 
@@ -718,6 +738,50 @@
     });
 
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- Upcoming events from Google Calendar ----
+    // 1. In Google Calendar, open the streamer's calendar settings and tick "Make available to public".
+    // 2. Copy its Calendar ID (looks like abc123@group.calendar.google.com) into CALENDAR.id.
+    // 3. In Google Cloud Console enable the Google Calendar API and create an API key restricted to
+    //    this site's domain (HTTP referrer) and to the Calendar API; paste it into CALENDAR.apiKey.
+    var CALENDAR = { id: '', apiKey: '', max: 3 };
+
+    function fmtDate(d) { return { mon: d.toLocaleDateString([], { month: 'short' }), day: d.getDate() }; }
+    function fmtTime(d) { return d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }); }
+
+    // items: [{ title, start: Date, allDay: bool, url }]
+    function renderEvents(items) {
+      var list = document.getElementById('events-list');
+      var copy = document.getElementById('events-copy');
+      if (!items || !items.length) { list.hidden = true; copy.hidden = false; return; }
+      list.innerHTML = items.slice(0, CALENDAR.max).map(function (ev) {
+        var d = fmtDate(ev.start);
+        return '<li><a href="' + (ev.url || '#') + '" target="_blank" rel="noopener">' +
+          '<span class="date">' + d.mon + '<b>' + d.day + '</b></span>' +
+          '<span class="title">' + ev.title.replace(/[<>&]/g, function (c) { return { '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]; }) + '</span>' +
+          '<span class="time">' + (ev.allDay ? 'All day' : fmtTime(ev.start)) + '</span></a></li>';
+      }).join('');
+      list.hidden = false;
+      copy.hidden = true;
+    }
+    window.renderEvents = renderEvents;
+
+    function loadEvents() {
+      if (!CALENDAR.id || !CALENDAR.apiKey) return;
+      var link = document.getElementById('events-link');
+      link.href = 'https://calendar.google.com/calendar/embed?src=' + encodeURIComponent(CALENDAR.id);
+      var url = 'https://www.googleapis.com/calendar/v3/calendars/' + encodeURIComponent(CALENDAR.id) + '/events' +
+        '?key=' + encodeURIComponent(CALENDAR.apiKey) + '&singleEvents=true&orderBy=startTime' +
+        '&maxResults=' + CALENDAR.max + '&timeMin=' + encodeURIComponent(new Date().toISOString());
+      fetch(url).then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); }).then(function (data) {
+        renderEvents((data.items || []).map(function (ev) {
+          var allDay = !ev.start.dateTime;
+          return { title: ev.summary || 'Stream', allDay: allDay, url: ev.htmlLink,
+                   start: allDay ? new Date(ev.start.date + 'T00:00:00') : new Date(ev.start.dateTime) };
+        }));
+      }).catch(function () { /* keep the static copy if the calendar can't be reached */ });
+    }
+    loadEvents();
 
     // ---- Falling sakura petals: drift down like slow snow, swirl away from the cursor, burst on click ----
     (function () {

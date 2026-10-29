@@ -92,6 +92,27 @@ Bonus strip is already cut from the client's banner and committed; the others
 render their inline SVG blossoms, scene and illustrations until their source
 files are added, so the page never shows a broken image.
 
+## Upcoming events from Google Calendar
+
+The Upcoming Events banner lists the next three events from a public Google
+Calendar, each linking to the event in Google Calendar; until it is
+configured it shows the static copy.
+
+1. In Google Calendar, open the streamer's calendar settings and tick
+   **Make available to public**.
+2. Copy the **Calendar ID** from that settings page (it looks like
+   `abc123@group.calendar.google.com`).
+3. In Google Cloud Console enable the **Google Calendar API** and create an
+   **API key**. Restrict it to the Calendar API and to this site's domain as
+   an HTTP referrer so it can't be reused elsewhere.
+4. Paste both into the `CALENDAR` object in the script at the bottom of
+   `index.html`.
+
+`CALENDAR.max` sets how many events to show. Timed events show their start
+time; all-day events show "All day". The **View Events** button opens the
+public calendar. To preview with sample data, call `renderEvents([...])` in
+the browser console with `{ title, start: Date, allDay, url }` items.
+
 ## Wiring the leaderboard
 
 `DATA` in the inline script holds sample rows for *This Month*, *This Week* and
