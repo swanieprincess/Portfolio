@@ -35,8 +35,12 @@ Quick reference:
 - `Digital Resume.html` — the site (single page, self-contained CSS/JS)
 - `assets/` — SVG logo, favicon, and social icons styled to the theme
 - `theme/` — Neon Swan theme spec and preview/reference sheet
-- `projects/` — client site designs. Each project follows its own client
-  brand, not Neon Swan:
-  - `projects/stellarose/` — Clutch Stellaaa leaderboard site for the
-    streamer Stellarose (crystal pink / rose gold, Sacramento + Century
-    Gothic, falling sakura petals); see its README
+
+## Related client projects
+
+Client site designs live in their own repositories and follow the client's
+brand, not Neon Swan:
+
+- [swanieprincess/stellarose](https://github.com/swanieprincess/stellarose) —
+  Clutch Stellaaa leaderboard site for the streamer Stellarose (crystal pink /
+  rose gold, Sacramento + Century Gothic, falling sakura petals)
