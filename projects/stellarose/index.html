@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Clutch Stellaaa — the official leaderboard, challenges, events and community hub for Stellarose on clutch.com.">
+  <meta name="keywords" content="Clutch Stellaaa, Stellarose, clutch.com, leaderboard, challenges, events, community">
+  <meta name="author" content="Swan Moon">
+  <title>Clutch Stellaaa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Sacramento = script. Century Gothic is a system font; Poppins is loaded as its web fallback. -->
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='47' fill='%23fff0f6' stroke='%23e8a5c3' stroke-width='3'/%3E%3Cpath d='M22 66l6-30 14 14 8-24 8 24 14-14 6 30z' fill='%23e0569a'/%3E%3Ccircle cx='50' cy='28' r='4' fill='%23b9d6f7'/%3E%3C/svg%3E" type="image/svg+xml">
+
+  <style>
+    /* ---------- Clutch Stellaaa tokens: crystal pink, rose gold, icy blue ---------- */
+    :root {
+      --bg: #fff6fa;
+      --card: #ffffff;
+      --card-tint: #fff3f8;
+      --ink: #5a3a4b;
+      --ink-soft: #8a6a7a;
+      --pink: #e0569a;
+      --pink-deep: #c93d84;
+      --pink-light: #f7b7d2;
+      --blush: #fde3ee;
+      --rose-gold: #c98c74;
+      --rose-gold-light: #ecc9ba;
+      --ice: #bdd8f5;
+      --ice-light: #e4f0fd;
+      --sky: #cfe6fb;
+      --shadow: 0 10px 30px rgba(224, 86, 154, .14), 0 2px 6px rgba(201, 140, 116, .10);
+      --shadow-hover: 0 16px 40px rgba(224, 86, 154, .22), 0 3px 8px rgba(201, 140, 116, .14);
+      --radius: 22px;
+      --font-script: 'Sacramento', cursive;
+      --font-caps: 'Century Gothic', 'URW Gothic L', 'Poppins', sans-serif;
+      --font-body: 'Century Gothic', 'URW Gothic L', 'Poppins', sans-serif;
+      --text-gem: linear-gradient(180deg, #ffd6e7 0%, #ee7fb6 40%, #e0569a 62%, #c93d84 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      background-image:
+        radial-gradient(circle at 8% 12%, rgba(247, 183, 210, .55), transparent 28%),
+        radial-gradient(circle at 92% 6%, rgba(189, 216, 245, .45), transparent 26%),
+        radial-gradient(circle at 70% 90%, rgba(247, 183, 210, .45), transparent 30%),
+        radial-gradient(circle at 18% 85%, rgba(189, 216, 245, .35), transparent 24%);
+      background-attachment: fixed;
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: var(--pink-deep); text-decoration: none; }
+    a:hover { color: var(--pink); }
+
+    .wrap { width: min(1280px, 100% - 32px); margin: 0 auto; }
+
+    /* falling sakura petals — fixed canvas over the page, never blocks clicks */
+    #petals { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 50; }
+
+    /* ---------- page grid (mirrors the mockup: logo | nav+banner  /  leaderboard | cards) ---------- */
+    .page {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      grid-template-areas:
+        "logo nav"
+        "logo banner"
+        "strip strip"
+        "board cards";
+      gap: 22px 26px;
+      padding: 26px 0 48px;
+      align-items: start;
+    }
+    .area-logo { grid-area: logo; }
+    .area-nav { grid-area: nav; }
+    .area-banner { grid-area: banner; }
+    .area-strip { grid-area: strip; }
+    .area-board { grid-area: board; }
+    .area-cards { grid-area: cards; }
+
+    /* ---------- shared card ---------- */
+    .card {
+      background: var(--card);
+      border: 1.5px solid var(--pink-light);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow .35s;
+    }
+    .card:hover { box-shadow: var(--shadow-hover); }
+    .card::before { /* soft crystal sheen */
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+      background: linear-gradient(135deg, rgba(255,255,255,.65), rgba(255,255,255,0) 45%, rgba(253,227,238,.45));
+    }
+    .card > * { position: relative; z-index: 2; }
+
+    /* ---------- type helpers ---------- */
+    .caps {
+      font-family: var(--font-caps); font-weight: 600; text-transform: uppercase; letter-spacing: .14em;
+    }
+    .gem-text { /* crystal-pink gradient lettering with a white rim, as in the reference art */
+      background: var(--text-gem);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 6px 10px rgba(224,86,154,.35));
+    }
+    .ornament { /* small rose-gold divider with a gem: ───◆─── */
+      display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--rose-gold);
+      margin: 2px 0 8px;
+    }
+    .ornament::before, .ornament::after { content: ''; width: 44px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rose-gold)); }
+    .ornament::after { background: linear-gradient(90deg, var(--rose-gold), transparent); }
+    .ornament svg { width: 12px; height: 12px; }
+
+    /* ---------- pill buttons ---------- */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(180deg, #f27ab4, var(--pink-deep));
+      color: #fff; font-family: var(--font-caps); font-weight: 600;
+      font-size: .8em; letter-spacing: .14em; text-transform: uppercase;
+      border: 1.5px solid #fff; border-radius: 999px; padding: 12px 28px;
+      box-shadow: 0 6px 18px rgba(201, 61, 132, .35), inset 0 1px 0 rgba(255,255,255,.5);
+      cursor: pointer; transition: transform .25s, box-shadow .25s, filter .25s; white-space: nowrap;
+    }
+    .btn:hover { color: #fff; transform: translateY(-2px); filter: brightness(1.06);
+      box-shadow: 0 10px 24px rgba(201, 61, 132, .45), inset 0 1px 0 rgba(255,255,255,.5); }
+    .btn svg { width: 16px; height: 16px; }
+
+    /* ---------- hero logo ---------- */
+    .hero { display: grid; place-items: center; padding: 10px 0; }
+    .logo-wrap { width: 100%; max-width: 520px; aspect-ratio: 1; position: relative; }
+    .logo-wrap img { width: 100%; height: 100%; object-fit: contain; display: block;
+      filter: drop-shadow(0 18px 30px rgba(224,86,154,.25)); }
+    .logo-wrap img.missing { display: none; }
+    /* fallback wordmark, shown until assets/clutch-stellaaa-logo.png is added */
+    .logo-fallback {
+      display: none; position: absolute; inset: 4%; border-radius: 50%;
+      background: radial-gradient(circle at 40% 30%, #fff, var(--blush) 55%, var(--ice-light));
+      border: 2px solid var(--pink-light); box-shadow: var(--shadow);
+      text-align: center; padding: 8%;
+      flex-direction: column; align-items: center; justify-content: center;
+    }
+    .logo-wrap.no-image .logo-fallback { display: flex; }
+    .logo-fallback svg.wolf { width: 42%; height: auto; margin-bottom: -4%; }
+    .logo-fallback .l1 {
+      font-family: var(--font-caps); font-weight: 700; font-size: clamp(2.2em, 6.5vw, 3.8em); letter-spacing: .02em; line-height: 1;
+      background: linear-gradient(180deg, #fff 0%, #cfe2fb 45%, #8fb6e6 100%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 5px 8px rgba(143,182,230,.5));
+    }
+    .logo-fallback .l2 {
+      font-family: var(--font-script); font-size: clamp(3.4em, 10vw, 5.8em); line-height: .85; margin-top: -2%;
+      background: var(--text-gem);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 5px 8px rgba(224,86,154,.45));
+    }
+    .logo-fallback svg.heart { width: 16%; height: auto; margin-top: 2%; }
+
+    /* ---------- nav ---------- */
+    .nav { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 8px 10px; gap: 4px; }
+    .nav a {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-caps); font-weight: 600; font-size: .98em; letter-spacing: .02em;
+      color: var(--pink-deep); padding: 12px 20px; border-radius: 999px; position: relative;
+      transition: background .25s;
+    }
+    .nav a svg { width: 22px; height: 22px; }
+    .nav a:hover { background: var(--card-tint); }
+    .nav a.current::after {
+      content: ''; position: absolute; left: 22px; right: 22px; bottom: 4px; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--pink), transparent); border-radius: 2px;
+    }
+    .menu-toggle {
+      display: none; background: #fff; border: 1.5px solid var(--pink-light); border-radius: 999px;
+      width: 44px; height: 44px; cursor: pointer; color: var(--pink-deep); font-size: 1.2em;
+    }
+
+    /* ---------- banners: CSS-painted terrace scene (sky, mountains, columns, balustrade) ---------- */
+    .banner {
+      display: grid; align-items: center; padding: 38px 48px;
+      background:
+        radial-gradient(ellipse at 50% 115%, rgba(255,255,255,.95), rgba(255,255,255,0) 55%),
+        radial-gradient(ellipse at 15% 85%, rgba(247,183,210,.75), transparent 40%),
+        radial-gradient(ellipse at 88% 80%, rgba(247,183,210,.6), transparent 38%),
+        radial-gradient(ellipse at 70% 10%, rgba(255,255,255,.9), transparent 35%),
+        linear-gradient(180deg, #d9ecfd 0%, #eef5fe 35%, #fde9f1 70%, #fff6fa 100%);
+    }
+    .banner .scene { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .banner .scene svg { width: 100%; height: 100%; display: block; }
+    .banner .banner-copy { text-align: center; max-width: 600px; margin: 0 auto; }
+    .banner .eyebrow { font-family: var(--font-caps); font-weight: 500; letter-spacing: .55em; text-transform: uppercase;
+      font-size: .82em; color: var(--pink-deep); margin-bottom: -4px; padding-left: .55em; }
+    .banner .script { font-family: var(--font-script); font-size: clamp(3.6em, 7.5vw, 6.4em); line-height: 1; }
+    .banner .display { font-family: var(--font-caps); font-weight: 700; font-size: clamp(2.2em, 4.6vw, 3.4em);
+      letter-spacing: .1em; text-transform: uppercase; line-height: 1.1; padding: 6px 0 4px; }
+    .banner p { font-family: var(--font-caps); font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+      font-size: .82em; color: var(--pink-deep); line-height: 1.75; margin-bottom: 20px; }
+    .banner.tall { min-height: 340px; }
+
+    /* strip banners: illustration left, copy right */
+    .banner.strip { grid-template-columns: 250px 1fr; gap: 24px; padding: 28px 40px 28px 28px; min-height: 230px; }
+    .banner.strip .art { height: 190px; display: grid; place-items: center; }
+    .banner.strip .art svg { height: 100%; width: auto; max-width: 100%; filter: drop-shadow(0 12px 18px rgba(224,86,154,.25)); overflow: visible; }
+    .banner.strip .banner-copy { max-width: 520px; }
+
+    /* ---------- leaderboard ---------- */
+    .board { padding: 26px 26px 18px; }
+    .board-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
+    .board-title { display: flex; align-items: center; gap: 12px; }
+    .board-title svg { width: 34px; height: 34px; }
+    .board-title h2 { font-family: var(--font-caps); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; font-size: 1.3em; color: var(--pink-deep); }
+    .select { position: relative; display: inline-flex; align-items: center; background: var(--card-tint); border: 1.5px solid var(--pink-light); border-radius: 999px; }
+    .select select {
+      appearance: none; -webkit-appearance: none; background: transparent; border: 0;
+      font-family: var(--font-body); font-weight: 500; font-size: .86em; color: var(--ink);
+      padding: 9px 36px 9px 16px; cursor: pointer; outline: none;
+    }
+    .select::after {
+      content: ''; position: absolute; right: 15px; top: 50%; width: 7px; height: 7px;
+      border-right: 1.5px solid var(--ink-soft); border-bottom: 1.5px solid var(--ink-soft);
+      transform: translateY(-70%) rotate(45deg); pointer-events: none;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { font-family: var(--font-caps); font-weight: 500; font-size: .72em; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--ink-soft); text-align: left; padding: 8px 10px; border-bottom: 1.5px solid var(--blush); }
+    thead th:nth-child(3), tbody td:nth-child(3) { text-align: right; }
+    thead th:nth-child(4), tbody td:nth-child(4) { text-align: center; }
+    tbody td { padding: 11px 10px; border-bottom: 1px solid var(--blush); font-size: .95em; vertical-align: middle; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr { transition: background .25s; }
+    tbody tr:hover { background: var(--card-tint); }
+    .rank { display: inline-grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; font-weight: 600; font-size: .82em; color: var(--ink); }
+    .rank.gold   { color: #fff; background: radial-gradient(circle at 35% 30%, #fbe7a6, #e0a62e); box-shadow: 0 3px 8px rgba(224,166,46,.45), inset 0 1px 0 #fff; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+    .rank.silver { color: #fff; background: radial-gradient(circle at 35% 30%, #f3f6fa, #aab5c5); box-shadow: 0 3px 8px rgba(170,181,197,.45), inset 0 1px 0 #fff; text-shadow: 0 1px 2px rgba(0,0,0,.2); }
+    .rank.bronze { color: #fff; background: radial-gradient(circle at 35% 30%, #f5cdb6, #c47a55); box-shadow: 0 3px 8px rgba(196,122,85,.45), inset 0 1px 0 #fff; text-shadow: 0 1px 2px rgba(0,0,0,.25); }
+    .player { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 34px; height: 34px; border-radius: 50%; flex: none;
+      background: radial-gradient(circle at 35% 30%, #4d3a5a, #1d1526);
+      border: 2px solid #fff; box-shadow: 0 0 0 1.5px var(--pink-light);
+      display: grid; place-items: center; color: #fff; font-size: .72em; font-weight: 600;
+    }
+    .player b { font-weight: 500; }
+    .wager { font-weight: 500; font-variant-numeric: tabular-nums; }
+    .gift { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 10px;
+      background: var(--card-tint); border: 1.5px solid var(--blush); cursor: pointer; transition: .25s; }
+    .gift:hover { background: var(--blush); transform: translateY(-1px); }
+    .gift svg { width: 18px; height: 18px; }
+    .board-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: .8em; color: var(--ink-soft); }
+    .board-foot .you b { color: var(--pink-deep); font-weight: 600; }
+
+    .cards { display: grid; gap: 22px; }
+
+    /* ---------- footer ---------- */
+    footer { text-align: center; padding: 10px 0 40px; font-size: .8em; color: var(--ink-soft); }
+    footer .sep { color: var(--pink-light); margin: 0 10px; }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 1040px) {
+      .page { grid-template-columns: 1fr; grid-template-areas: "nav" "logo" "banner" "strip" "board" "cards"; }
+      .logo-wrap { max-width: 420px; }
+      .nav { justify-content: center; }
+    }
+    @media (max-width: 760px) {
+      .banner { padding: 32px 22px; }
+      .banner.tall { min-height: 0; }
+      .banner.strip { grid-template-columns: 1fr; padding: 24px 22px; }
+      .banner.strip .art { height: 130px; }
+      .board { padding: 20px 14px 14px; }
+      .board-head { flex-wrap: wrap; }
+      thead th:nth-child(4), tbody td:nth-child(4) { display: none; }
+      .nav { position: relative; justify-content: space-between; }
+      .nav .links { display: none; width: 100%; flex-direction: column; }
+      .nav .links.open { display: flex; }
+      .menu-toggle { display: inline-grid; place-items: center; }
+    }
+    @media (prefers-reduced-motion: reduce) { #petals { display: none; } }
+  </style>
+</head>
+
+<body>
+  <canvas id="petals" aria-hidden="true"></canvas>
+
+  <!-- ===== inline icon sprite ===== -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7a6cd"/><stop offset="1" stop-color="#c93d84"/></linearGradient>
+      <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe7a6"/><stop offset="1" stop-color="#d9a24a"/></linearGradient>
+      <linearGradient id="g-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6ddd0"/><stop offset=".5" stop-color="#d9a08a"/><stop offset="1" stop-color="#b8735a"/></linearGradient>
+      <linearGradient id="g-ice" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#bdd8f5"/><stop offset="1" stop-color="#f7b7d2"/></linearGradient>
+      <linearGradient id="g-orb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd1e4"/><stop offset=".55" stop-color="#f06ba8"/><stop offset="1" stop-color="#c93d84"/></linearGradient>
+      <linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe4fb"/><stop offset="1" stop-color="#fbe6ef"/></linearGradient>
+      <linearGradient id="g-mtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9d9ea"/><stop offset="1" stop-color="#fbe6ef"/></linearGradient>
+      <linearGradient id="g-col" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#f6e4ea"/><stop offset="1" stop-color="#ead2da"/></linearGradient>
+      <radialGradient id="g-blossom" cx=".4" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".6" stop-color="#f7b7d2"/><stop offset="1" stop-color="#ec8cbb"/></radialGradient>
+
+      <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5L12 4l9 7.5" fill="none" stroke="url(#g-pink)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 10v10h5v-6h3v6h5V10" fill="none" stroke="url(#g-pink)" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+      <symbol id="i-crown" viewBox="0 0 24 24"><path d="M3 18l1.5-10 5 4.5L12 5l2.5 7.5 5-4.5L21 18z" fill="url(#g-pink)"/><path d="M4 20.5h16" stroke="url(#g-pink)" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="4.3" r="1.4" fill="#bdd8f5"/><circle cx="3.6" cy="7.6" r="1.1" fill="#bdd8f5"/><circle cx="20.4" cy="7.6" r="1.1" fill="#bdd8f5"/></symbol>
+      <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 01-10 0z" fill="url(#g-pink)"/><path d="M7 6H4.5a2.5 2.5 0 002.5 5M17 6h2.5a2.5 2.5 0 01-2.5 5" fill="none" stroke="url(#g-pink)" stroke-width="2"/><path d="M10 14h4v3h-4zM8 19.5h8" stroke="url(#g-pink)" stroke-width="2.2" stroke-linecap="round"/><path d="M12 6.5l.8 1.7 1.8.2-1.3 1.2.4 1.9-1.7-1-1.7 1 .4-1.9-1.3-1.2 1.8-.2z" fill="#fff"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3" fill="none" stroke="url(#g-pink)" stroke-width="2.2"/><path d="M3 10h18M8 3v4M16 3v4" stroke="url(#g-pink)" stroke-width="2.2" stroke-linecap="round"/><path d="M12 18.5s-3-2-3-3.8a1.5 1.5 0 013-.6 1.5 1.5 0 013 .6c0 1.8-3 3.8-3 3.8z" fill="#e0569a"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8.5" r="3.5" fill="url(#g-pink)"/><circle cx="16.5" cy="9.5" r="2.8" fill="url(#g-pink)" opacity=".75"/><path d="M2.5 19c0-3.5 3-5.5 6.5-5.5s6.5 2 6.5 5.5z" fill="url(#g-pink)"/><path d="M15 13.5c3 0 6 1.6 6 4.8h-4.2" fill="url(#g-pink)" opacity=".75"/></symbol>
+      <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="10" width="17" height="10.5" rx="2" fill="url(#g-pink)"/><rect x="2.5" y="6.5" width="19" height="4" rx="1.5" fill="#f7a6cd"/><path d="M12 6.5v14" stroke="#fff" stroke-width="2"/><path d="M12 6.5c-1.8-3.6-5.5-3.2-5.5-1.2S9.5 6.5 12 6.5zm0 0c1.8-3.6 5.5-3.2 5.5-1.2S14.5 6.5 12 6.5z" fill="none" stroke="#e0569a" stroke-width="1.6"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-gem" viewBox="0 0 24 24"><path d="M12 2l5 6-5 14L7 8z" fill="url(#g-ice)" stroke="#c98c74" stroke-width="1.2"/></symbol>
+      <symbol id="i-heart-gem" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.4-8.5-11.2A4.6 4.6 0 0112 7a4.6 4.6 0 018.5 2.8C20.5 15.6 12 21 12 21z" fill="url(#g-ice)" stroke="#c98c74" stroke-width="1.2"/></symbol>
+
+      <!-- blossom cluster, reused around banners -->
+      <symbol id="blossom" viewBox="0 0 40 40">
+        <g fill="url(#g-blossom)" stroke="#ec8cbb" stroke-width=".6">
+          <ellipse cx="20" cy="9" rx="6" ry="8"/><ellipse cx="30.5" cy="16.5" rx="6" ry="8" transform="rotate(72 30.5 16.5)"/>
+          <ellipse cx="26.5" cy="28.5" rx="6" ry="8" transform="rotate(144 26.5 28.5)"/><ellipse cx="13.5" cy="28.5" rx="6" ry="8" transform="rotate(216 13.5 28.5)"/>
+          <ellipse cx="9.5" cy="16.5" rx="6" ry="8" transform="rotate(288 9.5 16.5)"/>
+        </g>
+        <circle cx="20" cy="20" r="3.2" fill="#f9d976"/>
+      </symbol>
+
+      <!-- terrace scene: sky, mountains, columns and balustrade, painted once and reused -->
+      <symbol id="scene" viewBox="0 0 900 340" preserveAspectRatio="xMidYMid slice">
+        <rect width="900" height="340" fill="url(#g-sky)"/>
+        <path d="M0 230l90-70 70 40 90-90 90 70 70-50 90 60 80-80 90 70 70-30 90 60 70-40v170H0z" fill="url(#g-mtn)" opacity=".9"/>
+        <path d="M0 270l110-40 90 20 120-50 110 40 90-20 120 40 110-30 100 20 50-10v120H0z" fill="#f3dfe8" opacity=".9"/>
+        <rect y="262" width="900" height="78" fill="#fbeaf1"/>
+        <g fill="#fff" stroke="#ecd3dc" stroke-width="1.2">
+          <rect x="0" y="282" width="900" height="8"/><rect x="0" y="322" width="900" height="10"/>
+        </g>
+        <g fill="#fdf1f5" stroke="#ecd3dc" stroke-width="1">
+          <rect x="20" y="290" width="10" height="32" rx="4"/><rect x="60" y="290" width="10" height="32" rx="4"/><rect x="100" y="290" width="10" height="32" rx="4"/>
+          <rect x="140" y="290" width="10" height="32" rx="4"/><rect x="180" y="290" width="10" height="32" rx="4"/><rect x="220" y="290" width="10" height="32" rx="4"/>
+          <rect x="260" y="290" width="10" height="32" rx="4"/><rect x="300" y="290" width="10" height="32" rx="4"/><rect x="340" y="290" width="10" height="32" rx="4"/>
+          <rect x="380" y="290" width="10" height="32" rx="4"/><rect x="420" y="290" width="10" height="32" rx="4"/><rect x="460" y="290" width="10" height="32" rx="4"/>
+          <rect x="500" y="290" width="10" height="32" rx="4"/><rect x="540" y="290" width="10" height="32" rx="4"/><rect x="580" y="290" width="10" height="32" rx="4"/>
+          <rect x="620" y="290" width="10" height="32" rx="4"/><rect x="660" y="290" width="10" height="32" rx="4"/><rect x="700" y="290" width="10" height="32" rx="4"/>
+          <rect x="740" y="290" width="10" height="32" rx="4"/><rect x="780" y="290" width="10" height="32" rx="4"/><rect x="820" y="290" width="10" height="32" rx="4"/><rect x="860" y="290" width="10" height="32" rx="4"/>
+        </g>
+        <g fill="url(#g-col)" stroke="#ead2da" stroke-width="1.5">
+          <rect x="54" y="0" width="46" height="290"/><rect x="42" y="0" width="70" height="22" rx="4"/><rect x="40" y="30" width="74" height="10" rx="3"/>
+          <rect x="800" y="0" width="46" height="290"/><rect x="788" y="0" width="70" height="22" rx="4"/><rect x="786" y="30" width="74" height="10" rx="3"/>
+        </g>
+        <g fill="#c98c74" opacity=".5"><path d="M72 40q5 16-14 18h28q-19-2-14-18zM818 40q5 16-14 18h28q-19-2-14-18z"/></g>
+        <rect width="900" height="340" fill="url(#g-sky)" opacity=".25"/>
+        <!-- blossom clusters on the corners -->
+        <g>
+          <use href="#blossom" x="0" y="150" width="70" height="70"/><use href="#blossom" x="40" y="215" width="54" height="54"/><use href="#blossom" x="-10" y="250" width="60" height="60"/>
+          <use href="#blossom" x="100" y="260" width="40" height="40"/><use href="#blossom" x="20" y="60" width="40" height="40"/>
+          <use href="#blossom" x="830" y="60" width="60" height="60"/><use href="#blossom" x="860" y="140" width="44" height="44"/><use href="#blossom" x="810" y="210" width="66" height="66"/>
+          <use href="#blossom" x="850" y="270" width="52" height="52"/><use href="#blossom" x="770" y="280" width="36" height="36"/>
+        </g>
+      </symbol>
+
+      <!-- art: gem trophy (ongoing challenges) -->
+      <symbol id="art-trophy" viewBox="0 0 140 140">
+        <ellipse cx="70" cy="126" rx="42" ry="8" fill="#f7b7d2" opacity=".55"/>
+        <path d="M34 18h72v30a36 36 0 01-72 0z" fill="url(#g-rose)"/>
+        <path d="M34 28H22a12 12 0 0014 18M106 28h12a12 12 0 01-14 18" fill="none" stroke="url(#g-rose)" stroke-width="6" stroke-linecap="round"/>
+        <rect x="60" y="82" width="20" height="14" fill="url(#g-rose)"/>
+        <rect x="42" y="96" width="56" height="18" rx="5" fill="url(#g-rose)"/>
+        <rect x="36" y="112" width="68" height="10" rx="4" fill="url(#g-rose)"/>
+        <path d="M70 70s-20-12-20-26a11 11 0 0120-6 11 11 0 0120 6c0 14-20 26-20 26z" fill="url(#g-ice)" stroke="#fff" stroke-width="2"/>
+        <path d="M58 40l12 6 12-6M64 56l6 10 6-10" fill="none" stroke="#fff" stroke-width="1.2" opacity=".8"/>
+        <g fill="#f7b7d2"><circle cx="52" cy="14" r="3"/><circle cx="88" cy="14" r="3"/></g><path d="M70 4l3 7h7l-5.5 4 2 7-6.5-4.5L63.5 22l2-7L60 11h7z" fill="#bdd8f5"/>
+        <use href="#blossom" x="4" y="78" width="42" height="42"/><use href="#blossom" x="100" y="90" width="36" height="36"/><use href="#blossom" x="112" y="40" width="26" height="26"/>
+      </symbol>
+      <!-- art: blossom calendar (upcoming events) -->
+      <symbol id="art-calendar" viewBox="0 0 140 140">
+        <ellipse cx="70" cy="126" rx="42" ry="8" fill="#f7b7d2" opacity=".55"/>
+        <rect x="26" y="30" width="88" height="86" rx="12" fill="#fff" stroke="#f7b7d2" stroke-width="3"/>
+        <path d="M26 50h88" stroke="#f7b7d2" stroke-width="3"/>
+        <path d="M26 42a12 12 0 0112-12h64a12 12 0 0112 12v8H26z" fill="url(#g-pink)"/>
+        <g stroke="url(#g-rose)" stroke-width="5" stroke-linecap="round"><path d="M44 22v14M70 22v14M96 22v14"/></g>
+        <g stroke="#fde3ee" stroke-width="1.5"><path d="M38 66h64M38 82h64M38 98h64M54 54v56M86 54v56"/></g>
+        <path d="M70 100s-18-11-18-24a9.5 9.5 0 0118-5 9.5 9.5 0 0118 5c0 13-18 24-18 24z" fill="url(#g-orb)" stroke="#fff" stroke-width="2"/>
+        <use href="#blossom" x="0" y="84" width="40" height="40"/><use href="#blossom" x="104" y="96" width="34" height="34"/><use href="#blossom" x="110" y="10" width="26" height="26"/>
+      </symbol>
+      <!-- art: crowned community orbs -->
+      <symbol id="art-community" viewBox="0 0 140 140">
+        <ellipse cx="70" cy="126" rx="42" ry="8" fill="#f7b7d2" opacity=".55"/>
+        <path d="M38 118c0-22 14-34 32-34s32 12 32 34z" fill="url(#g-orb)" stroke="#fff" stroke-width="2"/>
+        <circle cx="70" cy="62" r="22" fill="url(#g-orb)" stroke="#fff" stroke-width="2"/>
+        <path d="M14 122c0-16 10-26 24-26 6 0 10 2 13 5-7 6-10 14-10 21z" fill="url(#g-orb)" opacity=".85" stroke="#fff" stroke-width="2"/>
+        <circle cx="38" cy="78" r="15" fill="url(#g-orb)" opacity=".85" stroke="#fff" stroke-width="2"/>
+        <path d="M126 122c0-16-10-26-24-26-6 0-10 2-13 5 7 6 10 14 10 21z" fill="url(#g-orb)" opacity=".85" stroke="#fff" stroke-width="2"/>
+        <circle cx="102" cy="78" r="15" fill="url(#g-orb)" opacity=".85" stroke="#fff" stroke-width="2"/>
+        <path d="M52 40l4-18 9 9 5-15 5 15 9-9 4 18z" fill="url(#g-rose)" stroke="#fff" stroke-width="1"/>
+        <circle cx="70" cy="16" r="3" fill="#bdd8f5"/>
+        <g fill="#fff" opacity=".6"><ellipse cx="62" cy="54" rx="5" ry="7" transform="rotate(-30 62 54)"/></g>
+        <use href="#blossom" x="0" y="92" width="34" height="34"/><use href="#blossom" x="108" y="100" width="30" height="30"/>
+      </symbol>
+      <!-- art: podium (leaderboard strip) -->
+      <symbol id="art-podium" viewBox="0 0 200 140">
+        <ellipse cx="100" cy="128" rx="80" ry="8" fill="#f7b7d2" opacity=".55"/>
+        <rect x="18" y="66" width="52" height="60" rx="6" fill="#dfe5ee"/><rect x="18" y="66" width="52" height="10" rx="5" fill="#eef2f7"/>
+        <rect x="74" y="40" width="52" height="86" rx="6" fill="#ecc9ba"/><rect x="74" y="40" width="52" height="10" rx="5" fill="#f6ddd0"/>
+        <rect x="130" y="82" width="52" height="44" rx="6" fill="#d9a08a"/><rect x="130" y="82" width="52" height="10" rx="5" fill="#ecc9ba"/>
+        <g font-family="Century Gothic, URW Gothic L, Poppins, sans-serif" font-weight="700" font-size="30" fill="#fff" text-anchor="middle">
+          <text x="44" y="110">2</text><text x="100" y="98">1</text><text x="156" y="118">3</text>
+        </g>
+        <g fill="url(#g-rose)" stroke="#fff" stroke-width="1">
+          <path d="M30 62l3-14 7 7 4-11 4 11 7-7 3 14z"/><path d="M80 34l4-20 9 9 7-16 7 16 9-9 4 20z"/><path d="M142 78l3-14 7 7 4-11 4 11 7-7 3 14z"/>
+        </g>
+        <g fill="#bdd8f5"><circle cx="44" cy="46" r="2.5"/><circle cx="100" cy="12" r="3.5"/><circle cx="156" cy="62" r="2.5"/></g>
+        <use href="#blossom" x="0" y="96" width="30" height="30"/><use href="#blossom" x="172" y="100" width="28" height="28"/>
+      </symbol>
+      <!-- fallback logo mark: tiara wolf -->
+      <symbol id="art-wolf" viewBox="0 0 120 100">
+        <path d="M30 40l10-24 14 14h12l14-14 10 24-6 30c-6 12-22 18-24 18s-18-6-24-18z" fill="url(#g-ice)" stroke="#c98c74" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M48 56l-6-4 4-4zM72 56l6-4-4-4z" fill="#8fb6e6"/>
+        <ellipse cx="60" cy="70" rx="5" ry="3.5" fill="#5a3a4b"/>
+        <path d="M46 14l14-10 14 10-5 6h-18z" fill="url(#g-rose)"/>
+        <circle cx="60" cy="9" r="3" fill="#f7b7d2"/><circle cx="52" cy="12" r="2" fill="#bdd8f5"/><circle cx="68" cy="12" r="2" fill="#bdd8f5"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <main class="wrap page" id="top">
+
+    <!-- ===== hero: the Clutch Stellaaa logo ===== -->
+    <section class="area-logo hero" aria-label="Clutch Stellaaa">
+      <div class="logo-wrap" id="logo">
+        <!-- the wolf artwork goes at assets/clutch-stellaaa-logo.png; a typographic wordmark renders until then -->
+        <img src="assets/clutch-stellaaa-logo.png" alt="Clutch Stellaaa — crystal wolf with tiara, butterfly and blossoms"
+             onerror="this.classList.add('missing'); this.parentNode.classList.add('no-image');">
+        <div class="logo-fallback" aria-hidden="true">
+          <svg class="wolf"><use href="#art-wolf"/></svg>
+          <div class="l1">Clutch</div>
+          <div class="l2">Stellaaa</div>
+          <svg class="heart"><use href="#i-heart-gem"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== nav ===== -->
+    <nav class="area-nav card nav" aria-label="Main">
+      <button class="menu-toggle" id="menu" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+      <div class="links" id="links" style="display:contents">
+        <a href="#top" class="current"><svg><use href="#i-home"/></svg>Home</a>
+        <a href="#leaderboard"><svg><use href="#i-crown"/></svg>Leaderboard</a>
+        <a href="#challenges"><svg><use href="#i-trophy"/></svg>Challenges</a>
+        <a href="#events"><svg><use href="#i-calendar"/></svg>Events</a>
+        <a href="#community"><svg><use href="#i-users"/></svg>Community</a>
+      </div>
+    </nav>
+
+    <!-- ===== current challenges banner ===== -->
+    <section class="area-banner card banner tall" id="challenges">
+      <div class="scene"><svg><use href="#scene"/></svg></div>
+      <div class="banner-copy">
+        <div class="eyebrow">Current</div>
+        <div class="script gem-text">Challenges</div>
+        <div class="ornament"><svg><use href="#i-gem"/></svg></div>
+        <p>Check out all ongoing events<br>and compete for amazing rewards!</p>
+        <a class="btn" href="#">View Challenges <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ===== leaderboard banner strip ===== -->
+    <section class="area-strip card banner strip">
+      <div class="scene"><svg><use href="#scene"/></svg></div>
+      <div class="art"><svg><use href="#art-podium"/></svg></div>
+      <div class="banner-copy">
+        <div class="display gem-text">Leaderboard</div>
+        <div class="ornament"><svg><use href="#i-gem"/></svg></div>
+        <p>See the top players, track progress<br>and climb to the top!</p>
+        <a class="btn" href="#leaderboard">View Leaderboard <svg><use href="#i-arrow"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ===== leaderboard ===== -->
+    <section class="area-board card board" id="leaderboard">
+      <div class="board-head">
+        <div class="board-title">
+          <svg><use href="#i-crown"/></svg>
+          <h2>Leaderboard</h2>
+        </div>
+        <label class="select">
+          <select id="period" aria-label="Leaderboard period">
+            <option value="month" selected>This Month</option>
+            <option value="week">This Week</option>
+            <option value="all">All Time</option>
+          </select>
+        </label>
+      </div>
+      <table>
+        <thead><tr><th>#</th><th>Player</th><th>Wager</th><th>Reward</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="board-foot">
+        <span>Updated <span id="updated">just now</span> &middot; wagers in USD</span>
+        <span class="you">Your rank: <b id="you">&mdash;</b></span>
+      </div>
+    </section>
+
+    <!-- ===== feature banners ===== -->
+    <section class="area-cards cards">
+      <article class="card banner strip" id="ongoing">
+        <div class="scene"><svg><use href="#scene"/></svg></div>
+        <div class="art"><svg><use href="#art-trophy"/></svg></div>
+        <div class="banner-copy">
+          <div class="eyebrow">Ongoing</div>
+          <div class="script gem-text">Challenges</div>
+          <div class="ornament"><svg><use href="#i-gem"/></svg></div>
+          <p>Take part in our current<br>challenges and win amazing rewards!</p>
+          <a class="btn" href="#challenges">View Ongoing <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card banner strip" id="events">
+        <div class="scene"><svg><use href="#scene"/></svg></div>
+        <div class="art"><svg><use href="#art-calendar"/></svg></div>
+        <div class="banner-copy">
+          <div class="eyebrow">Upcoming</div>
+          <div class="script gem-text">Events</div>
+          <div class="ornament"><svg><use href="#i-gem"/></svg></div>
+          <p>Don't miss out on what's<br>coming next!</p>
+          <a class="btn" href="#">View Events <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+
+      <article class="card banner strip" id="community">
+        <div class="scene"><svg><use href="#scene"/></svg></div>
+        <div class="art"><svg><use href="#art-community"/></svg></div>
+        <div class="banner-copy">
+          <div class="display gem-text">Community</div>
+          <div class="ornament"><svg><use href="#i-gem"/></svg></div>
+          <p>Join our community, take part<br>in giveaways, quizzes and more!</p>
+          <a class="btn" href="#">Join Now <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    &copy; <span id="year"></span> Clutch Stellaaa
+    <span class="sep">&middot;</span> Leaderboard data from <a href="https://clutch.com" target="_blank" rel="noopener">clutch.com</a>
+    <span class="sep">&middot;</span> <a href="#">Rules</a>
+    <span class="sep">&middot;</span> <a href="#">Privacy</a>
+    <span class="sep">&middot;</span> <a href="#top">Back to top</a>
+  </footer>
+
+  <script>
+    // ---- Sample leaderboard data. Replace with a fetch() to the clutch.com leaderboard feed. ----
+    var DATA = {
+      month: [
+        { player: 'PlayerOne',  wager: 245610 },
+        { player: 'LuckyQueen', wager: 198420 },
+        { player: 'DegenKing',  wager: 167330 },
+        { player: 'StellaFan',  wager: 142560 },
+        { player: 'MoonPlayer', wager: 121980 }
+      ],
+      week: [
+        { player: 'LuckyQueen', wager: 58210 },
+        { player: 'PlayerOne',  wager: 54980 },
+        { player: 'MoonPlayer', wager: 41120 },
+        { player: 'DegenKing',  wager: 39760 },
+        { player: 'StellaFan',  wager: 30450 }
+      ],
+      all: [
+        { player: 'PlayerOne',  wager: 1984320 },
+        { player: 'DegenKing',  wager: 1522870 },
+        { player: 'LuckyQueen', wager: 1398110 },
+        { player: 'MoonPlayer', wager: 955400 },
+        { player: 'StellaFan',  wager: 871260 }
+      ]
+    };
+    var MEDALS = ['gold', 'silver', 'bronze'];
+
+    function initials(name) { return name.replace(/[^A-Z]/g, '').slice(0, 2) || name.slice(0, 2).toUpperCase(); }
+    function money(n) { return '$ ' + n.toLocaleString('en-US'); }
+
+    function render(period) {
+      var rows = DATA[period] || [];
+      var html = '';
+      rows.forEach(function (r, i) {
+        var medal = MEDALS[i] ? ' ' + MEDALS[i] : '';
+        html += '<tr>' +
+          '<td><span class="rank' + medal + '">' + (i + 1) + '</span></td>' +
+          '<td><div class="player"><span class="avatar">' + initials(r.player) + '</span><b>' + r.player + '</b></div></td>' +
+          '<td class="wager">' + money(r.wager) + '</td>' +
+          '<td><span class="gift" title="Reward" role="img" aria-label="Reward"><svg><use href="#i-gift"/></svg></span></td>' +
+        '</tr>';
+      });
+      document.getElementById('rows').innerHTML = html;
+      document.getElementById('updated').textContent = new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    }
+
+    var periodEl = document.getElementById('period');
+    periodEl.addEventListener('change', function () { render(this.value); });
+    render(periodEl.value);
+
+    // ---- Mobile nav ----
+    var menu = document.getElementById('menu');
+    var links = document.getElementById('links');
+    function syncMenu() { links.style.display = window.innerWidth <= 760 ? '' : 'contents'; }
+    window.addEventListener('resize', syncMenu); syncMenu();
+    menu.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      menu.setAttribute('aria-expanded', open);
+    });
+    links.addEventListener('click', function (e) {
+      var a = e.target.closest('a');
+      if (!a) return;
+      links.classList.remove('open'); menu.setAttribute('aria-expanded', false);
+      var all = links.querySelectorAll('a');
+      for (var i = 0; i < all.length; i++) all[i].classList.remove('current');
+      a.classList.add('current');
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- Falling sakura petals: drift down like slow snow, swirl away from the cursor, burst on click ----
+    (function () {
+      var canvas = document.getElementById('petals');
+      if (!canvas || !canvas.getContext) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var ctx = canvas.getContext('2d');
+      var W, H, dpr, petals = [];
+      var mouse = { x: -9999, y: -9999, vx: 0, vy: 0, lastX: 0, lastY: 0 };
+      var COLORS = [['#ffe1ee', '#f7a6cd'], ['#ffd1e4', '#ee7fb6'], ['#fff0f6', '#f4b5d1'], ['#ffdbe9', '#e88cbb']];
+
+      function resize() {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        W = window.innerWidth; H = window.innerHeight;
+        canvas.width = W * dpr; canvas.height = H * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        var target = Math.round(Math.min(90, Math.max(28, (W * H) / 22000)));
+        while (petals.length < target) petals.push(makePetal(true));
+        petals.length = Math.min(petals.length, target);
+      }
+
+      function makePetal(anywhere, x, y, burst) {
+        var size = 6 + Math.random() * 9;
+        var c = COLORS[Math.floor(Math.random() * COLORS.length)];
+        return {
+          x: x != null ? x : Math.random() * W,
+          y: y != null ? y : (anywhere ? Math.random() * H : -20),
+          size: size,
+          vx: burst ? (Math.random() - .5) * 6 : 0,
+          vy: burst ? (Math.random() - .8) * 5 : 0,
+          fall: .25 + (size / 15) * .55,          // bigger petals fall a touch faster
+          sway: 1.2 + Math.random() * 1.6,        // side-to-side amplitude
+          phase: Math.random() * Math.PI * 2,
+          freq: .006 + Math.random() * .008,
+          rot: Math.random() * Math.PI * 2,
+          spin: (Math.random() - .5) * .03,
+          c1: c[0], c2: c[1],
+          alpha: .75 + Math.random() * .25
+        };
+      }
+
+      function drawPetal(p) {
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot);
+        ctx.globalAlpha = p.alpha;
+        var g = ctx.createLinearGradient(-p.size, 0, p.size, 0);
+        g.addColorStop(0, p.c1); g.addColorStop(1, p.c2);
+        ctx.fillStyle = g;
+        ctx.beginPath();                          // cherry-blossom petal: rounded with a notched tip
+        ctx.moveTo(0, -p.size);
+        ctx.bezierCurveTo(p.size * .9, -p.size * .9, p.size * .9, p.size * .5, 0, p.size);
+        ctx.bezierCurveTo(-p.size * .9, p.size * .5, -p.size * .9, -p.size * .9, 0, -p.size);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(255,255,255,.35)';
+        ctx.beginPath(); ctx.ellipse(-p.size * .2, -p.size * .2, p.size * .25, p.size * .45, -.6, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      }
+
+      var t = 0;
+      function frame() {
+        t++;
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < petals.length; i++) {
+          var p = petals[i];
+          // gentle drift: slow fall plus a sine sway, like snow
+          var sway = Math.sin(t * p.freq + p.phase) * p.sway * .35;
+          // cursor interaction: petals within 140px are nudged away in the direction the pointer is moving
+          var dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+          if (d2 < 140 * 140) {
+            var d = Math.sqrt(d2) || 1, f = (1 - d / 140) * .9;
+            p.vx += (dx / d) * f + mouse.vx * .06 * f;
+            p.vy += (dy / d) * f * .5 + mouse.vy * .06 * f;
+            p.spin += (Math.random() - .5) * .02 * f;
+          }
+          p.vx *= .94; p.vy *= .94;                 // damping so pushes settle back into the drift
+          p.x += sway + p.vx;
+          p.y += p.fall + p.vy;
+          p.rot += p.spin + sway * .02;
+          if (p.y > H + 20 || p.x < -40 || p.x > W + 40) { petals[i] = makePetal(false); }
+          drawPetal(p);
+        }
+        mouse.vx *= .8; mouse.vy *= .8;
+        requestAnimationFrame(frame);
+      }
+
+      function pointerMove(x, y) {
+        mouse.vx = x - mouse.lastX; mouse.vy = y - mouse.lastY;
+        mouse.lastX = x; mouse.lastY = y; mouse.x = x; mouse.y = y;
+      }
+      window.addEventListener('mousemove', function (e) { pointerMove(e.clientX, e.clientY); }, { passive: true });
+      window.addEventListener('touchmove', function (e) { var t0 = e.touches[0]; pointerMove(t0.clientX, t0.clientY); }, { passive: true });
+      window.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+      window.addEventListener('click', function (e) {   // a little burst of petals wherever the page is clicked
+        if (e.target.closest('a, button, select, label')) return;
+        for (var i = 0; i < 10; i++) petals.push(makePetal(false, e.clientX, e.clientY, true));
+      });
+      window.addEventListener('resize', resize);
+      resize();
+      requestAnimationFrame(frame);
+    })();
+  </script>
+</body>
+</html>
