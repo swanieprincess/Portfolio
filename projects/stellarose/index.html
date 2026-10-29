@@ -132,9 +132,21 @@
       border: 1.5px solid #fff; border-radius: 999px; padding: 12px 28px;
       box-shadow: 0 6px 18px rgba(199, 101, 145, .35), inset 0 1px 0 rgba(255,255,255,.5);
       cursor: pointer; transition: transform .25s, box-shadow .25s, filter .25s; white-space: nowrap;
+      position: relative; overflow: hidden;
+    }
+    .btn::after { /* light sweep that crosses the pill on hover */
+      content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+      background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0));
+      transform: skewX(-20deg); pointer-events: none;
     }
     .btn:hover { color: #fff; transform: translateY(-2px); filter: brightness(1.06);
-      box-shadow: 0 10px 24px rgba(199, 101, 145, .45), inset 0 1px 0 rgba(255,255,255,.5); }
+      animation: btn-glow 1.5s ease-in-out infinite; }
+    .btn:hover::after { animation: btn-sweep .9s ease-out; }
+    @keyframes btn-glow {
+      0%, 100% { box-shadow: 0 8px 20px rgba(199, 101, 145, .45), 0 0 10px rgba(244, 182, 210, .6), 0 0 0 0 rgba(244, 182, 210, .55), inset 0 1px 0 rgba(255,255,255,.5); }
+      50%      { box-shadow: 0 10px 26px rgba(199, 101, 145, .55), 0 0 26px rgba(244, 182, 210, .95), 0 0 0 6px rgba(244, 182, 210, 0), inset 0 1px 0 rgba(255,255,255,.7); }
+    }
+    @keyframes btn-sweep { from { left: -60%; } to { left: 120%; } }
     .btn svg { width: 16px; height: 16px; }
 
     /* ---------- hero logo ---------- */
@@ -334,7 +346,7 @@
       .nav .links.open { display: flex; }
       .menu-toggle { display: inline-grid; place-items: center; }
     }
-    @media (prefers-reduced-motion: reduce) { #petals { display: none; } }
+    @media (prefers-reduced-motion: reduce) { #petals { display: none; } .btn:hover, .btn:hover::after { animation: none; } }
   </style>
 </head>
 
@@ -548,7 +560,7 @@
         <a href="#leaderboard"><svg><use href="#i-crown"/></svg>Leaderboard</a>
         <a href="#challenges"><svg><use href="#i-trophy"/></svg>Challenges</a>
         <a href="#events"><svg><use href="#i-calendar"/></svg>Events</a>
-        <a href="#community"><svg><use href="#i-users"/></svg>Community</a>
+        <a href="#community" data-link="community"><svg><use href="#i-users"/></svg>Community</a>
       </div>
     </nav>
 
@@ -562,7 +574,7 @@
         <div class="script gem-text">Challenges</div>
         <div class="ornament"><svg><use href="#i-gem"/></svg></div>
         <p>Check out all ongoing events<br>and compete for amazing rewards!</p>
-        <a class="btn" href="#">View Challenges <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="#" data-link="challenges">View Challenges <svg><use href="#i-arrow"/></svg></a>
       </div>
     </section>
 
@@ -615,7 +627,7 @@
           <div class="script gem-text">Challenges</div>
           <div class="ornament"><svg><use href="#i-gem"/></svg></div>
           <p>Take part in our current<br>challenges and win amazing rewards!</p>
-          <a class="btn" href="#challenges">View Ongoing <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn" href="#challenges" data-link="challenges">View Ongoing <svg><use href="#i-arrow"/></svg></a>
         </div>
       </article>
 
@@ -641,7 +653,7 @@
           <div class="display gem-text">Community</div>
           <div class="ornament"><svg><use href="#i-gem"/></svg></div>
           <p>Join our community, take part<br>in giveaways, quizzes and more!</p>
-          <a class="btn" href="#">Join Now <svg><use href="#i-arrow"/></svg></a>
+          <a class="btn" href="#" data-link="community">Join Now <svg><use href="#i-arrow"/></svg></a>
         </div>
       </article>
     </section>
@@ -656,7 +668,7 @@
         <div class="display gem-text" style="margin-top:-10px">Bonus</div>
         <div class="ornament"><svg><use href="#i-heart-gem"/></svg></div>
         <p>Celebrate your birthday with the garden<br>and unwrap a special gift on your day!</p>
-        <a class="btn" href="#">Claim Bonus <svg><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="#" data-link="bonus">Claim Bonus <svg><use href="#i-arrow"/></svg></a>
       </div>
     </section>
   </main>
@@ -670,6 +682,17 @@
   </footer>
 
   <script>
+    // ---- Outbound links: paste the real URLs here and every matching button and nav item picks them up. ----
+    var LINKS = {
+      community: '',   // her Discord or Telegram invite, e.g. 'https://discord.gg/xxxxx'
+      challenges: '',  // where challenges live (clutch.com page), or leave empty to stay on this page
+      bonus: ''        // where the birthday bonus is claimed
+    };
+    document.querySelectorAll('[data-link]').forEach(function (a) {
+      var url = LINKS[a.getAttribute('data-link')];
+      if (url) { a.href = url; a.target = '_blank'; a.rel = 'noopener'; }
+    });
+
     // ---- Sample leaderboard data. Replace with a fetch() to the clutch.com leaderboard feed. ----
     var DATA = {
       month: [

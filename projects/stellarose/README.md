@@ -92,6 +92,14 @@ Bonus strip is already cut from the client's banner and committed; the others
 render their inline SVG blossoms, scene and illustrations until their source
 files are added, so the page never shows a broken image.
 
+## Outbound links
+
+Community is only a link: the **Community** nav item and the **Join Now**
+button go straight to her Discord or Telegram invite. Paste it into
+`LINKS.community` at the top of the script in `index.html`; `LINKS.bonus`
+and `LINKS.challenges` work the same way for Claim Bonus and the challenge
+buttons. Until a URL is set the button stays a placeholder.
+
 ## Upcoming events from Google Calendar
 
 The Upcoming Events banner lists the next three events from a public Google
