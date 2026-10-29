@@ -11,6 +11,19 @@ veins, stamens, buds and leaves on rose-gold twigs), pill buttons, a soft
 terrace scene (sky, mountains, columns, balustrade) behind every banner, and
 gradient "gem" lettering. All headings and copy are real HTML text.
 
+## Palette
+
+| Role | Color |
+| --- | --- |
+| Main headings (soft rose pink) | `#D989AC` |
+| Soft decorative lettering, borders, accents (baby pink) | `#F4B6D2` |
+| Page background and delicate accents (light blush) | `#FADDEB` |
+| Smaller text that needs contrast (deep rose) | `#C76591` |
+| Cards and sections (almost-white pink) | `#FFF7FB` |
+
+Display words use the soft pink gradient `#C76591 → #D989AC → #F4B6D2` with a
+white rim; the gold, silver and bronze medals keep their own colors.
+
 ## Fonts
 
 - **Sacramento** — script display words (*Challenges*, *Events*, the wordmark)
@@ -34,6 +47,8 @@ gradient "gem" lettering. All headings and copy are real HTML text.
 |                  |------------------------------------------|
 |                  | orbs     COMMUNITY           [Join Now]   |
 +------------------+------------------------------------------+
+|  cake & gift     BIRTHDAY Bonus              [Claim Bonus]   |
++-------------------------------------------------------------+
 ```
 
 Collapses to a single column under 1040px; the nav becomes a hamburger under
@@ -61,14 +76,16 @@ It writes to `assets/`:
 
 - `logo.png` — the wolf logo with its white background knocked out (hero)
 - `<banner>-art.png` — the illustration side of each strip banner (podium,
-  trophy, calendar, crowned orbs), shown in place of the inline SVG art
+  trophy, calendar, crowned orbs, birthday cake), bled into the left of the
+  card with a soft fade and shown in place of the inline SVG art
 - `<banner>-edge.png` — the blossom-and-column edge of each banner, faded in
   over the right side of the card; the wide Current Challenges banner gets a
   left and a right edge
 
-Headlines, copy and buttons stay real HTML text over the top. Until the files
-exist the inline SVG blossoms, scene and illustrations render instead, so the
-page never shows a broken image.
+Headlines, copy and buttons stay real HTML text over the top. The Birthday
+Bonus strip is already cut from the client's banner and committed; the others
+render their inline SVG blossoms, scene and illustrations until their source
+files are added, so the page never shows a broken image.
 
 ## Wiring the leaderboard
 

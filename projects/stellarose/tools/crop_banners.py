@@ -11,6 +11,7 @@ from projects/stellarose/. Output lands in assets/ and index.html picks it up.
   source/ongoing-challenges.jpg     -> assets/ongoing-art.png,     assets/ongoing-edge.png
   source/upcoming-events.jpg        -> assets/events-art.png,      assets/events-edge.png
   source/community.jpg              -> assets/community-art.png,   assets/community-edge.png
+  source/birthday-bonus.jpg         -> assets/birthday-art.png,    assets/birthday-edge.png
 
 The banners carry their headline and button baked into the middle, so this
 script keeps only the illustration on the left and the blossom/column edge on
@@ -35,6 +36,7 @@ STRIPS = {
     "ongoing":     ("ongoing-challenges", 0.42, 0.10),
     "events":      ("upcoming-events", 0.45, 0.09),
     "community":   ("community", 0.41, 0.13),
+    "birthday":    ("birthday-bonus", 0.40, 0.13),
 }
 WIDE = ("current-challenges", 0.24, 0.24)   # text-free left and right thirds of the wide banner
 
@@ -47,11 +49,14 @@ def find(stem):
     return None
 
 
+TRIM = 8  # px shaved off the outer sides so the example's own card border does not come along
+
+
 def crop_frac(img, left=None, right=None):
     w, h = img.size
     if left is not None:
-        return img.crop((0, 0, int(w * left), h))
-    return img.crop((int(w * (1 - right)), 0, w, h))
+        return img.crop((TRIM, TRIM, int(w * left), h - TRIM))
+    return img.crop((int(w * (1 - right)), TRIM, w - TRIM, h - TRIM))
 
 
 def knock_out_background(img, tol=28):

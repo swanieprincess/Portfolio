@@ -7,5 +7,6 @@ Drop the original Clutch Stellaaa example images here, then run
 - `ongoing-challenges.jpg` — the trophy banner
 - `upcoming-events.jpg` — the calendar banner
 - `community.jpg` — the crowned orbs banner
+- `birthday-bonus.jpg` — the cake and gift banner
 
 PNG, JPG or WEBP all work. The script writes text-free crops to `assets/`.

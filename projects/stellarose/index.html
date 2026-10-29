@@ -16,27 +16,29 @@
   <style>
     /* ---------- Clutch Stellaaa tokens: crystal pink, rose gold, icy blue ---------- */
     :root {
-      --bg: #fff6fa;
-      --card: #ffffff;
-      --card-tint: #fff3f8;
+      /* palette: soft rose #D989AC (headings), baby pink #F4B6D2 (accents), light blush #FADDEB
+         (backgrounds), deep rose #C76591 (small text), almost-white pink #FFF7FB (cards) */
+      --bg: #FADDEB;
+      --card: #FFF7FB;
+      --card-tint: #FADDEB;
       --ink: #5a3a4b;
-      --ink-soft: #8a6a7a;
-      --pink: #e0569a;
-      --pink-deep: #c93d84;
-      --pink-light: #f7b7d2;
-      --blush: #fde3ee;
+      --ink-soft: #C76591;
+      --pink: #D989AC;
+      --pink-deep: #C76591;
+      --pink-light: #F4B6D2;
+      --blush: #FADDEB;
       --rose-gold: #c98c74;
       --rose-gold-light: #ecc9ba;
       --ice: #bdd8f5;
       --ice-light: #e4f0fd;
       --sky: #cfe6fb;
-      --shadow: 0 10px 30px rgba(224, 86, 154, .14), 0 2px 6px rgba(201, 140, 116, .10);
-      --shadow-hover: 0 16px 40px rgba(224, 86, 154, .22), 0 3px 8px rgba(201, 140, 116, .14);
+      --shadow: 0 10px 30px rgba(217, 137, 172, .18), 0 2px 6px rgba(201, 140, 116, .10);
+      --shadow-hover: 0 16px 40px rgba(217, 137, 172, .28), 0 3px 8px rgba(201, 140, 116, .14);
       --radius: 22px;
       --font-script: 'Sacramento', cursive;
       --font-caps: 'Century Gothic', 'URW Gothic L', 'Poppins', sans-serif;
       --font-body: 'Century Gothic', 'URW Gothic L', 'Poppins', sans-serif;
-      --text-gem: linear-gradient(180deg, #ffd6e7 0%, #ee7fb6 40%, #e0569a 62%, #c93d84 100%);
+      --text-gem: linear-gradient(135deg, #C76591 0%, #D989AC 40%, #E9A3C2 75%, #F4B6D2 100%);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -44,10 +46,10 @@
     body {
       background: var(--bg);
       background-image:
-        radial-gradient(circle at 8% 12%, rgba(247, 183, 210, .55), transparent 28%),
-        radial-gradient(circle at 92% 6%, rgba(189, 216, 245, .45), transparent 26%),
-        radial-gradient(circle at 70% 90%, rgba(247, 183, 210, .45), transparent 30%),
-        radial-gradient(circle at 18% 85%, rgba(189, 216, 245, .35), transparent 24%);
+        radial-gradient(circle at 8% 12%, rgba(255, 247, 251, .9), transparent 30%),
+        radial-gradient(circle at 92% 6%, rgba(228, 240, 253, .7), transparent 26%),
+        radial-gradient(circle at 70% 90%, rgba(255, 247, 251, .8), transparent 30%),
+        radial-gradient(circle at 18% 85%, rgba(228, 240, 253, .5), transparent 24%);
       background-attachment: fixed;
       color: var(--ink);
       font-family: var(--font-body);
@@ -72,7 +74,8 @@
         "logo nav"
         "logo banner"
         "strip strip"
-        "board cards";
+        "board cards"
+        "bonus bonus";
       gap: 22px 26px;
       padding: 26px 0 48px;
       align-items: start;
@@ -83,6 +86,7 @@
     .area-strip { grid-area: strip; }
     .area-board { grid-area: board; }
     .area-cards { grid-area: cards; }
+    .area-bonus { grid-area: bonus; }
 
     /* ---------- shared card ---------- */
     .card {
@@ -97,7 +101,7 @@
     .card:hover { box-shadow: var(--shadow-hover); }
     .card::before { /* soft crystal sheen */
       content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1;
-      background: linear-gradient(135deg, rgba(255,255,255,.65), rgba(255,255,255,0) 45%, rgba(253,227,238,.45));
+      background: linear-gradient(135deg, rgba(255,255,255,.65), rgba(255,255,255,0) 45%, rgba(250,221,235,.45));
     }
     .card > * { position: relative; z-index: 2; }
 
@@ -108,7 +112,7 @@
     .gem-text { /* crystal-pink gradient lettering with a white rim, as in the reference art */
       background: var(--text-gem);
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 6px 10px rgba(224,86,154,.35));
+      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 6px 10px rgba(199,101,145,.35));
     }
     .ornament { /* small rose-gold divider with a gem: ───◆─── */
       display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--rose-gold);
@@ -122,15 +126,15 @@
     /* ---------- pill buttons ---------- */
     .btn {
       display: inline-flex; align-items: center; gap: 10px;
-      background: linear-gradient(180deg, #f27ab4, var(--pink-deep));
+      background: linear-gradient(180deg, #E39FC0, var(--pink-deep));
       color: #fff; font-family: var(--font-caps); font-weight: 600;
       font-size: .8em; letter-spacing: .14em; text-transform: uppercase;
       border: 1.5px solid #fff; border-radius: 999px; padding: 12px 28px;
-      box-shadow: 0 6px 18px rgba(201, 61, 132, .35), inset 0 1px 0 rgba(255,255,255,.5);
+      box-shadow: 0 6px 18px rgba(199, 101, 145, .35), inset 0 1px 0 rgba(255,255,255,.5);
       cursor: pointer; transition: transform .25s, box-shadow .25s, filter .25s; white-space: nowrap;
     }
     .btn:hover { color: #fff; transform: translateY(-2px); filter: brightness(1.06);
-      box-shadow: 0 10px 24px rgba(201, 61, 132, .45), inset 0 1px 0 rgba(255,255,255,.5); }
+      box-shadow: 0 10px 24px rgba(199, 101, 145, .45), inset 0 1px 0 rgba(255,255,255,.5); }
     .btn svg { width: 16px; height: 16px; }
 
     /* ---------- hero logo ---------- */
@@ -151,15 +155,15 @@
     .logo-fallback svg.wolf { width: 42%; height: auto; margin-bottom: -4%; }
     .logo-fallback .l1 {
       font-family: var(--font-caps); font-weight: 700; font-size: clamp(2.2em, 6.5vw, 3.8em); letter-spacing: .02em; line-height: 1;
-      background: linear-gradient(180deg, #fff 0%, #cfe2fb 45%, #8fb6e6 100%);
+      background: linear-gradient(180deg, #fff 0%, #cfe2fb 45%, #9fc0e8 100%);
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 5px 8px rgba(143,182,230,.5));
+      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 5px 8px rgba(159,192,232,.5));
     }
     .logo-fallback .l2 {
       font-family: var(--font-script); font-size: clamp(3.4em, 10vw, 5.8em); line-height: .85; margin-top: -2%;
       background: var(--text-gem);
       -webkit-background-clip: text; background-clip: text; color: transparent;
-      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 5px 8px rgba(224,86,154,.45));
+      filter: drop-shadow(0 1.5px 0 #fff) drop-shadow(0 5px 8px rgba(217,137,172,.45));
     }
     .logo-fallback svg.heart { width: 16%; height: auto; margin-top: 2%; }
 
@@ -210,8 +214,11 @@
     .banner.strip .art svg { height: 100%; width: auto; max-width: 100%; filter: drop-shadow(0 12px 18px rgba(224,86,154,.25)); overflow: visible; }
     .banner.strip .banner-copy { max-width: 520px; }
     /* artwork cut from the example banners (tools/crop_banners.py); the SVG art shows until the file exists */
-    .banner.strip .art img { height: 100%; width: auto; max-width: 100%; object-fit: contain; display: none;
-      filter: drop-shadow(0 12px 18px rgba(224,86,154,.25)); }
+    .banner.strip .art img { display: none; position: absolute; left: 0; top: 0; height: 100%; width: auto; max-width: 42%;
+      object-fit: cover; object-position: left center; z-index: 1;
+      -webkit-mask-image: linear-gradient(to right, #000 80%, transparent); mask-image: linear-gradient(to right, #000 80%, transparent); }
+    .banner.strip.has-art { grid-template-columns: 36% 1fr; }
+    .banner.strip .art.has-img { position: static; } /* so the photo sizes to the whole banner, not the art box */
     .banner.strip .art.has-img img { display: block; }
     .banner.strip .art.has-img svg { display: none; }
     .banner .edge {
@@ -227,7 +234,7 @@
     .board-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 14px; }
     .board-title { display: flex; align-items: center; gap: 12px; }
     .board-title svg { width: 34px; height: 34px; }
-    .board-title h2 { font-family: var(--font-caps); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; font-size: 1.3em; color: var(--pink-deep); }
+    .board-title h2 { font-family: var(--font-caps); font-weight: 700; letter-spacing: .16em; text-transform: uppercase; font-size: 1.3em; color: var(--pink); }
     .select { position: relative; display: inline-flex; align-items: center; background: var(--card-tint); border: 1.5px solid var(--pink-light); border-radius: 999px; }
     .select select {
       appearance: none; -webkit-appearance: none; background: transparent; border: 0;
@@ -265,7 +272,7 @@
       background: var(--card-tint); border: 1.5px solid var(--blush); cursor: pointer; transition: .25s; }
     .gift:hover { background: var(--blush); transform: translateY(-1px); }
     .gift svg { width: 18px; height: 18px; }
-    .board-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: .8em; color: var(--ink-soft); }
+    .board-foot { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; font-size: .8em; color: var(--pink-deep); }
     .board-foot .you b { color: var(--pink-deep); font-weight: 600; }
 
     .cards { display: grid; gap: 22px; }
@@ -276,7 +283,7 @@
 
     /* ---------- responsive ---------- */
     @media (max-width: 1040px) {
-      .page { grid-template-columns: 1fr; grid-template-areas: "nav" "logo" "banner" "strip" "board" "cards"; }
+      .page { grid-template-columns: 1fr; grid-template-areas: "nav" "logo" "banner" "strip" "board" "cards" "bonus"; }
       .logo-wrap { max-width: 420px; }
       .nav { justify-content: center; }
     }
@@ -303,11 +310,11 @@
   <!-- ===== inline icon sprite ===== -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
     <defs>
-      <linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7a6cd"/><stop offset="1" stop-color="#c93d84"/></linearGradient>
+      <linearGradient id="g-pink" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4B6D2"/><stop offset="1" stop-color="#C76591"/></linearGradient>
       <linearGradient id="g-gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbe7a6"/><stop offset="1" stop-color="#d9a24a"/></linearGradient>
       <linearGradient id="g-rose" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6ddd0"/><stop offset=".5" stop-color="#d9a08a"/><stop offset="1" stop-color="#b8735a"/></linearGradient>
       <linearGradient id="g-ice" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#bdd8f5"/><stop offset="1" stop-color="#f7b7d2"/></linearGradient>
-      <linearGradient id="g-orb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd1e4"/><stop offset=".55" stop-color="#f06ba8"/><stop offset="1" stop-color="#c93d84"/></linearGradient>
+      <linearGradient id="g-orb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FADDEB"/><stop offset=".55" stop-color="#E39FC0"/><stop offset="1" stop-color="#C76591"/></linearGradient>
       <linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe4fb"/><stop offset="1" stop-color="#fbe6ef"/></linearGradient>
       <linearGradient id="g-mtn" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9d9ea"/><stop offset="1" stop-color="#fbe6ef"/></linearGradient>
       <linearGradient id="g-col" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#f6e4ea"/><stop offset="1" stop-color="#ead2da"/></linearGradient>
@@ -324,8 +331,8 @@
       <symbol id="i-heart-gem" viewBox="0 0 24 24"><path d="M12 21s-8.5-5.4-8.5-11.2A4.6 4.6 0 0112 7a4.6 4.6 0 018.5 2.8C20.5 15.6 12 21 12 21z" fill="url(#g-ice)" stroke="#c98c74" stroke-width="1.2"/></symbol>
 
       <!-- sakura blossom: five notched petals with veins, a stamen ring and a soft highlight -->
-      <radialGradient id="g-petal" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#e9609f"/><stop offset=".35" stop-color="#f6a4c9"/><stop offset=".75" stop-color="#fdd9e8"/><stop offset="1" stop-color="#fff"/></radialGradient>
-      <radialGradient id="g-petal-dark" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#d94c8e"/><stop offset=".4" stop-color="#ef8fbb"/><stop offset=".8" stop-color="#f9c4db"/><stop offset="1" stop-color="#fff0f6"/></radialGradient>
+      <radialGradient id="g-petal" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#D989AC"/><stop offset=".35" stop-color="#F4B6D2"/><stop offset=".75" stop-color="#FADDEB"/><stop offset="1" stop-color="#fff"/></radialGradient>
+      <radialGradient id="g-petal-dark" cx=".5" cy=".9" r=".9"><stop offset="0" stop-color="#C76591"/><stop offset=".4" stop-color="#E39FC0"/><stop offset=".8" stop-color="#F4B6D2"/><stop offset="1" stop-color="#FFF7FB"/></radialGradient>
       <radialGradient id="g-center" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3c4"/><stop offset=".6" stop-color="#f6d07a"/><stop offset="1" stop-color="#e2a84a"/></radialGradient>
       <linearGradient id="g-leaf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c9e3c4"/><stop offset="1" stop-color="#8fbf95"/></linearGradient>
       <symbol id="petal" viewBox="-10 -24 20 26">
@@ -539,7 +546,7 @@
     <section class="area-strip card banner strip">
       <div class="scene"><svg><use href="#scene"/></svg></div>
       <img class="edge" src="assets/leaderboard-edge.png" alt="" onerror="this.remove()">
-      <div class="art"><img src="assets/leaderboard-art.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><svg><use href="#art-podium"/></svg></div>
+      <div class="art"><img src="assets/leaderboard-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-podium"/></svg></div>
       <div class="banner-copy">
         <div class="display gem-text">Leaderboard</div>
         <div class="ornament"><svg><use href="#i-gem"/></svg></div>
@@ -578,7 +585,7 @@
       <article class="card banner strip" id="ongoing">
         <div class="scene"><svg><use href="#scene"/></svg></div>
         <img class="edge" src="assets/ongoing-edge.png" alt="" onerror="this.remove()">
-        <div class="art"><img src="assets/ongoing-art.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
+        <div class="art"><img src="assets/ongoing-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
         <div class="banner-copy">
           <div class="eyebrow">Ongoing</div>
           <div class="script gem-text">Challenges</div>
@@ -591,7 +598,7 @@
       <article class="card banner strip" id="events">
         <div class="scene"><svg><use href="#scene"/></svg></div>
         <img class="edge" src="assets/events-edge.png" alt="" onerror="this.remove()">
-        <div class="art"><img src="assets/events-art.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><svg><use href="#art-calendar"/></svg></div>
+        <div class="art"><img src="assets/events-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-calendar"/></svg></div>
         <div class="banner-copy">
           <div class="eyebrow">Upcoming</div>
           <div class="script gem-text">Events</div>
@@ -604,7 +611,7 @@
       <article class="card banner strip" id="community">
         <div class="scene"><svg><use href="#scene"/></svg></div>
         <img class="edge" src="assets/community-edge.png" alt="" onerror="this.remove()">
-        <div class="art"><img src="assets/community-art.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"><svg><use href="#art-community"/></svg></div>
+        <div class="art"><img src="assets/community-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-community"/></svg></div>
         <div class="banner-copy">
           <div class="display gem-text">Community</div>
           <div class="ornament"><svg><use href="#i-gem"/></svg></div>
@@ -612,6 +619,20 @@
           <a class="btn" href="#">Join Now <svg><use href="#i-arrow"/></svg></a>
         </div>
       </article>
+    </section>
+
+    <!-- ===== birthday bonus strip (artwork cut from the client's banner) ===== -->
+    <section class="area-bonus card banner strip" id="birthday">
+      <div class="scene"><svg><use href="#scene"/></svg></div>
+      <img class="edge" src="assets/birthday-edge.png" alt="" onerror="this.remove()">
+      <div class="art"><img src="assets/birthday-art.png" alt="Birthday cake, balloons and a gift with a heart gem" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
+      <div class="banner-copy">
+        <div class="script gem-text">Birthday</div>
+        <div class="display gem-text" style="margin-top:-10px">Bonus</div>
+        <div class="ornament"><svg><use href="#i-heart-gem"/></svg></div>
+        <p>Celebrate your birthday with the garden<br>and unwrap a special gift on your day!</p>
+        <a class="btn" href="#">Claim Bonus <svg><use href="#i-arrow"/></svg></a>
+      </div>
     </section>
   </main>
 
@@ -701,7 +722,7 @@
       var ctx = canvas.getContext('2d');
       var W, H, dpr, petals = [];
       var mouse = { x: -9999, y: -9999, vx: 0, vy: 0, lastX: 0, lastY: 0 };
-      var COLORS = [['#ffe1ee', '#f7a6cd'], ['#ffd1e4', '#ee7fb6'], ['#fff0f6', '#f4b5d1'], ['#ffdbe9', '#e88cbb']];
+      var COLORS = [['#FADDEB', '#D989AC'], ['#FFF7FB', '#F4B6D2'], ['#F4B6D2', '#C76591'], ['#FBE4EF', '#E39FC0']];
 
       function resize() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -742,7 +763,7 @@
         var g = ctx.createLinearGradient(0, r, 0, -r);   // darker at the base, pale at the tip
         g.addColorStop(0, p.c2); g.addColorStop(.55, p.c1); g.addColorStop(1, '#fff6fa');
         ctx.fillStyle = g;
-        ctx.strokeStyle = 'rgba(231,132,181,.55)'; ctx.lineWidth = Math.max(.5, r * .06);
+        ctx.strokeStyle = 'rgba(217,137,172,.6)'; ctx.lineWidth = Math.max(.5, r * .06);
         ctx.beginPath();                                  // sakura petal: rounded base, notched tip
         ctx.moveTo(0, r);
         ctx.bezierCurveTo(r * .95, r * .6, r * 1.05, -r * .5, r * .35, -r * .95);
@@ -750,7 +771,7 @@
         ctx.quadraticCurveTo(-r * .15, -r * 1.05, -r * .35, -r * .95);
         ctx.bezierCurveTo(-r * 1.05, -r * .5, -r * .95, r * .6, 0, r);
         ctx.fill(); ctx.stroke();
-        ctx.strokeStyle = 'rgba(228,106,166,.45)'; ctx.lineWidth = Math.max(.4, r * .05);
+        ctx.strokeStyle = 'rgba(199,101,145,.45)'; ctx.lineWidth = Math.max(.4, r * .05);
         ctx.beginPath(); ctx.moveTo(0, r * .8); ctx.lineTo(0, -r * .55);          // centre vein
         ctx.moveTo(0, r * .4); ctx.quadraticCurveTo(r * .25, -r * .1, r * .3, -r * .6);
         ctx.moveTo(0, r * .4); ctx.quadraticCurveTo(-r * .25, -r * .1, -r * .3, -r * .6);
