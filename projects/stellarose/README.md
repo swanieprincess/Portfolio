@@ -6,10 +6,10 @@ links. Open `index.html` directly — it is self-contained apart from the Google
 Fonts link.
 
 The look follows the client's supplied mockups: crystal pink and white,
-rose-gold accents, icy-blue gems, cherry-blossom petals, pill buttons, a soft
+rose-gold accents, icy-blue gems, detailed sakura blossoms (notched petals,
+veins, stamens, buds and leaves on rose-gold twigs), pill buttons, a soft
 terrace scene (sky, mountains, columns, balustrade) behind every banner, and
-gradient "gem" lettering. Everything is real HTML text and inline SVG; the
-mockup images were design references only.
+gradient "gem" lettering. All headings and copy are real HTML text.
 
 ## Fonts
 
@@ -47,11 +47,28 @@ the pointer are nudged away in the direction the mouse (or finger) is moving,
 and clicking empty space releases a small burst of petals. The count scales
 with viewport size and the effect is disabled for `prefers-reduced-motion`.
 
-## Logo
+## Artwork from the example images
 
-The hero expects the wolf artwork at `assets/clutch-stellaaa-logo.png`
-(transparent PNG). Until that file exists a typographic wordmark with a small
-tiara-wolf mark renders in its place.
+The page is wired to use the client's actual artwork, minus the baked-in
+text. Put the original example images in `assets/source/` (names listed in
+the README there) and run:
+
+```bash
+python3 tools/crop_banners.py
+```
+
+It writes to `assets/`:
+
+- `logo.png` — the wolf logo with its white background knocked out (hero)
+- `<banner>-art.png` — the illustration side of each strip banner (podium,
+  trophy, calendar, crowned orbs), shown in place of the inline SVG art
+- `<banner>-edge.png` — the blossom-and-column edge of each banner, faded in
+  over the right side of the card; the wide Current Challenges banner gets a
+  left and a right edge
+
+Headlines, copy and buttons stay real HTML text over the top. Until the files
+exist the inline SVG blossoms, scene and illustrations render instead, so the
+page never shows a broken image.
 
 ## Wiring the leaderboard
 
