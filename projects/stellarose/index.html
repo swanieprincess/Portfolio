@@ -433,21 +433,11 @@
         </g>
         <g fill="#c98c74" opacity=".5"><path d="M72 40q5 16-14 18h28q-19-2-14-18zM818 40q5 16-14 18h28q-19-2-14-18z"/></g>
         <rect width="900" height="340" fill="url(#g-sky)" opacity=".25"/>
-        <!-- blossom sprigs and clusters on the corners -->
-        <g>
-          <use href="#sprig" x="-20" y="120" width="150" height="150" transform="rotate(-10 55 195)"/>
-          <use href="#sprig" x="-30" y="200" width="130" height="130" transform="rotate(25 35 265)"/>
-          <use href="#blossom" x="100" y="280" width="48" height="48" transform="rotate(15 124 304)"/>
-          <use href="#blossom2" x="150" y="298" width="40" height="40"/>
-          <use href="#blossom" x="4" y="40" width="46" height="46" transform="rotate(-25 27 63)"/>
-          <use href="#bud" x="60" y="80" width="16" height="24" transform="rotate(-40 68 92)"/>
-          <use href="#sprig" x="770" y="30" width="150" height="150" transform="matrix(-1 0 0 1 1690 0) rotate(-10 845 105)"/>
-          <use href="#sprig" x="790" y="190" width="140" height="140" transform="matrix(-1 0 0 1 1720 0) rotate(20 860 260)"/>
-          <use href="#blossom" x="740" y="286" width="50" height="50" transform="rotate(-20 765 311)"/>
-          <use href="#blossom2" x="700" y="304" width="38" height="38"/>
-          <use href="#blossom" x="846" y="140" width="44" height="44" transform="rotate(30 868 162)"/>
-          <use href="#bud" x="820" y="110" width="16" height="24" transform="rotate(40 828 122)"/>
-        </g>
+        <!-- her painted blossoms on the corners (cut from the podium and trophy artwork) -->
+        <image href="assets/blossom-left.webp" x="-16" y="118" width="168" height="222" transform="matrix(-1 0 0 1 136 0)"/>
+        <image href="assets/blossom-branch.webp" x="-6" y="-20" width="130" height="200" preserveAspectRatio="xMinYMin meet" transform="rotate(-12 60 80)"/>
+        <image href="assets/blossom-left.webp" x="748" y="118" width="168" height="222"/>
+        <image href="assets/blossom-branch.webp" x="770" y="-20" width="130" height="200" preserveAspectRatio="xMinYMin meet" transform="matrix(-1 0 0 1 1770 0) rotate(-12 830 80)"/>
       </symbol>
 
       <!-- art: gem trophy (ongoing challenges) -->
@@ -738,6 +728,8 @@
       var W, H, dpr, petals = [];
       var mouse = { x: -9999, y: -9999, vx: 0, vy: 0, lastX: 0, lastY: 0 };
       var COLORS = [['#FADDEB', '#D989AC'], ['#FFF7FB', '#F4B6D2'], ['#F4B6D2', '#C76591'], ['#FBE4EF', '#E39FC0']];
+      // petal sprites cut from the client's artwork; the vector petal below is only a fallback while they load
+      var TEX = new Image(); TEX.src = 'assets/petal-tex.webp';   // a patch of her painted petal
 
       function resize() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -765,7 +757,8 @@
           rot: Math.random() * Math.PI * 2,
           spin: (Math.random() - .5) * .03,
           c1: c[0], c2: c[1],
-          alpha: .75 + Math.random() * .25
+          flip: Math.random() < .5,
+          alpha: .8 + Math.random() * .2
         };
       }
 
@@ -775,6 +768,8 @@
         ctx.translate(p.x, p.y);
         ctx.rotate(p.rot);
         ctx.globalAlpha = p.alpha;
+        var tex = TEX.complete && TEX.naturalWidth;
+        if (p.flip) ctx.scale(-1, 1);
         var g = ctx.createLinearGradient(0, r, 0, -r);   // darker at the base, pale at the tip
         g.addColorStop(0, p.c2); g.addColorStop(.55, p.c1); g.addColorStop(1, '#fff6fa');
         ctx.fillStyle = g;
@@ -785,6 +780,7 @@
         ctx.quadraticCurveTo(r * .15, -r * 1.05, 0, -r * .7);
         ctx.quadraticCurveTo(-r * .15, -r * 1.05, -r * .35, -r * .95);
         ctx.bezierCurveTo(-r * 1.05, -r * .5, -r * .95, r * .6, 0, r);
+        if (tex) { ctx.save(); ctx.clip(); ctx.drawImage(TEX, -r * 1.1, -r * 1.1, r * 2.2, r * 2.2); ctx.restore(); ctx.stroke(); ctx.restore(); return; }
         ctx.fill(); ctx.stroke();
         ctx.strokeStyle = 'rgba(199,101,145,.45)'; ctx.lineWidth = Math.max(.4, r * .05);
         ctx.beginPath(); ctx.moveTo(0, r * .8); ctx.lineTo(0, -r * .55);          // centre vein

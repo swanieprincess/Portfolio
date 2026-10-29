@@ -6,10 +6,14 @@ links. Open `index.html` directly — it is self-contained apart from the Google
 Fonts link.
 
 The look follows the client's supplied mockups: crystal pink and white,
-rose-gold accents, icy-blue gems, detailed sakura blossoms (notched petals,
-veins, stamens, buds and leaves on rose-gold twigs), pill buttons, a soft
-terrace scene (sky, mountains, columns, balustrade) behind every banner, and
-gradient "gem" lettering. All headings and copy are real HTML text.
+rose-gold accents, icy-blue gems, her painted sakura blossoms, pill buttons, a
+soft terrace scene (sky, mountains, columns, balustrade) behind every banner,
+and gradient "gem" lettering. All headings and copy are real HTML text.
+
+The blossoms are consistent across the page: the corner clusters on every
+banner (`assets/blossom-left.webp`, `assets/blossom-branch.webp`) are cut from
+her podium and trophy artwork, and the falling petals are drawn from a patch of
+her petal texture (`assets/petal-tex.webp`) clipped to a petal shape.
 
 ## Palette
 
@@ -56,8 +60,8 @@ Collapses to a single column under 1040px; the nav becomes a hamburger under
 
 ## Falling sakura petals
 
-A fixed, click-through canvas draws petals that drift down the page slowly
-like snow with a gentle side-to-side sway. They are interactive: petals near
+A fixed, click-through canvas draws petals, textured from her artwork, that
+drift down the page slowly like snow with a gentle side-to-side sway. They are interactive: petals near
 the pointer are nudged away in the direction the mouse (or finger) is moving,
 and clicking empty space releases a small burst of petals. The count scales
 with viewport size and the effect is disabled for `prefers-reduced-motion`.
