@@ -212,22 +212,26 @@
     .banner.strip { grid-template-columns: 250px 1fr; gap: 24px; padding: 28px 40px 28px 28px; min-height: 230px; }
     .banner.strip .art { height: 190px; display: grid; place-items: center; }
     .banner.strip .art svg { height: 100%; width: auto; max-width: 100%; filter: drop-shadow(0 12px 18px rgba(224,86,154,.25)); overflow: visible; }
-    .banner.strip .banner-copy { max-width: 520px; }
+    .banner.strip .banner-copy { max-width: 520px; padding-right: 5%; }
+    .banner.strip .script { font-size: clamp(3em, 5.4vw, 5.2em); }
+    .banner.strip .display { font-size: clamp(1.9em, 3.6vw, 2.9em); }
     /* artwork cut from the example banners (tools/crop_banners.py); the SVG art shows until the file exists */
-    .banner.strip .art img { display: none; position: absolute; left: 0; top: 0; height: 100%; width: auto; max-width: 42%;
-      object-fit: cover; object-position: left center; z-index: 1;
-      -webkit-mask-image: linear-gradient(to right, #000 80%, transparent); mask-image: linear-gradient(to right, #000 80%, transparent); }
-    .banner.strip.has-art { grid-template-columns: 36% 1fr; }
+    .banner.strip .art img { display: none; position: absolute; left: 0; top: 0; height: 100%; width: auto; max-width: 46%;
+      object-fit: contain; object-position: left center; z-index: 1; }
+    /* crops that still carry their painted background get a thin blend at the cut line only */
+    .banner.strip .art img.opaque { object-fit: cover;
+      -webkit-mask-image: linear-gradient(to right, #000 92%, transparent); mask-image: linear-gradient(to right, #000 92%, transparent); }
+    .banner.strip.has-art { grid-template-columns: 40% 1fr; }
     .banner.strip .art.has-img { position: static; } /* so the photo sizes to the whole banner, not the art box */
     .banner.strip .art.has-img img { display: block; }
     .banner.strip .art.has-img svg { display: none; }
     .banner .edge {
       position: absolute; top: 0; bottom: 0; right: 0; height: 100%; width: auto; max-width: 30%;
       object-fit: cover; z-index: 1; pointer-events: none;
-      -webkit-mask-image: linear-gradient(to right, transparent, #000 45%); mask-image: linear-gradient(to right, transparent, #000 45%);
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 22%); mask-image: linear-gradient(to right, transparent, #000 22%);
     }
     .banner .edge.left { right: auto; left: 0;
-      -webkit-mask-image: linear-gradient(to left, transparent, #000 45%); mask-image: linear-gradient(to left, transparent, #000 45%); }
+      -webkit-mask-image: linear-gradient(to left, transparent, #000 22%); mask-image: linear-gradient(to left, transparent, #000 22%); }
 
     /* ---------- leaderboard ---------- */
     .board { padding: 26px 26px 18px; }
@@ -546,7 +550,7 @@
     <section class="area-strip card banner strip">
       <div class="scene"><svg><use href="#scene"/></svg></div>
       <img class="edge" src="assets/leaderboard-edge.webp" alt="" onerror="this.remove()">
-      <div class="art"><img src="assets/leaderboard-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-podium"/></svg></div>
+      <div class="art"><img class="opaque" src="assets/leaderboard-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-podium"/></svg></div>
       <div class="banner-copy">
         <div class="display gem-text">Leaderboard</div>
         <div class="ornament"><svg><use href="#i-gem"/></svg></div>
@@ -611,7 +615,7 @@
       <article class="card banner strip" id="community">
         <div class="scene"><svg><use href="#scene"/></svg></div>
         <img class="edge" src="assets/community-edge.webp" alt="" onerror="this.remove()">
-        <div class="art"><img src="assets/community-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-community"/></svg></div>
+        <div class="art"><img class="opaque" src="assets/community-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-community"/></svg></div>
         <div class="banner-copy">
           <div class="display gem-text">Community</div>
           <div class="ornament"><svg><use href="#i-gem"/></svg></div>
@@ -625,7 +629,7 @@
     <section class="area-bonus card banner strip" id="birthday">
       <div class="scene"><svg><use href="#scene"/></svg></div>
       <img class="edge" src="assets/birthday-edge.webp" alt="" onerror="this.remove()">
-      <div class="art"><img src="assets/birthday-art.webp" alt="Birthday cake, balloons and a gift with a heart gem" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
+      <div class="art"><img class="opaque" src="assets/birthday-art.webp" alt="Birthday cake, balloons and a gift with a heart gem" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
       <div class="banner-copy">
         <div class="script gem-text">Birthday</div>
         <div class="display gem-text" style="margin-top:-10px">Bonus</div>
