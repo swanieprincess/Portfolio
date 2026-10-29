@@ -72,13 +72,14 @@ the README there) and run:
 python3 tools/crop_banners.py
 ```
 
-It writes to `assets/`:
+It writes WebP files to `assets/` (every served image is WebP so the page loads
+fast; the originals stay in `assets/source/`):
 
-- `logo.png` — the wolf logo with its white background knocked out (hero)
-- `<banner>-art.png` — the illustration side of each strip banner (podium,
+- `logo.webp` — the wolf logo, transparent, resized to 1100px (hero)
+- `<banner>-art.webp` — the illustration side of each strip banner (podium,
   trophy, calendar, crowned orbs, birthday cake), bled into the left of the
   card with a soft fade and shown in place of the inline SVG art
-- `<banner>-edge.png` — the blossom-and-column edge of each banner, faded in
+- `<banner>-edge.webp` — the blossom-and-column edge of each banner, faded in
   over the right side of the card; the wide Current Challenges banner gets a
   left and a right edge
 

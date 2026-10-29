@@ -143,7 +143,7 @@
     .logo-wrap img { width: 100%; height: 100%; object-fit: contain; display: block;
       filter: drop-shadow(0 18px 30px rgba(224,86,154,.25)); }
     .logo-wrap img.missing { display: none; }
-    /* fallback wordmark, shown until assets/clutch-stellaaa-logo.png is added */
+    /* fallback wordmark, shown until assets/logo.webp is added */
     .logo-fallback {
       display: none; position: absolute; inset: 4%; border-radius: 50%;
       background: radial-gradient(circle at 40% 30%, #fff, var(--blush) 55%, var(--ice-light));
@@ -504,8 +504,8 @@
     <!-- ===== hero: the Clutch Stellaaa logo ===== -->
     <section class="area-logo hero" aria-label="Clutch Stellaaa">
       <div class="logo-wrap" id="logo">
-        <!-- the wolf artwork goes at assets/logo.png (tools/crop_banners.py makes its background transparent); a typographic wordmark renders until then -->
-        <img src="assets/logo.png" alt="Clutch Stellaaa — crystal wolf with tiara, butterfly and blossoms"
+        <!-- the wolf artwork goes at assets/logo.webp (tools/crop_banners.py makes its background transparent); a typographic wordmark renders until then -->
+        <img src="assets/logo.webp" alt="Clutch Stellaaa — crystal wolf with tiara, butterfly and blossoms"
              onerror="this.classList.add('missing'); this.parentNode.classList.add('no-image');">
         <div class="logo-fallback" aria-hidden="true">
           <svg class="wolf"><use href="#art-wolf"/></svg>
@@ -531,8 +531,8 @@
     <!-- ===== current challenges banner ===== -->
     <section class="area-banner card banner tall" id="challenges">
       <div class="scene"><svg><use href="#scene"/></svg></div>
-      <img class="edge left" src="assets/current-left.png" alt="" onerror="this.remove()">
-      <img class="edge" src="assets/current-right.png" alt="" onerror="this.remove()">
+      <img class="edge left" src="assets/current-left.webp" alt="" onerror="this.remove()">
+      <img class="edge" src="assets/current-right.webp" alt="" onerror="this.remove()">
       <div class="banner-copy">
         <div class="eyebrow">Current</div>
         <div class="script gem-text">Challenges</div>
@@ -545,8 +545,8 @@
     <!-- ===== leaderboard banner strip ===== -->
     <section class="area-strip card banner strip">
       <div class="scene"><svg><use href="#scene"/></svg></div>
-      <img class="edge" src="assets/leaderboard-edge.png" alt="" onerror="this.remove()">
-      <div class="art"><img src="assets/leaderboard-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-podium"/></svg></div>
+      <img class="edge" src="assets/leaderboard-edge.webp" alt="" onerror="this.remove()">
+      <div class="art"><img src="assets/leaderboard-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-podium"/></svg></div>
       <div class="banner-copy">
         <div class="display gem-text">Leaderboard</div>
         <div class="ornament"><svg><use href="#i-gem"/></svg></div>
@@ -584,8 +584,8 @@
     <section class="area-cards cards">
       <article class="card banner strip" id="ongoing">
         <div class="scene"><svg><use href="#scene"/></svg></div>
-        <img class="edge" src="assets/ongoing-edge.png" alt="" onerror="this.remove()">
-        <div class="art"><img src="assets/ongoing-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
+        <img class="edge" src="assets/ongoing-edge.webp" alt="" onerror="this.remove()">
+        <div class="art"><img src="assets/ongoing-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
         <div class="banner-copy">
           <div class="eyebrow">Ongoing</div>
           <div class="script gem-text">Challenges</div>
@@ -597,8 +597,8 @@
 
       <article class="card banner strip" id="events">
         <div class="scene"><svg><use href="#scene"/></svg></div>
-        <img class="edge" src="assets/events-edge.png" alt="" onerror="this.remove()">
-        <div class="art"><img src="assets/events-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-calendar"/></svg></div>
+        <img class="edge" src="assets/events-edge.webp" alt="" onerror="this.remove()">
+        <div class="art"><img src="assets/events-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-calendar"/></svg></div>
         <div class="banner-copy">
           <div class="eyebrow">Upcoming</div>
           <div class="script gem-text">Events</div>
@@ -610,8 +610,8 @@
 
       <article class="card banner strip" id="community">
         <div class="scene"><svg><use href="#scene"/></svg></div>
-        <img class="edge" src="assets/community-edge.png" alt="" onerror="this.remove()">
-        <div class="art"><img src="assets/community-art.png" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-community"/></svg></div>
+        <img class="edge" src="assets/community-edge.webp" alt="" onerror="this.remove()">
+        <div class="art"><img src="assets/community-art.webp" alt="" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-community"/></svg></div>
         <div class="banner-copy">
           <div class="display gem-text">Community</div>
           <div class="ornament"><svg><use href="#i-gem"/></svg></div>
@@ -624,8 +624,8 @@
     <!-- ===== birthday bonus strip (artwork cut from the client's banner) ===== -->
     <section class="area-bonus card banner strip" id="birthday">
       <div class="scene"><svg><use href="#scene"/></svg></div>
-      <img class="edge" src="assets/birthday-edge.png" alt="" onerror="this.remove()">
-      <div class="art"><img src="assets/birthday-art.png" alt="Birthday cake, balloons and a gift with a heart gem" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
+      <img class="edge" src="assets/birthday-edge.webp" alt="" onerror="this.remove()">
+      <div class="art"><img src="assets/birthday-art.webp" alt="Birthday cake, balloons and a gift with a heart gem" onload="this.parentNode.classList.add('has-img'); this.closest('.banner').classList.add('has-art')" onerror="this.remove()"><svg><use href="#art-trophy"/></svg></div>
       <div class="banner-copy">
         <div class="script gem-text">Birthday</div>
         <div class="display gem-text" style="margin-top:-10px">Bonus</div>
